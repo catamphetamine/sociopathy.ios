@@ -1,0 +1,545 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		84068826186C25B900AC61DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84068825186C25B900AC61DE /* Foundation.framework */; };
+		84068828186C25B900AC61DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84068827186C25B900AC61DE /* CoreGraphics.framework */; };
+		8406882A186C25B900AC61DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84068829186C25B900AC61DE /* UIKit.framework */; };
+		84068830186C25B900AC61DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8406882E186C25B900AC61DE /* InfoPlist.strings */; };
+		84068832186C25B900AC61DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84068831186C25B900AC61DE /* main.m */; };
+		84068836186C25BA00AC61DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84068835186C25BA00AC61DE /* AppDelegate.m */; };
+		84068839186C25BA00AC61DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84068837186C25BA00AC61DE /* Main.storyboard */; };
+		8406883C186C25BA00AC61DE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406883B186C25BA00AC61DE /* LoginViewController.m */; };
+		8406883E186C25BA00AC61DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8406883D186C25BA00AC61DE /* Images.xcassets */; };
+		84068845186C25BA00AC61DE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84068844186C25BA00AC61DE /* XCTest.framework */; };
+		84068846186C25BA00AC61DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84068825186C25B900AC61DE /* Foundation.framework */; };
+		84068847186C25BA00AC61DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84068829186C25B900AC61DE /* UIKit.framework */; };
+		8406884F186C25BA00AC61DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8406884D186C25BA00AC61DE /* InfoPlist.strings */; };
+		84068851186C25BA00AC61DE /* SociopathyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84068850186C25BA00AC61DE /* SociopathyTests.m */; };
+		840688621870205700AC61DE /* login screen logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 840688601870205700AC61DE /* login screen logo.png */; };
+		840688631870205700AC61DE /* login screen logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840688611870205700AC61DE /* login screen logo@2x.png */; };
+		84088922187849B6004B84BD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84088921187849B6004B84BD /* MainViewController.m */; };
+		84913A7D1877487A0032D34E /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84913A7C187748790032D34E /* settings.plist */; };
+		84A04F1A187534BB0068F210 /* UITextField+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A04F19187534BB0068F210 /* UITextField+Tools.m */; };
+		84A04F1F1875A35E0068F210 /* login screen logo icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A04F1B1875A35E0068F210 /* login screen logo icon.png */; };
+		84A04F201875A35E0068F210 /* login screen logo icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A04F1C1875A35E0068F210 /* login screen logo icon@2x.png */; };
+		84A04F211875A35E0068F210 /* login screen logo text.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A04F1D1875A35E0068F210 /* login screen logo text.png */; };
+		84A04F221875A35E0068F210 /* login screen logo text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A04F1E1875A35E0068F210 /* login screen logo text@2x.png */; };
+		84EFD6C018780B0800102E24 /* NSDictionary+HttpTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EFD6BF18780B0800102E24 /* NSDictionary+HttpTools.m */; };
+		84EFD6C318781B7000102E24 /* NSError+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EFD6C218781B7000102E24 /* NSError+Tools.m */; };
+		84EFD6C61878242900102E24 /* NSString+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EFD6C51878242900102E24 /* NSString+Tools.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		84068848186C25BA00AC61DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8406881A186C25B900AC61DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84068821186C25B900AC61DE;
+			remoteInfo = Sociopathy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		84068822186C25B900AC61DE /* Sociopathy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sociopathy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84068825186C25B900AC61DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		84068827186C25B900AC61DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		84068829186C25B900AC61DE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8406882D186C25B900AC61DE /* Sociopathy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sociopathy-Info.plist"; sourceTree = "<group>"; };
+		8406882F186C25B900AC61DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84068831186C25B900AC61DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		84068833186C25BA00AC61DE /* Sociopathy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sociopathy-Prefix.pch"; sourceTree = "<group>"; };
+		84068834186C25BA00AC61DE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		84068835186C25BA00AC61DE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		84068838186C25BA00AC61DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8406883A186C25BA00AC61DE /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		8406883B186C25BA00AC61DE /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		8406883D186C25BA00AC61DE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		84068843186C25BA00AC61DE /* SociopathyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SociopathyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84068844186C25BA00AC61DE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		8406884C186C25BA00AC61DE /* SociopathyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SociopathyTests-Info.plist"; sourceTree = "<group>"; };
+		8406884E186C25BA00AC61DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84068850186C25BA00AC61DE /* SociopathyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SociopathyTests.m; sourceTree = "<group>"; };
+		8406885A186C38EB00AC61DE /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		8406885B186C38EB00AC61DE /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
+		840688601870205700AC61DE /* login screen logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login screen logo.png"; sourceTree = "<group>"; };
+		840688611870205700AC61DE /* login screen logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login screen logo@2x.png"; sourceTree = "<group>"; };
+		84088920187849B6004B84BD /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ../MainViewController.h; sourceTree = "<group>"; };
+		84088921187849B6004B84BD /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ../MainViewController.m; sourceTree = "<group>"; };
+		84913A7C187748790032D34E /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
+		84A04F18187534BB0068F210 /* UITextField+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Tools.h"; sourceTree = "<group>"; };
+		84A04F19187534BB0068F210 /* UITextField+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Tools.m"; sourceTree = "<group>"; };
+		84A04F1B1875A35E0068F210 /* login screen logo icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login screen logo icon.png"; sourceTree = "<group>"; };
+		84A04F1C1875A35E0068F210 /* login screen logo icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login screen logo icon@2x.png"; sourceTree = "<group>"; };
+		84A04F1D1875A35E0068F210 /* login screen logo text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login screen logo text.png"; sourceTree = "<group>"; };
+		84A04F1E1875A35E0068F210 /* login screen logo text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login screen logo text@2x.png"; sourceTree = "<group>"; };
+		84EFD6BE18780B0800102E24 /* NSDictionary+HttpTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HttpTools.h"; sourceTree = "<group>"; };
+		84EFD6BF18780B0800102E24 /* NSDictionary+HttpTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HttpTools.m"; sourceTree = "<group>"; };
+		84EFD6C118781B7000102E24 /* NSError+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Tools.h"; sourceTree = "<group>"; };
+		84EFD6C218781B7000102E24 /* NSError+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Tools.m"; sourceTree = "<group>"; };
+		84EFD6C41878242900102E24 /* NSString+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Tools.h"; sourceTree = "<group>"; };
+		84EFD6C51878242900102E24 /* NSString+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Tools.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8406881F186C25B900AC61DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84068828186C25B900AC61DE /* CoreGraphics.framework in Frameworks */,
+				8406882A186C25B900AC61DE /* UIKit.framework in Frameworks */,
+				84068826186C25B900AC61DE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84068840186C25BA00AC61DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84068845186C25BA00AC61DE /* XCTest.framework in Frameworks */,
+				84068847186C25BA00AC61DE /* UIKit.framework in Frameworks */,
+				84068846186C25BA00AC61DE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		84068819186C25B900AC61DE = {
+			isa = PBXGroup;
+			children = (
+				84913A7C187748790032D34E /* settings.plist */,
+				8406882B186C25B900AC61DE /* Sociopathy */,
+				8406884A186C25BA00AC61DE /* SociopathyTests */,
+				84068824186C25B900AC61DE /* Frameworks */,
+				84068823186C25B900AC61DE /* Products */,
+				840688601870205700AC61DE /* login screen logo.png */,
+				840688611870205700AC61DE /* login screen logo@2x.png */,
+				84A04F1B1875A35E0068F210 /* login screen logo icon.png */,
+				84A04F1C1875A35E0068F210 /* login screen logo icon@2x.png */,
+				84A04F1D1875A35E0068F210 /* login screen logo text.png */,
+				84A04F1E1875A35E0068F210 /* login screen logo text@2x.png */,
+				8406885A186C38EB00AC61DE /* iTunesArtwork */,
+				8406885B186C38EB00AC61DE /* iTunesArtwork@2x */,
+				84A04F18187534BB0068F210 /* UITextField+Tools.h */,
+				84A04F19187534BB0068F210 /* UITextField+Tools.m */,
+				84EFD6BE18780B0800102E24 /* NSDictionary+HttpTools.h */,
+				84EFD6BF18780B0800102E24 /* NSDictionary+HttpTools.m */,
+				84EFD6C118781B7000102E24 /* NSError+Tools.h */,
+				84EFD6C218781B7000102E24 /* NSError+Tools.m */,
+				84EFD6C41878242900102E24 /* NSString+Tools.h */,
+				84EFD6C51878242900102E24 /* NSString+Tools.m */,
+			);
+			sourceTree = "<group>";
+		};
+		84068823186C25B900AC61DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84068822186C25B900AC61DE /* Sociopathy.app */,
+				84068843186C25BA00AC61DE /* SociopathyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84068824186C25B900AC61DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84068825186C25B900AC61DE /* Foundation.framework */,
+				84068827186C25B900AC61DE /* CoreGraphics.framework */,
+				84068829186C25B900AC61DE /* UIKit.framework */,
+				84068844186C25BA00AC61DE /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8406882B186C25B900AC61DE /* Sociopathy */ = {
+			isa = PBXGroup;
+			children = (
+				84068834186C25BA00AC61DE /* AppDelegate.h */,
+				84068835186C25BA00AC61DE /* AppDelegate.m */,
+				84068837186C25BA00AC61DE /* Main.storyboard */,
+				8406883A186C25BA00AC61DE /* LoginViewController.h */,
+				8406883B186C25BA00AC61DE /* LoginViewController.m */,
+				84088920187849B6004B84BD /* MainViewController.h */,
+				84088921187849B6004B84BD /* MainViewController.m */,
+				8406883D186C25BA00AC61DE /* Images.xcassets */,
+				8406882C186C25B900AC61DE /* Supporting Files */,
+			);
+			path = Sociopathy;
+			sourceTree = "<group>";
+		};
+		8406882C186C25B900AC61DE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8406882D186C25B900AC61DE /* Sociopathy-Info.plist */,
+				8406882E186C25B900AC61DE /* InfoPlist.strings */,
+				84068831186C25B900AC61DE /* main.m */,
+				84068833186C25BA00AC61DE /* Sociopathy-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8406884A186C25BA00AC61DE /* SociopathyTests */ = {
+			isa = PBXGroup;
+			children = (
+				84068850186C25BA00AC61DE /* SociopathyTests.m */,
+				8406884B186C25BA00AC61DE /* Supporting Files */,
+			);
+			path = SociopathyTests;
+			sourceTree = "<group>";
+		};
+		8406884B186C25BA00AC61DE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8406884C186C25BA00AC61DE /* SociopathyTests-Info.plist */,
+				8406884D186C25BA00AC61DE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84068821186C25B900AC61DE /* Sociopathy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84068854186C25BA00AC61DE /* Build configuration list for PBXNativeTarget "Sociopathy" */;
+			buildPhases = (
+				8406881E186C25B900AC61DE /* Sources */,
+				8406881F186C25B900AC61DE /* Frameworks */,
+				84068820186C25B900AC61DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sociopathy;
+			productName = Sociopathy;
+			productReference = 84068822186C25B900AC61DE /* Sociopathy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		84068842186C25BA00AC61DE /* SociopathyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84068857186C25BA00AC61DE /* Build configuration list for PBXNativeTarget "SociopathyTests" */;
+			buildPhases = (
+				8406883F186C25BA00AC61DE /* Sources */,
+				84068840186C25BA00AC61DE /* Frameworks */,
+				84068841186C25BA00AC61DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84068849186C25BA00AC61DE /* PBXTargetDependency */,
+			);
+			name = SociopathyTests;
+			productName = SociopathyTests;
+			productReference = 84068843186C25BA00AC61DE /* SociopathyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8406881A186C25B900AC61DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = kuchumovn;
+				TargetAttributes = {
+					84068842186C25BA00AC61DE = {
+						TestTargetID = 84068821186C25B900AC61DE;
+					};
+				};
+			};
+			buildConfigurationList = 8406881D186C25B900AC61DE /* Build configuration list for PBXProject "Sociopathy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 84068819186C25B900AC61DE;
+			productRefGroup = 84068823186C25B900AC61DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84068821186C25B900AC61DE /* Sociopathy */,
+				84068842186C25BA00AC61DE /* SociopathyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84068820186C25B900AC61DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8406883E186C25BA00AC61DE /* Images.xcassets in Resources */,
+				840688631870205700AC61DE /* login screen logo@2x.png in Resources */,
+				84A04F201875A35E0068F210 /* login screen logo icon@2x.png in Resources */,
+				84A04F221875A35E0068F210 /* login screen logo text@2x.png in Resources */,
+				84068830186C25B900AC61DE /* InfoPlist.strings in Resources */,
+				84A04F211875A35E0068F210 /* login screen logo text.png in Resources */,
+				840688621870205700AC61DE /* login screen logo.png in Resources */,
+				84A04F1F1875A35E0068F210 /* login screen logo icon.png in Resources */,
+				84068839186C25BA00AC61DE /* Main.storyboard in Resources */,
+				84913A7D1877487A0032D34E /* settings.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84068841186C25BA00AC61DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8406884F186C25BA00AC61DE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8406881E186C25B900AC61DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8406883C186C25BA00AC61DE /* LoginViewController.m in Sources */,
+				84EFD6C318781B7000102E24 /* NSError+Tools.m in Sources */,
+				84EFD6C018780B0800102E24 /* NSDictionary+HttpTools.m in Sources */,
+				84088922187849B6004B84BD /* MainViewController.m in Sources */,
+				84A04F1A187534BB0068F210 /* UITextField+Tools.m in Sources */,
+				84EFD6C61878242900102E24 /* NSString+Tools.m in Sources */,
+				84068836186C25BA00AC61DE /* AppDelegate.m in Sources */,
+				84068832186C25B900AC61DE /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8406883F186C25BA00AC61DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84068851186C25BA00AC61DE /* SociopathyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84068849186C25BA00AC61DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84068821186C25B900AC61DE /* Sociopathy */;
+			targetProxy = 84068848186C25BA00AC61DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8406882E186C25B900AC61DE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8406882F186C25B900AC61DE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		84068837186C25BA00AC61DE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84068838186C25BA00AC61DE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8406884D186C25BA00AC61DE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8406884E186C25BA00AC61DE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84068852186C25BA00AC61DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		84068853186C25BA00AC61DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84068855186C25BA00AC61DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sociopathy/Sociopathy-Prefix.pch";
+				INFOPLIST_FILE = "Sociopathy/Sociopathy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		84068856186C25BA00AC61DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sociopathy/Sociopathy-Prefix.pch";
+				INFOPLIST_FILE = "Sociopathy/Sociopathy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		84068858186C25BA00AC61DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Sociopathy.app/Sociopathy";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sociopathy/Sociopathy-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SociopathyTests/SociopathyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		84068859186C25BA00AC61DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Sociopathy.app/Sociopathy";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sociopathy/Sociopathy-Prefix.pch";
+				INFOPLIST_FILE = "SociopathyTests/SociopathyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8406881D186C25B900AC61DE /* Build configuration list for PBXProject "Sociopathy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84068852186C25BA00AC61DE /* Debug */,
+				84068853186C25BA00AC61DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84068854186C25BA00AC61DE /* Build configuration list for PBXNativeTarget "Sociopathy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84068855186C25BA00AC61DE /* Debug */,
+				84068856186C25BA00AC61DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84068857186C25BA00AC61DE /* Build configuration list for PBXNativeTarget "SociopathyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84068858186C25BA00AC61DE /* Debug */,
+				84068859186C25BA00AC61DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8406881A186C25B900AC61DE /* Project object */;
+}
