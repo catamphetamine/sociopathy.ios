@@ -24,6 +24,7 @@
 		840688621870205700AC61DE /* login screen logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 840688601870205700AC61DE /* login screen logo.png */; };
 		840688631870205700AC61DE /* login screen logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840688611870205700AC61DE /* login screen logo@2x.png */; };
 		84088922187849B6004B84BD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84088921187849B6004B84BD /* MainViewController.m */; };
+		8408892418785B69004B84BD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8408892318785B69004B84BD /* README.md */; };
 		84913A7D1877487A0032D34E /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84913A7C187748790032D34E /* settings.plist */; };
 		84A04F1A187534BB0068F210 /* UITextField+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A04F19187534BB0068F210 /* UITextField+Tools.m */; };
 		84A04F1F1875A35E0068F210 /* login screen logo icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A04F1B1875A35E0068F210 /* login screen logo icon.png */; };
@@ -71,6 +72,7 @@
 		840688611870205700AC61DE /* login screen logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login screen logo@2x.png"; sourceTree = "<group>"; };
 		84088920187849B6004B84BD /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ../MainViewController.h; sourceTree = "<group>"; };
 		84088921187849B6004B84BD /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ../MainViewController.m; sourceTree = "<group>"; };
+		8408892318785B69004B84BD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		84913A7C187748790032D34E /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		84A04F18187534BB0068F210 /* UITextField+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Tools.h"; sourceTree = "<group>"; };
 		84A04F19187534BB0068F210 /* UITextField+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Tools.m"; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		84068819186C25B900AC61DE = {
 			isa = PBXGroup;
 			children = (
+				8408892318785B69004B84BD /* README.md */,
 				84913A7C187748790032D34E /* settings.plist */,
 				8406882B186C25B900AC61DE /* Sociopathy */,
 				8406884A186C25BA00AC61DE /* SociopathyTests */,
@@ -287,6 +290,7 @@
 				840688621870205700AC61DE /* login screen logo.png in Resources */,
 				84A04F1F1875A35E0068F210 /* login screen logo icon.png in Resources */,
 				84068839186C25BA00AC61DE /* Main.storyboard in Resources */,
+				8408892418785B69004B84BD /* README.md in Resources */,
 				84913A7D1877487A0032D34E /* settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
