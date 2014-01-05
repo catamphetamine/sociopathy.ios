@@ -39,6 +39,8 @@
 		846BCD631879A51900A27C9C /* login screen logo icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD5D1879A51900A27C9C /* login screen logo icon@2x.png */; };
 		846BCD641879A51900A27C9C /* login screen logo text.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD5E1879A51900A27C9C /* login screen logo text.png */; };
 		846BCD651879A51900A27C9C /* login screen logo text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD5F1879A51900A27C9C /* login screen logo text@2x.png */; };
+		846BCD6B1879CD4500A27C9C /* UIView+Animator.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCD6A1879CD4500A27C9C /* UIView+Animator.m */; };
+		846BCD6E1879D14000A27C9C /* UIButton+Animator.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCD6D1879D14000A27C9C /* UIButton+Animator.m */; };
 		84913A7D1877487A0032D34E /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84913A7C187748790032D34E /* settings.plist */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +99,10 @@
 		846BCD5D1879A51900A27C9C /* login screen logo icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login screen logo icon@2x.png"; path = "pictures/login screen logo icon@2x.png"; sourceTree = "<group>"; };
 		846BCD5E1879A51900A27C9C /* login screen logo text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login screen logo text.png"; path = "pictures/login screen logo text.png"; sourceTree = "<group>"; };
 		846BCD5F1879A51900A27C9C /* login screen logo text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login screen logo text@2x.png"; path = "pictures/login screen logo text@2x.png"; sourceTree = "<group>"; };
+		846BCD691879CD4500A27C9C /* UIView+Animator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Animator.h"; sourceTree = "<group>"; };
+		846BCD6A1879CD4500A27C9C /* UIView+Animator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Animator.m"; sourceTree = "<group>"; };
+		846BCD6C1879D14000A27C9C /* UIButton+Animator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Animator.h"; sourceTree = "<group>"; };
+		846BCD6D1879D14000A27C9C /* UIButton+Animator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Animator.m"; sourceTree = "<group>"; };
 		84913A7C187748790032D34E /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -233,6 +239,10 @@
 		846BCD491879A48700A27C9C /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				846BCD6C1879D14000A27C9C /* UIButton+Animator.h */,
+				846BCD6D1879D14000A27C9C /* UIButton+Animator.m */,
+				846BCD691879CD4500A27C9C /* UIView+Animator.h */,
+				846BCD6A1879CD4500A27C9C /* UIView+Animator.m */,
 				846BCD4A1879A48700A27C9C /* NSDictionary+HttpTools.h */,
 				846BCD4B1879A48700A27C9C /* NSDictionary+HttpTools.m */,
 				846BCD4C1879A48700A27C9C /* NSError+Tools.h */,
@@ -378,9 +388,11 @@
 				846BCD551879A48700A27C9C /* UITextField+Tools.m in Sources */,
 				846BCD531879A48700A27C9C /* NSError+Tools.m in Sources */,
 				846BCD521879A48700A27C9C /* NSDictionary+HttpTools.m in Sources */,
+				846BCD6B1879CD4500A27C9C /* UIView+Animator.m in Sources */,
 				8408892718785CD3004B84BD /* MainViewController.m in Sources */,
 				846BCD541879A48700A27C9C /* NSString+Tools.m in Sources */,
 				84068836186C25BA00AC61DE /* AppDelegate.m in Sources */,
+				846BCD6E1879D14000A27C9C /* UIButton+Animator.m in Sources */,
 				84068832186C25B900AC61DE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

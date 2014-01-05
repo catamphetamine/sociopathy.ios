@@ -11,6 +11,8 @@
 #import "NSDictionary+HttpTools.h"
 #import "NSError+Tools.h"
 #import "NSString+Tools.h"
+#import "UIView+Animator.h"
+#import "UIButton+Animator.h"
 
 #import "AppDelegate.h"
 
@@ -26,6 +28,8 @@ typedef enum LoginErrorCode
     LoginError_ServerError = 4
 }
 LoginErrorCode;
+
+typedef void (^ActionBlock)(void);
 
 @implementation LoginViewController
 {
@@ -280,7 +284,7 @@ LoginErrorCode;
         return [NSString localizedStringWithFormat:NSLocalizedString(@"Login. User doesn't exist", nil), [login.text trim]];
     }
     
-    if ([error.localizedDescription isEqualToString:@"incorrect password"])
+    if ([error.localizedDescription isEqualToString:@"wrong password"])
     {
         return NSLocalizedString(@"Login. Wrong password", nil);
     }
@@ -303,25 +307,28 @@ LoginErrorCode;
     dispatch_async(dispatch_get_main_queue(),^
     {
         //NSLog(@"%@", error);
-        
-        [self showError:[self loginErrorMessage:error]];
     
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
-        [loginProgressIndicator.layer removeAllAnimations];
-        [UIView animateWithDuration:0.1
-                         animations:^{ loginProgressIndicator.alpha = 0; }
-                         completion:^(BOOL finished)
+        ActionBlock finish = ^
         {
-            [loginProgressIndicator stopAnimating];
-            loginProgressIndicator.hidden = YES;
-            
-            loginButton.hidden = NO;
-            loginButton.userInteractionEnabled = YES;
-            
-            [loginButton.layer removeAllAnimations];
-            [UIView animateWithDuration:0.3 animations:^{ loginButton.alpha = 1.0; }];
-        }];
+            [self showError:[self loginErrorMessage:error]];
+            [loginButton fadeIn:0.1];
+        };
+        
+        if ([loginProgressIndicator isVisible])
+        {
+            [loginProgressIndicator fadeOut:0.1 completion:^
+            {
+                [loginProgressIndicator stopAnimating];
+                
+                finish();
+            }];
+        }
+        else
+        {
+            finish();
+        }
     });
 }
 
@@ -332,16 +339,15 @@ LoginErrorCode;
         NSLog(@"%@", data);
 
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-
-        [loginProgressIndicator.layer removeAllAnimations];
         
-        [UIView animateWithDuration:0.1
-                         animations:^{ loginProgressIndicator.alpha = 0; }
-                         completion:^(BOOL finished)
+        if ([loginProgressIndicator isVisible])
         {
-            loginProgressIndicator.hidden = YES;
-            [loginProgressIndicator stopAnimating];
-        }];
+            [loginButton.layer removeAllAnimations];
+            [loginProgressIndicator fadeOut:0.1 completion:^
+            {
+                [loginProgressIndicator stopAnimating];
+            }];
+        }
     });
 }
 
@@ -349,64 +355,42 @@ LoginErrorCode;
 {
     errorMessage.text = message;
     
-    if (errorMessage.hidden)
-    {
-        loginProgressIndicator.alpha = 0;
-        errorMessage.hidden = NO;
-    }
-    
-    if (errorMessage.alpha != 1.0)
-    {
-        [errorMessage.layer removeAllAnimations];
-        
-        [UIView animateWithDuration:0.1 animations:^{ errorMessage.alpha = 1.0; }];
-    }
+    [errorMessage fadeIn:0.1];
 }
 
 - (void) hideError
 {
-    if (errorMessage.hidden)
-    {
-        return;
-    }
-    
-    [errorMessage.layer removeAllAnimations];
-    
-    [UIView animateWithDuration:0.1
-                     animations:^{ errorMessage.alpha = 0; }
-                     completion:^(BOOL finished)
-    {
-        errorMessage.hidden = YES;
-    }];
+    [errorMessage fadeOut:0.1];
 }
 
-- (IBAction) performLogin: (id) sender
+- (BOOL) validateForm
 {
     if ([[login.text trim] length] == 0)
     {
-        return [self showError:NSLocalizedString(@"Login. Enter the username", nil)];
+        [self showError:NSLocalizedString(@"Login. Enter the username", nil)];
+        return NO;
     }
     
     if ([[password.text trim] length] == 0)
     {
-        return [self showError:NSLocalizedString(@"Login. Enter the password", nil)];
+        [self showError:NSLocalizedString(@"Login. Enter the password", nil)];
+        return NO;
     }
     
-    [loginButton.layer removeAllAnimations];
+    return YES;
+}
+
+- (IBAction) performLogin: (id) sender
+{
+    if (![self validateForm])
+        return;
     
-    loginButton.userInteractionEnabled = NO;
-    [UIView animateWithDuration:0.1
-                     animations:^{ loginButton.alpha = 0; }
-                     completion:^(BOOL finished)
+    [loginButton fadeOut:0.1 completion:^
     {
-        loginButton.hidden = YES;
+        [loginProgressIndicator startAnimating];
+        [loginProgressIndicator fadeIn:0.1];
     }];
     
-    loginProgressIndicator.hidden = NO;
-    [loginProgressIndicator.layer removeAllAnimations];
-    [UIView animateWithDuration:0.1 animations:^{ loginProgressIndicator.alpha = 1.0; }];
-    
-    [loginProgressIndicator startAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -499,6 +483,7 @@ LoginErrorCode;
 - (void) didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    
     // Dispose of any resources that can be recreated.
 }
 @end
