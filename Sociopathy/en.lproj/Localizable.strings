@@ -12,7 +12,9 @@
 
 "Login. Server error" = "Server error";
 
-"Login. User %@ doesn't exist" = "User %@ doesn't exist";
+"Login. Generic error" = "Failed to login";
+
+"Login. User doesn't exist" = "User %@ doesn't exist";
 
 "Login. Enter the username" = "Enter the username";
 

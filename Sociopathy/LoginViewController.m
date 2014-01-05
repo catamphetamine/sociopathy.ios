@@ -160,7 +160,7 @@ LoginErrorCode;
                                                           attribute:NSLayoutAttributeWidth
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:nil
-                                                          attribute:0
+                                                          attribute:NSLayoutAttributeNotAnAttribute
                                                          multiplier:0
                                                            constant:190.0]];
     
@@ -169,7 +169,7 @@ LoginErrorCode;
                                                           attribute:NSLayoutAttributeHeight
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:nil
-                                                          attribute:0
+                                                          attribute:NSLayoutAttributeNotAnAttribute
                                                          multiplier:0
                                                            constant:36.0]];
     
@@ -245,32 +245,13 @@ LoginErrorCode;
                                                          multiplier:1.0
                                                            constant:10.0]];
     
-    [errorMessage setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    [errorMessage setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    
-    NSLayoutConstraint* errorMessageHeight = [NSLayoutConstraint constraintWithItem:errorMessage
-                                                                          attribute:NSLayoutAttributeHeight
-                                                                          relatedBy:NSLayoutRelationEqual
-                                                                             toItem:nil
-                                                                          attribute:0
-                                                                         multiplier:0
-                                                                           constant:1];
-    
-    errorMessageHeight.priority = 300;
-    
-    [errorMessage addConstraint:errorMessageHeight];
-    
-    /*
-    [errorMessage addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[errorMessage(20@300)]"
-                                                                         options:0
-                                                                         metrics:nil
-                                                                           views:NSDictionaryOfVariableBindings(errorMessage)]];
-    */
-    
     // size error message
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(10)-[errorMessage]-(10)-|"
+    
+    NSDictionary* metrics = @{ @"sideMargin": @20.0 };
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-sideMargin-[errorMessage]-sideMargin-|"
                                                                       options:0
-                                                                      metrics:nil
+                                                                      metrics:metrics
                                                                         views:views]];
 }
 
@@ -292,38 +273,38 @@ LoginErrorCode;
     }
 }
 
+- (NSString*) loginErrorMessage: (NSError*) error
+{
+    if ([error.localizedDescription isEqualToString:@"user not found"])
+    {
+        return [NSString localizedStringWithFormat:NSLocalizedString(@"Login. User doesn't exist", nil), [login.text trim]];
+    }
+    
+    if ([error.localizedDescription isEqualToString:@"incorrect password"])
+    {
+        return NSLocalizedString(@"Login. Wrong password", nil);
+    }
+    
+    if (error.code == LoginError_HttpConnectionError || error.code == LoginError_HttpResponseError)
+    {
+        return NSLocalizedString(@"Login. Connection to the server failed", nil);
+    }
+    
+    if (error.code == LoginError_JsonError || error.code == LoginError_ServerError)
+    {
+        return NSLocalizedString(@"Login. Server error", nil);
+    }
+    
+    return NSLocalizedString(@"Login. Generic error", nil);
+}
+
 - (void) loginFailed: (NSError*) error
 {
     dispatch_async(dispatch_get_main_queue(),^
     {
-        NSLog(@"%@", error);
+        //NSLog(@"%@", error);
         
-        NSString* message;
-        
-        if ([error.localizedDescription isEqualToString:@"user not found"])
-        {
-            message = [NSString localizedStringWithFormat:NSLocalizedString(@"Login. User %@ doesn't exist", nil), [login.text trim]];
-        }
-        else if ([error.localizedDescription isEqualToString:@"incorrect password"])
-        {
-            message = NSLocalizedString(@"Login. Wrong password", nil);
-        }
-        else if (error.code == LoginError_HttpConnectionError || error.code == LoginError_HttpResponseError)
-        {
-            message = NSLocalizedString(@"Login. Connection to the server failed", nil);
-        }
-        else if (error.code == LoginError_JsonError || error.code == LoginError_ServerError)
-        {
-            message = NSLocalizedString(@"Login. Server error", nil);
-        }
-        
-        /*
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:message delegate:self cancelButtonTitle:@"Ясно" otherButtonTitles: nil];
-        
-        [alert show];
-        */
-        
-        [self showError:message];
+        [self showError:[self loginErrorMessage:error]];
     
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
@@ -354,7 +335,7 @@ LoginErrorCode;
 
         [loginProgressIndicator.layer removeAllAnimations];
         
-        [UIView animateWithDuration:0.3
+        [UIView animateWithDuration:0.1
                          animations:^{ loginProgressIndicator.alpha = 0; }
                          completion:^(BOOL finished)
         {
@@ -378,7 +359,7 @@ LoginErrorCode;
     {
         [errorMessage.layer removeAllAnimations];
         
-        [UIView animateWithDuration:0.2 animations:^{ errorMessage.alpha = 1.0; }];
+        [UIView animateWithDuration:0.1 animations:^{ errorMessage.alpha = 1.0; }];
     }
 }
 
@@ -414,7 +395,7 @@ LoginErrorCode;
     [loginButton.layer removeAllAnimations];
     
     loginButton.userInteractionEnabled = NO;
-    [UIView animateWithDuration:0.3
+    [UIView animateWithDuration:0.1
                      animations:^{ loginButton.alpha = 0; }
                      completion:^(BOOL finished)
     {
@@ -423,7 +404,7 @@ LoginErrorCode;
     
     loginProgressIndicator.hidden = NO;
     [loginProgressIndicator.layer removeAllAnimations];
-    [UIView animateWithDuration:0.3 animations:^{ loginProgressIndicator.alpha = 1.0; }];
+    [UIView animateWithDuration:0.1 animations:^{ loginProgressIndicator.alpha = 1.0; }];
     
     [loginProgressIndicator startAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -482,6 +463,20 @@ LoginErrorCode;
     }];
     
     [checkCredentials resume];
+}
+
+- (void) updateLabelPreferredMaxLayoutWidthToCurrentWidth: (UILabel*) label
+{
+    label.preferredMaxLayoutWidth = [label alignmentRectForFrame:label.frame].size.width;
+}
+
+- (void) viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    [self updateLabelPreferredMaxLayoutWidthToCurrentWidth:errorMessage];
+    
+    [self.view layoutSubviews];
 }
 
 - (BOOL) textFieldShouldReturn: (UITextField*) textField

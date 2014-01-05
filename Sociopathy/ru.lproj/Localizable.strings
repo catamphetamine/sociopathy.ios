@@ -12,7 +12,9 @@
 
 "Login. Server error" = "Произошла ошибка на сервере";
 
-"Login. User %@ doesn't exist" = "Пользователя %@ не существует";
+"Login. Generic error" = "Не удалось войти";
+
+"Login. User doesn't exist" = "Пользователя %@ не существует";
 
 "Login. Enter the username" = "Введите имя пользователя";
 
