@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Sociopathy
+
+  Created by Admin on 04.01.14.
+  Copyright (c) 2014 kuchumovn. All rights reserved.
+ */
+
+"Login. Connection to the server failed" = "Не удалось связаться с сервером";
+
+"Login. Wrong password" = "Неверный пароль";
+
+"Login. Server error" = "Произошла ошибка на сервере";
+
+"Login. User %@ doesn't exist" = "Пользователя %@ не существует";
+
+"Login. Enter the username" = "Введите имя пользователя";
+
+"Login. Enter the password" = "Введите пароль";

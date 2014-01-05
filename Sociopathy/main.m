@@ -12,7 +12,11 @@
 
 int main(int argc, char * argv[])
 {
-    @autoreleasepool {
+    @autoreleasepool
+    {
+        //[[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:@"ru", @"en", nil] forKey:@"AppleLanguages"];
+        //[[NSUserDefaults standardUserDefaults] synchronize]; //to make the change immediate
+        
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }

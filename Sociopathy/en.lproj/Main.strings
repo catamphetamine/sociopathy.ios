@@ -1,0 +1,9 @@
+/* Class = "IBUITextField"; placeholder = "Пароль"; ObjectID = "Co0-wT-tEd"; */
+"Co0-wT-tEd.placeholder" = "Password";
+
+/* Class = "IBUITextField"; placeholder = "Имя"; ObjectID = "bSv-Pz-lMm"; */
+"bSv-Pz-lMm.placeholder" = "Name";
+
+/* Class = "IBUIButton"; normalTitle = "Войти"; ObjectID = "zRf-ph-uh7"; */
+"zRf-ph-uh7.normalTitle" = "Sign in";
+

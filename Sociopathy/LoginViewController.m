@@ -74,8 +74,6 @@ LoginErrorCode;
     [login setPlaceholderColor:placeholderColor];
     [password setPlaceholderColor:placeholderColor];
     
-    password.secureTextEntry = YES;
-    
     [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     [logoIcon setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -92,8 +90,7 @@ LoginErrorCode;
     errorMessage.hidden = YES;
     errorMessage.alpha = 0;
     
-    
-    //NSDictionary *views = NSDictionaryOfVariableBindings(logoIcon, logoText, login, password, loginButton);
+    NSDictionary *views = NSDictionaryOfVariableBindings(logoIcon, logoText, login, password, loginButton, loginProgressIndicator, errorMessage);
     
     // center logo icon horizontally
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:logoIcon
@@ -142,15 +139,6 @@ LoginErrorCode;
     
     // center login button progress horizontally
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:loginProgressIndicator
-                                                          attribute:NSLayoutAttributeCenterX
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterX
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    // center error message horizontally
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:errorMessage
                                                           attribute:NSLayoutAttributeCenterX
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:self.view
@@ -257,6 +245,33 @@ LoginErrorCode;
                                                          multiplier:1.0
                                                            constant:10.0]];
     
+    [errorMessage setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [errorMessage setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    
+    NSLayoutConstraint* errorMessageHeight = [NSLayoutConstraint constraintWithItem:errorMessage
+                                                                          attribute:NSLayoutAttributeHeight
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:nil
+                                                                          attribute:0
+                                                                         multiplier:0
+                                                                           constant:1];
+    
+    errorMessageHeight.priority = 300;
+    
+    [errorMessage addConstraint:errorMessageHeight];
+    
+    /*
+    [errorMessage addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[errorMessage(20@300)]"
+                                                                         options:0
+                                                                         metrics:nil
+                                                                           views:NSDictionaryOfVariableBindings(errorMessage)]];
+    */
+    
+    // size error message
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(10)-[errorMessage]-(10)-|"
+                                                                      options:0
+                                                                      metrics:nil
+                                                                        views:views]];
 }
 
 - (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation) toOrientation
@@ -285,21 +300,21 @@ LoginErrorCode;
         
         NSString* message;
         
-        if ([error.localizedDescription isEqualToString:@"log in.error.user not found"])
+        if ([error.localizedDescription isEqualToString:@"user not found"])
         {
-            message = [NSString stringWithFormat:@"Пользователь %@ не найден", [login.text trim]];
+            message = [NSString localizedStringWithFormat:NSLocalizedString(@"Login. User %@ doesn't exist", nil), [login.text trim]];
         }
-        else if ([error.localizedDescription isEqualToString:@"log in.error.incorrect password"])
+        else if ([error.localizedDescription isEqualToString:@"incorrect password"])
         {
-            message = @"Неверный пароль";
+            message = NSLocalizedString(@"Login. Wrong password", nil);
         }
         else if (error.code == LoginError_HttpConnectionError || error.code == LoginError_HttpResponseError)
         {
-            message = @"Не удалось связаться с сервером";
+            message = NSLocalizedString(@"Login. Connection to the server failed", nil);
         }
         else if (error.code == LoginError_JsonError || error.code == LoginError_ServerError)
         {
-            message = @"Произошла ошибка на сервере";
+            message = NSLocalizedString(@"Login. Server error", nil);
         }
         
         /*
@@ -363,7 +378,7 @@ LoginErrorCode;
     {
         [errorMessage.layer removeAllAnimations];
         
-        [UIView animateWithDuration:0.3 animations:^{ errorMessage.alpha = 1.0; }];
+        [UIView animateWithDuration:0.2 animations:^{ errorMessage.alpha = 1.0; }];
     }
 }
 
@@ -376,7 +391,7 @@ LoginErrorCode;
     
     [errorMessage.layer removeAllAnimations];
     
-    [UIView animateWithDuration:0.3
+    [UIView animateWithDuration:0.1
                      animations:^{ errorMessage.alpha = 0; }
                      completion:^(BOOL finished)
     {
@@ -388,12 +403,12 @@ LoginErrorCode;
 {
     if ([[login.text trim] length] == 0)
     {
-        return [self showError:@"Введите имя пользователя"];
+        return [self showError:NSLocalizedString(@"Login. Enter the username", nil)];
     }
     
     if ([[password.text trim] length] == 0)
     {
-        return [self showError:@"Введите пароль"];
+        return [self showError:NSLocalizedString(@"Login. Enter the password", nil)];
     }
     
     [loginButton.layer removeAllAnimations];
