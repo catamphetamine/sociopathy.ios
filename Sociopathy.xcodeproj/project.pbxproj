@@ -21,8 +21,6 @@
 		84068847186C25BA00AC61DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84068829186C25B900AC61DE /* UIKit.framework */; };
 		8406884F186C25BA00AC61DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8406884D186C25BA00AC61DE /* InfoPlist.strings */; };
 		84068851186C25BA00AC61DE /* SociopathyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84068850186C25BA00AC61DE /* SociopathyTests.m */; };
-		840688621870205700AC61DE /* login screen logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 840688601870205700AC61DE /* login screen logo.png */; };
-		840688631870205700AC61DE /* login screen logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840688611870205700AC61DE /* login screen logo@2x.png */; };
 		8408892418785B69004B84BD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8408892318785B69004B84BD /* README.md */; };
 		8408892718785CD3004B84BD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8408892618785CD3004B84BD /* MainViewController.m */; };
 		846BCD3F1878841900A27C9C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD361878841900A27C9C /* InfoPlist.strings */; };
@@ -31,15 +29,17 @@
 		846BCD421878841900A27C9C /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD3D1878841900A27C9C /* Main.strings */; };
 		846BCD4518788A6100A27C9C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD4318788A6100A27C9C /* Localizable.strings */; };
 		846BCD4818788A6900A27C9C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD4618788A6900A27C9C /* Localizable.strings */; };
+		846BCD521879A48700A27C9C /* NSDictionary+HttpTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCD4B1879A48700A27C9C /* NSDictionary+HttpTools.m */; };
+		846BCD531879A48700A27C9C /* NSError+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCD4D1879A48700A27C9C /* NSError+Tools.m */; };
+		846BCD541879A48700A27C9C /* NSString+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCD4F1879A48700A27C9C /* NSString+Tools.m */; };
+		846BCD551879A48700A27C9C /* UITextField+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCD511879A48700A27C9C /* UITextField+Tools.m */; };
+		846BCD601879A51900A27C9C /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD5A1879A51900A27C9C /* iTunesArtwork */; };
+		846BCD611879A51900A27C9C /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD5B1879A51900A27C9C /* iTunesArtwork@2x */; };
+		846BCD621879A51900A27C9C /* login screen logo icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD5C1879A51900A27C9C /* login screen logo icon.png */; };
+		846BCD631879A51900A27C9C /* login screen logo icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD5D1879A51900A27C9C /* login screen logo icon@2x.png */; };
+		846BCD641879A51900A27C9C /* login screen logo text.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD5E1879A51900A27C9C /* login screen logo text.png */; };
+		846BCD651879A51900A27C9C /* login screen logo text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD5F1879A51900A27C9C /* login screen logo text@2x.png */; };
 		84913A7D1877487A0032D34E /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84913A7C187748790032D34E /* settings.plist */; };
-		84A04F1A187534BB0068F210 /* UITextField+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A04F19187534BB0068F210 /* UITextField+Tools.m */; };
-		84A04F1F1875A35E0068F210 /* login screen logo icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A04F1B1875A35E0068F210 /* login screen logo icon.png */; };
-		84A04F201875A35E0068F210 /* login screen logo icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A04F1C1875A35E0068F210 /* login screen logo icon@2x.png */; };
-		84A04F211875A35E0068F210 /* login screen logo text.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A04F1D1875A35E0068F210 /* login screen logo text.png */; };
-		84A04F221875A35E0068F210 /* login screen logo text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A04F1E1875A35E0068F210 /* login screen logo text@2x.png */; };
-		84EFD6C018780B0800102E24 /* NSDictionary+HttpTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EFD6BF18780B0800102E24 /* NSDictionary+HttpTools.m */; };
-		84EFD6C318781B7000102E24 /* NSError+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EFD6C218781B7000102E24 /* NSError+Tools.m */; };
-		84EFD6C61878242900102E24 /* NSString+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EFD6C51878242900102E24 /* NSString+Tools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,10 +72,6 @@
 		8406884C186C25BA00AC61DE /* SociopathyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SociopathyTests-Info.plist"; sourceTree = "<group>"; };
 		8406884E186C25BA00AC61DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84068850186C25BA00AC61DE /* SociopathyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SociopathyTests.m; sourceTree = "<group>"; };
-		8406885A186C38EB00AC61DE /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
-		8406885B186C38EB00AC61DE /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
-		840688601870205700AC61DE /* login screen logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login screen logo.png"; sourceTree = "<group>"; };
-		840688611870205700AC61DE /* login screen logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login screen logo@2x.png"; sourceTree = "<group>"; };
 		8408892318785B69004B84BD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		8408892518785CD3004B84BD /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8408892618785CD3004B84BD /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -87,19 +83,21 @@
 		846BCD3E1878841900A27C9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Main.strings; sourceTree = "<group>"; };
 		846BCD4418788A6100A27C9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Localizable.strings; sourceTree = "<group>"; };
 		846BCD4718788A6900A27C9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		846BCD4A1879A48700A27C9C /* NSDictionary+HttpTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HttpTools.h"; sourceTree = "<group>"; };
+		846BCD4B1879A48700A27C9C /* NSDictionary+HttpTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HttpTools.m"; sourceTree = "<group>"; };
+		846BCD4C1879A48700A27C9C /* NSError+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Tools.h"; sourceTree = "<group>"; };
+		846BCD4D1879A48700A27C9C /* NSError+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Tools.m"; sourceTree = "<group>"; };
+		846BCD4E1879A48700A27C9C /* NSString+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Tools.h"; sourceTree = "<group>"; };
+		846BCD4F1879A48700A27C9C /* NSString+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Tools.m"; sourceTree = "<group>"; };
+		846BCD501879A48700A27C9C /* UITextField+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Tools.h"; sourceTree = "<group>"; };
+		846BCD511879A48700A27C9C /* UITextField+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Tools.m"; sourceTree = "<group>"; };
+		846BCD5A1879A51900A27C9C /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = pictures/iTunesArtwork; sourceTree = "<group>"; };
+		846BCD5B1879A51900A27C9C /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; name = "iTunesArtwork@2x"; path = "pictures/iTunesArtwork@2x"; sourceTree = "<group>"; };
+		846BCD5C1879A51900A27C9C /* login screen logo icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login screen logo icon.png"; path = "pictures/login screen logo icon.png"; sourceTree = "<group>"; };
+		846BCD5D1879A51900A27C9C /* login screen logo icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login screen logo icon@2x.png"; path = "pictures/login screen logo icon@2x.png"; sourceTree = "<group>"; };
+		846BCD5E1879A51900A27C9C /* login screen logo text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login screen logo text.png"; path = "pictures/login screen logo text.png"; sourceTree = "<group>"; };
+		846BCD5F1879A51900A27C9C /* login screen logo text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login screen logo text@2x.png"; path = "pictures/login screen logo text@2x.png"; sourceTree = "<group>"; };
 		84913A7C187748790032D34E /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
-		84A04F18187534BB0068F210 /* UITextField+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Tools.h"; sourceTree = "<group>"; };
-		84A04F19187534BB0068F210 /* UITextField+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Tools.m"; sourceTree = "<group>"; };
-		84A04F1B1875A35E0068F210 /* login screen logo icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login screen logo icon.png"; sourceTree = "<group>"; };
-		84A04F1C1875A35E0068F210 /* login screen logo icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login screen logo icon@2x.png"; sourceTree = "<group>"; };
-		84A04F1D1875A35E0068F210 /* login screen logo text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login screen logo text.png"; sourceTree = "<group>"; };
-		84A04F1E1875A35E0068F210 /* login screen logo text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login screen logo text@2x.png"; sourceTree = "<group>"; };
-		84EFD6BE18780B0800102E24 /* NSDictionary+HttpTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HttpTools.h"; sourceTree = "<group>"; };
-		84EFD6BF18780B0800102E24 /* NSDictionary+HttpTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HttpTools.m"; sourceTree = "<group>"; };
-		84EFD6C118781B7000102E24 /* NSError+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Tools.h"; sourceTree = "<group>"; };
-		84EFD6C218781B7000102E24 /* NSError+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Tools.m"; sourceTree = "<group>"; };
-		84EFD6C41878242900102E24 /* NSString+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Tools.h"; sourceTree = "<group>"; };
-		84EFD6C51878242900102E24 /* NSString+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Tools.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,24 +131,15 @@
 				84913A7C187748790032D34E /* settings.plist */,
 				8406882B186C25B900AC61DE /* Sociopathy */,
 				8406884A186C25BA00AC61DE /* SociopathyTests */,
+				846BCD491879A48700A27C9C /* extension */,
 				84068824186C25B900AC61DE /* Frameworks */,
 				84068823186C25B900AC61DE /* Products */,
-				840688601870205700AC61DE /* login screen logo.png */,
-				840688611870205700AC61DE /* login screen logo@2x.png */,
-				84A04F1B1875A35E0068F210 /* login screen logo icon.png */,
-				84A04F1C1875A35E0068F210 /* login screen logo icon@2x.png */,
-				84A04F1D1875A35E0068F210 /* login screen logo text.png */,
-				84A04F1E1875A35E0068F210 /* login screen logo text@2x.png */,
-				8406885A186C38EB00AC61DE /* iTunesArtwork */,
-				8406885B186C38EB00AC61DE /* iTunesArtwork@2x */,
-				84A04F18187534BB0068F210 /* UITextField+Tools.h */,
-				84A04F19187534BB0068F210 /* UITextField+Tools.m */,
-				84EFD6BE18780B0800102E24 /* NSDictionary+HttpTools.h */,
-				84EFD6BF18780B0800102E24 /* NSDictionary+HttpTools.m */,
-				84EFD6C118781B7000102E24 /* NSError+Tools.h */,
-				84EFD6C218781B7000102E24 /* NSError+Tools.m */,
-				84EFD6C41878242900102E24 /* NSString+Tools.h */,
-				84EFD6C51878242900102E24 /* NSString+Tools.m */,
+				846BCD5A1879A51900A27C9C /* iTunesArtwork */,
+				846BCD5B1879A51900A27C9C /* iTunesArtwork@2x */,
+				846BCD5C1879A51900A27C9C /* login screen logo icon.png */,
+				846BCD5D1879A51900A27C9C /* login screen logo icon@2x.png */,
+				846BCD5E1879A51900A27C9C /* login screen logo text.png */,
+				846BCD5F1879A51900A27C9C /* login screen logo text@2x.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,6 +230,21 @@
 			path = ru.lproj;
 			sourceTree = "<group>";
 		};
+		846BCD491879A48700A27C9C /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				846BCD4A1879A48700A27C9C /* NSDictionary+HttpTools.h */,
+				846BCD4B1879A48700A27C9C /* NSDictionary+HttpTools.m */,
+				846BCD4C1879A48700A27C9C /* NSError+Tools.h */,
+				846BCD4D1879A48700A27C9C /* NSError+Tools.m */,
+				846BCD4E1879A48700A27C9C /* NSString+Tools.h */,
+				846BCD4F1879A48700A27C9C /* NSString+Tools.m */,
+				846BCD501879A48700A27C9C /* UITextField+Tools.h */,
+				846BCD511879A48700A27C9C /* UITextField+Tools.m */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -319,20 +323,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				846BCD621879A51900A27C9C /* login screen logo icon.png in Resources */,
+				846BCD611879A51900A27C9C /* iTunesArtwork@2x in Resources */,
 				846BCD4818788A6900A27C9C /* Localizable.strings in Resources */,
 				8406883E186C25BA00AC61DE /* Images.xcassets in Resources */,
 				846BCD411878841900A27C9C /* InfoPlist.strings in Resources */,
 				846BCD3F1878841900A27C9C /* InfoPlist.strings in Resources */,
-				840688631870205700AC61DE /* login screen logo@2x.png in Resources */,
-				84A04F201875A35E0068F210 /* login screen logo icon@2x.png in Resources */,
-				84A04F221875A35E0068F210 /* login screen logo text@2x.png in Resources */,
 				84068830186C25B900AC61DE /* InfoPlist.strings in Resources */,
-				84A04F211875A35E0068F210 /* login screen logo text.png in Resources */,
+				846BCD631879A51900A27C9C /* login screen logo icon@2x.png in Resources */,
+				846BCD651879A51900A27C9C /* login screen logo text@2x.png in Resources */,
 				846BCD401878841900A27C9C /* Main.strings in Resources */,
 				846BCD421878841900A27C9C /* Main.strings in Resources */,
-				840688621870205700AC61DE /* login screen logo.png in Resources */,
-				84A04F1F1875A35E0068F210 /* login screen logo icon.png in Resources */,
+				846BCD601879A51900A27C9C /* iTunesArtwork in Resources */,
 				84068839186C25BA00AC61DE /* Main.storyboard in Resources */,
+				846BCD641879A51900A27C9C /* login screen logo text.png in Resources */,
 				846BCD4518788A6100A27C9C /* Localizable.strings in Resources */,
 				8408892418785B69004B84BD /* README.md in Resources */,
 				84913A7D1877487A0032D34E /* settings.plist in Resources */,
@@ -371,11 +375,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8406883C186C25BA00AC61DE /* LoginViewController.m in Sources */,
-				84EFD6C318781B7000102E24 /* NSError+Tools.m in Sources */,
-				84EFD6C018780B0800102E24 /* NSDictionary+HttpTools.m in Sources */,
+				846BCD551879A48700A27C9C /* UITextField+Tools.m in Sources */,
+				846BCD531879A48700A27C9C /* NSError+Tools.m in Sources */,
+				846BCD521879A48700A27C9C /* NSDictionary+HttpTools.m in Sources */,
 				8408892718785CD3004B84BD /* MainViewController.m in Sources */,
-				84A04F1A187534BB0068F210 /* UITextField+Tools.m in Sources */,
-				84EFD6C61878242900102E24 /* NSString+Tools.m in Sources */,
+				846BCD541879A48700A27C9C /* NSString+Tools.m in Sources */,
 				84068836186C25BA00AC61DE /* AppDelegate.m in Sources */,
 				84068832186C25B900AC61DE /* main.m in Sources */,
 			);
