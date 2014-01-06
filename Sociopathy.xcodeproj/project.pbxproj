@@ -13,7 +13,6 @@
 		84068830186C25B900AC61DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8406882E186C25B900AC61DE /* InfoPlist.strings */; };
 		84068832186C25B900AC61DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84068831186C25B900AC61DE /* main.m */; };
 		84068836186C25BA00AC61DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84068835186C25BA00AC61DE /* AppDelegate.m */; };
-		84068839186C25BA00AC61DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84068837186C25BA00AC61DE /* Main.storyboard */; };
 		8406883C186C25BA00AC61DE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406883B186C25BA00AC61DE /* LoginViewController.m */; };
 		8406883E186C25BA00AC61DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8406883D186C25BA00AC61DE /* Images.xcassets */; };
 		84068845186C25BA00AC61DE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84068844186C25BA00AC61DE /* XCTest.framework */; };
@@ -24,9 +23,7 @@
 		8408892418785B69004B84BD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8408892318785B69004B84BD /* README.md */; };
 		8408892718785CD3004B84BD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8408892618785CD3004B84BD /* MainViewController.m */; };
 		846BCD3F1878841900A27C9C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD361878841900A27C9C /* InfoPlist.strings */; };
-		846BCD401878841900A27C9C /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD381878841900A27C9C /* Main.strings */; };
 		846BCD411878841900A27C9C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD3B1878841900A27C9C /* InfoPlist.strings */; };
-		846BCD421878841900A27C9C /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD3D1878841900A27C9C /* Main.strings */; };
 		846BCD4518788A6100A27C9C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD4318788A6100A27C9C /* Localizable.strings */; };
 		846BCD4818788A6900A27C9C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD4618788A6900A27C9C /* Localizable.strings */; };
 		846BCD521879A48700A27C9C /* NSDictionary+HttpTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCD4B1879A48700A27C9C /* NSDictionary+HttpTools.m */; };
@@ -46,6 +43,8 @@
 		846BCD7F187AE58400A27C9C /* tab bar archive icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD7B187AE58400A27C9C /* tab bar archive icon@2x.png */; };
 		846BCD80187AE58400A27C9C /* tab bar chat icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD7C187AE58400A27C9C /* tab bar chat icon.png */; };
 		846BCD81187AE58400A27C9C /* tab bar chat icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD7D187AE58400A27C9C /* tab bar chat icon@2x.png */; };
+		846BCD95187B379000A27C9C /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD91187B379000A27C9C /* Main_iPad.storyboard */; };
+		846BCD96187B379000A27C9C /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD93187B379000A27C9C /* Main_iPhone.storyboard */; };
 		84913A7D1877487A0032D34E /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84913A7C187748790032D34E /* settings.plist */; };
 /* End PBXBuildFile section */
 
@@ -70,7 +69,6 @@
 		84068833186C25BA00AC61DE /* Sociopathy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sociopathy-Prefix.pch"; sourceTree = "<group>"; };
 		84068834186C25BA00AC61DE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84068835186C25BA00AC61DE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		84068838186C25BA00AC61DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8406883A186C25BA00AC61DE /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		8406883B186C25BA00AC61DE /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8406883D186C25BA00AC61DE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -85,9 +83,7 @@
 		84088928187880FB004B84BD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84088929187880FB004B84BD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		846BCD371878841900A27C9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
-		846BCD391878841900A27C9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Main.strings; sourceTree = "<group>"; };
 		846BCD3C1878841900A27C9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = InfoPlist.strings; sourceTree = "<group>"; };
-		846BCD3E1878841900A27C9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Main.strings; sourceTree = "<group>"; };
 		846BCD4418788A6100A27C9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Localizable.strings; sourceTree = "<group>"; };
 		846BCD4718788A6900A27C9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		846BCD4A1879A48700A27C9C /* NSDictionary+HttpTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HttpTools.h"; sourceTree = "<group>"; };
@@ -114,6 +110,12 @@
 		846BCD7B187AE58400A27C9C /* tab bar archive icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab bar archive icon@2x.png"; path = "pictures/tab bar/tab bar archive icon@2x.png"; sourceTree = "<group>"; };
 		846BCD7C187AE58400A27C9C /* tab bar chat icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab bar chat icon.png"; path = "pictures/tab bar/tab bar chat icon.png"; sourceTree = "<group>"; };
 		846BCD7D187AE58400A27C9C /* tab bar chat icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab bar chat icon@2x.png"; path = "pictures/tab bar/tab bar chat icon@2x.png"; sourceTree = "<group>"; };
+		846BCD92187B379000A27C9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		846BCD94187B379000A27C9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		846BCD97187B3BA600A27C9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPad.strings; sourceTree = "<group>"; };
+		846BCD98187B3BA900A27C9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPad.strings; sourceTree = "<group>"; };
+		846BCD99187B3BAF00A27C9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
+		846BCD9A187B3BB100A27C9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		84913A7C187748790032D34E /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,9 +189,10 @@
 		8406882B186C25B900AC61DE /* Sociopathy */ = {
 			isa = PBXGroup;
 			children = (
+				846BCD91187B379000A27C9C /* Main_iPad.storyboard */,
+				846BCD93187B379000A27C9C /* Main_iPhone.storyboard */,
 				846BCD351878841900A27C9C /* en.lproj */,
 				846BCD3A1878841900A27C9C /* ru.lproj */,
-				84068837186C25BA00AC61DE /* Main.storyboard */,
 				84068834186C25BA00AC61DE /* AppDelegate.h */,
 				84068835186C25BA00AC61DE /* AppDelegate.m */,
 				8406883A186C25BA00AC61DE /* LoginViewController.h */,
@@ -235,7 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				846BCD361878841900A27C9C /* InfoPlist.strings */,
-				846BCD381878841900A27C9C /* Main.strings */,
 				846BCD4618788A6900A27C9C /* Localizable.strings */,
 			);
 			path = en.lproj;
@@ -245,7 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				846BCD3B1878841900A27C9C /* InfoPlist.strings */,
-				846BCD3D1878841900A27C9C /* Main.strings */,
 				846BCD4318788A6100A27C9C /* Localizable.strings */,
 			);
 			path = ru.lproj;
@@ -360,13 +361,12 @@
 				84068830186C25B900AC61DE /* InfoPlist.strings in Resources */,
 				846BCD631879A51900A27C9C /* login screen logo icon@2x.png in Resources */,
 				846BCD7E187AE58400A27C9C /* tab bar archive icon.png in Resources */,
+				846BCD96187B379000A27C9C /* Main_iPhone.storyboard in Resources */,
 				846BCD651879A51900A27C9C /* login screen logo text@2x.png in Resources */,
 				846BCD7F187AE58400A27C9C /* tab bar archive icon@2x.png in Resources */,
-				846BCD401878841900A27C9C /* Main.strings in Resources */,
-				846BCD421878841900A27C9C /* Main.strings in Resources */,
+				846BCD95187B379000A27C9C /* Main_iPad.storyboard in Resources */,
 				846BCD80187AE58400A27C9C /* tab bar chat icon.png in Resources */,
 				846BCD601879A51900A27C9C /* iTunesArtwork in Resources */,
-				84068839186C25BA00AC61DE /* Main.storyboard in Resources */,
 				846BCD641879A51900A27C9C /* login screen logo text.png in Resources */,
 				846BCD4518788A6100A27C9C /* Localizable.strings in Resources */,
 				8408892418785B69004B84BD /* README.md in Resources */,
@@ -447,14 +447,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		84068837186C25BA00AC61DE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84068838186C25BA00AC61DE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8406884D186C25BA00AC61DE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -472,28 +464,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		846BCD381878841900A27C9C /* Main.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				846BCD391878841900A27C9C /* en */,
-			);
-			name = Main.strings;
-			sourceTree = "<group>";
-		};
 		846BCD3B1878841900A27C9C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				846BCD3C1878841900A27C9C /* ru */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		846BCD3D1878841900A27C9C /* Main.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				846BCD3E1878841900A27C9C /* ru */,
-			);
-			name = Main.strings;
 			sourceTree = "<group>";
 		};
 		846BCD4318788A6100A27C9C /* Localizable.strings */ = {
@@ -510,6 +486,26 @@
 				846BCD4718788A6900A27C9C /* en */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		846BCD91187B379000A27C9C /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				846BCD92187B379000A27C9C /* Base */,
+				846BCD97187B3BA600A27C9C /* en */,
+				846BCD98187B3BA900A27C9C /* ru */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		846BCD93187B379000A27C9C /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				846BCD94187B379000A27C9C /* Base */,
+				846BCD99187B3BAF00A27C9C /* en */,
+				846BCD9A187B3BB100A27C9C /* ru */,
+			);
+			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -598,7 +594,7 @@
 				INFOPLIST_FILE = "Sociopathy/Sociopathy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -614,7 +610,7 @@
 				INFOPLIST_FILE = "Sociopathy/Sociopathy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

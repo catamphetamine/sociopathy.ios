@@ -46,6 +46,8 @@ typedef void (^ActionBlock)(void);
     
     UIColor* borderColor;
     UIColor* placeholderColor;
+    
+    BOOL iPad;
 }
 
 - (id) initWithCoder: (NSCoder*) decoder
@@ -58,6 +60,8 @@ typedef void (^ActionBlock)(void);
         
         NSURLSessionConfiguration* config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
         _session = [NSURLSession sessionWithConfiguration:config];
+        
+        iPad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
     }
     return self;
 }
@@ -157,7 +161,7 @@ typedef void (^ActionBlock)(void);
                                                              toItem:self.view
                                                           attribute:NSLayoutAttributeCenterY
                                                          multiplier:1.0
-                                                           constant:-5.0]];
+                                                           constant:iPad ? -20 : -5]];
     
     // set login width
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:login
@@ -202,7 +206,7 @@ typedef void (^ActionBlock)(void);
                                                              toItem:login
                                                           attribute:NSLayoutAttributeTop
                                                          multiplier:1.0
-                                                           constant:-30.0]];
+                                                           constant:iPad ? -60 : -30]];
     
     // place logo icon above logo text
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:logoIcon
@@ -247,7 +251,7 @@ typedef void (^ActionBlock)(void);
                                                              toItem:loginButton
                                                           attribute:NSLayoutAttributeBottom
                                                          multiplier:1.0
-                                                           constant:10.0]];
+                                                           constant:iPad ? 40 : 10]];
     
     // size error message
     
@@ -262,17 +266,20 @@ typedef void (^ActionBlock)(void);
 - (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation) toOrientation
                                  duration:(NSTimeInterval) duration
 {
-    if (toOrientation == UIInterfaceOrientationPortrait ||
-        toOrientation == UIInterfaceOrientationPortraitUpsideDown)
+    if (!iPad)
     {
-        logoIcon.hidden = NO;
-    }
-    else
-    {
-        if (toOrientation == UIInterfaceOrientationLandscapeLeft ||
-            toOrientation == UIInterfaceOrientationLandscapeRight)
+        if (toOrientation == UIInterfaceOrientationPortrait ||
+            toOrientation == UIInterfaceOrientationPortraitUpsideDown)
         {
-            logoIcon.hidden = YES;
+            logoIcon.hidden = NO;
+        }
+        else
+        {
+            if (toOrientation == UIInterfaceOrientationLandscapeLeft ||
+                toOrientation == UIInterfaceOrientationLandscapeRight)
+            {
+                logoIcon.hidden = YES;
+            }
         }
     }
 }

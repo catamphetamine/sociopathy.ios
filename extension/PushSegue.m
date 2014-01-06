@@ -17,7 +17,10 @@
     UIViewController* toController = (UIViewController*) self.destinationViewController;
     
     CATransition* transition = [CATransition animation];
-    transition.duration = 0.3;
+    
+    BOOL iPad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
+    
+    transition.duration = iPad ? 0.5 : 0.3;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromRight;
