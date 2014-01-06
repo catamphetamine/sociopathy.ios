@@ -41,6 +41,11 @@
 		846BCD651879A51900A27C9C /* login screen logo text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD5F1879A51900A27C9C /* login screen logo text@2x.png */; };
 		846BCD6B1879CD4500A27C9C /* UIView+Animator.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCD6A1879CD4500A27C9C /* UIView+Animator.m */; };
 		846BCD6E1879D14000A27C9C /* UIButton+Animator.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCD6D1879D14000A27C9C /* UIButton+Animator.m */; };
+		846BCD71187ACF8C00A27C9C /* PushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCD70187ACF8C00A27C9C /* PushSegue.m */; };
+		846BCD7E187AE58400A27C9C /* tab bar archive icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD7A187AE58400A27C9C /* tab bar archive icon.png */; };
+		846BCD7F187AE58400A27C9C /* tab bar archive icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD7B187AE58400A27C9C /* tab bar archive icon@2x.png */; };
+		846BCD80187AE58400A27C9C /* tab bar chat icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD7C187AE58400A27C9C /* tab bar chat icon.png */; };
+		846BCD81187AE58400A27C9C /* tab bar chat icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD7D187AE58400A27C9C /* tab bar chat icon@2x.png */; };
 		84913A7D1877487A0032D34E /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84913A7C187748790032D34E /* settings.plist */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +108,12 @@
 		846BCD6A1879CD4500A27C9C /* UIView+Animator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Animator.m"; sourceTree = "<group>"; };
 		846BCD6C1879D14000A27C9C /* UIButton+Animator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Animator.h"; sourceTree = "<group>"; };
 		846BCD6D1879D14000A27C9C /* UIButton+Animator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Animator.m"; sourceTree = "<group>"; };
+		846BCD6F187ACF8C00A27C9C /* PushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PushSegue.h; path = extension/PushSegue.h; sourceTree = SOURCE_ROOT; };
+		846BCD70187ACF8C00A27C9C /* PushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PushSegue.m; path = extension/PushSegue.m; sourceTree = SOURCE_ROOT; };
+		846BCD7A187AE58400A27C9C /* tab bar archive icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab bar archive icon.png"; path = "pictures/tab bar/tab bar archive icon.png"; sourceTree = "<group>"; };
+		846BCD7B187AE58400A27C9C /* tab bar archive icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab bar archive icon@2x.png"; path = "pictures/tab bar/tab bar archive icon@2x.png"; sourceTree = "<group>"; };
+		846BCD7C187AE58400A27C9C /* tab bar chat icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab bar chat icon.png"; path = "pictures/tab bar/tab bar chat icon.png"; sourceTree = "<group>"; };
+		846BCD7D187AE58400A27C9C /* tab bar chat icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab bar chat icon@2x.png"; path = "pictures/tab bar/tab bar chat icon@2x.png"; sourceTree = "<group>"; };
 		84913A7C187748790032D34E /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +157,10 @@
 				846BCD5D1879A51900A27C9C /* login screen logo icon@2x.png */,
 				846BCD5E1879A51900A27C9C /* login screen logo text.png */,
 				846BCD5F1879A51900A27C9C /* login screen logo text@2x.png */,
+				846BCD7A187AE58400A27C9C /* tab bar archive icon.png */,
+				846BCD7B187AE58400A27C9C /* tab bar archive icon@2x.png */,
+				846BCD7C187AE58400A27C9C /* tab bar chat icon.png */,
+				846BCD7D187AE58400A27C9C /* tab bar chat icon@2x.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -239,6 +254,8 @@
 		846BCD491879A48700A27C9C /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				846BCD6F187ACF8C00A27C9C /* PushSegue.h */,
+				846BCD70187ACF8C00A27C9C /* PushSegue.m */,
 				846BCD6C1879D14000A27C9C /* UIButton+Animator.h */,
 				846BCD6D1879D14000A27C9C /* UIButton+Animator.m */,
 				846BCD691879CD4500A27C9C /* UIView+Animator.h */,
@@ -335,15 +352,19 @@
 			files = (
 				846BCD621879A51900A27C9C /* login screen logo icon.png in Resources */,
 				846BCD611879A51900A27C9C /* iTunesArtwork@2x in Resources */,
+				846BCD81187AE58400A27C9C /* tab bar chat icon@2x.png in Resources */,
 				846BCD4818788A6900A27C9C /* Localizable.strings in Resources */,
 				8406883E186C25BA00AC61DE /* Images.xcassets in Resources */,
 				846BCD411878841900A27C9C /* InfoPlist.strings in Resources */,
 				846BCD3F1878841900A27C9C /* InfoPlist.strings in Resources */,
 				84068830186C25B900AC61DE /* InfoPlist.strings in Resources */,
 				846BCD631879A51900A27C9C /* login screen logo icon@2x.png in Resources */,
+				846BCD7E187AE58400A27C9C /* tab bar archive icon.png in Resources */,
 				846BCD651879A51900A27C9C /* login screen logo text@2x.png in Resources */,
+				846BCD7F187AE58400A27C9C /* tab bar archive icon@2x.png in Resources */,
 				846BCD401878841900A27C9C /* Main.strings in Resources */,
 				846BCD421878841900A27C9C /* Main.strings in Resources */,
+				846BCD80187AE58400A27C9C /* tab bar chat icon.png in Resources */,
 				846BCD601879A51900A27C9C /* iTunesArtwork in Resources */,
 				84068839186C25BA00AC61DE /* Main.storyboard in Resources */,
 				846BCD641879A51900A27C9C /* login screen logo text.png in Resources */,
@@ -393,6 +414,7 @@
 				846BCD541879A48700A27C9C /* NSString+Tools.m in Sources */,
 				84068836186C25BA00AC61DE /* AppDelegate.m in Sources */,
 				846BCD6E1879D14000A27C9C /* UIButton+Animator.m in Sources */,
+				846BCD71187ACF8C00A27C9C /* PushSegue.m in Sources */,
 				84068832186C25B900AC61DE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

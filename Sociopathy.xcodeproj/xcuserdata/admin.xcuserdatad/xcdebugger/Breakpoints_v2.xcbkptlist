@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sociopathy/LoginViewController.m"
-            timestampString = "410639400.414321"
+            timestampString = "410704859.820423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
             landmarkName = "-loginFailed:"
             landmarkType = "5">
          </BreakpointContent>

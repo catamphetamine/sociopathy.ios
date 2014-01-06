@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 kuchumovn. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "UITextField+Tools.h"
 #import "NSDictionary+HttpTools.h"
@@ -13,8 +14,7 @@
 #import "NSString+Tools.h"
 #import "UIView+Animator.h"
 #import "UIButton+Animator.h"
-
-#import "AppDelegate.h"
+#import "PushSegue.h"
 
 @interface LoginViewController ()
 @property (nonatomic, strong) NSURLSession* session;
@@ -348,6 +348,8 @@ typedef void (^ActionBlock)(void);
                 [loginProgressIndicator stopAnimating];
             }];
         }
+        
+        [self performSegueWithIdentifier:@"goToMainScreenAfterLogin" sender:self];
     });
 }
 

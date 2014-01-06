@@ -1,6 +1,12 @@
 /* Class = "IBUITextField"; placeholder = "Пароль"; ObjectID = "Co0-wT-tEd"; */
 "Co0-wT-tEd.placeholder" = "Пароль";
 
+/* Class = "IBUITabBarItem"; title = "Chat"; ObjectID = "JRP-YR-JXY"; */
+"JRP-YR-JXY.title" = "Болталка";
+
+/* Class = "IBUITabBarItem"; title = "Item"; ObjectID = "MXf-6t-f5B"; */
+"MXf-6t-f5B.title" = "Архив";
+
 /* Class = "IBUITextField"; placeholder = "Имя"; ObjectID = "bSv-Pz-lMm"; */
 "bSv-Pz-lMm.placeholder" = "Имя";
 
