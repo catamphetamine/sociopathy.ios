@@ -9,10 +9,12 @@
 #import "MainViewController.h"
 
 @interface MainViewController ()
-@property (weak, nonatomic) IBOutlet UITabBar *tabBar;
 @end
 
 @implementation MainViewController
+{
+    __weak IBOutlet UITabBar *tabBar;
+}
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,13 +36,32 @@
     int index = 0;
     for (NSString* image in images)
     {
-        UITabBarItem *item = [_tabBar.items objectAtIndex:index];
+        UITabBarItem *item = [tabBar.items objectAtIndex:index];
         
         item.image = [[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         item.selectedImage = [UIImage imageNamed:image];
         
         index++;
     }
+    
+    // layout
+    
+    [tabBar setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    /*
+    NSDictionary *views = NSDictionaryOfVariableBindings(tabBar);
+    
+    // place the tab bar on the bottom
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[tabBar]|"
+                                                                      options:0
+                                                                      metrics:nil
+                                                                        views:views]];
+   
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tabBar]|"
+                                                                      options:0
+                                                                      metrics:nil
+                                                                        views:views]];
+     */
 }
 
 - (void) didReceiveMemoryWarning

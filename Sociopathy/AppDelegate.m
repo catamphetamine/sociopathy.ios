@@ -6,6 +6,14 @@
 //  Copyright (c) 2013 kuchumovn. All rights reserved.
 //
 
+// making universal app:
+//
+// 1. copy the iPhone storyboard
+// 2. targetRuntime="iOS.CocoaTouch" -> targetRuntime="iOS.CocoaTouch.iPad"
+// 3. width="320" -> width="768"
+// 4. height="568" -> height="1024"
+// 5. <simulatedScreenMetrics key="destination" type="retina4"/> -> <simulatedScreenMetrics key="destination"/>
+
 #import "AppDelegate.h"
 
 @implementation AppDelegate

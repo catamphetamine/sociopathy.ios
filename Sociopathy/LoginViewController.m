@@ -82,8 +82,6 @@ typedef void (^ActionBlock)(void);
     [login setPlaceholderColor:placeholderColor];
     [password setPlaceholderColor:placeholderColor];
     
-    [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
     [logoIcon setTranslatesAutoresizingMaskIntoConstraints:NO];
     [logoText setTranslatesAutoresizingMaskIntoConstraints:NO];
     [login setTranslatesAutoresizingMaskIntoConstraints:NO];

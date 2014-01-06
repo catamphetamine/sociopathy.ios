@@ -23,8 +23,26 @@
     transition.duration = iPad ? 0.5 : 0.3;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     transition.type = kCATransitionPush;
-    transition.subtype = kCATransitionFromRight;
     
+    switch ([UIApplication sharedApplication].statusBarOrientation)
+    {
+        case UIInterfaceOrientationPortraitUpsideDown:
+            transition.subtype = kCATransitionFromLeft;
+            break;
+            
+        case UIInterfaceOrientationLandscapeLeft:
+            transition.subtype = kCATransitionFromBottom;
+            break;
+            
+        case UIInterfaceOrientationLandscapeRight:
+            transition.subtype = kCATransitionFromTop;
+            break;
+            
+        default:
+            transition.subtype = kCATransitionFromRight;
+            break;
+    }
+        
     [fromController.view.window.layer addAnimation:transition forKey:nil];
     
     [fromController presentViewController:toController animated:NO completion:nil];
