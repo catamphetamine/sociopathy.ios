@@ -12,6 +12,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // make tab bar text more readable
+    [[UITabBarItem appearance] setTitleTextAttributes:@
+    {
+        NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0f],
+        NSForegroundColorAttributeName : [UIColor colorWithRed:.3 green:.3 blue:.3 alpha:1]
+    }
+                                             forState:UIControlStateNormal];
+    
+    // make tab bar text tintable
+    [[UITabBarItem appearance] setTitleTextAttributes:@
+    {
+        NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0f],
+        NSForegroundColorAttributeName:[UITabBar new].tintColor
+    }
+                                             forState:UIControlStateSelected];
+    
     NSString* path = [[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"];
     _settings = [[NSDictionary alloc] initWithContentsOfFile:path];
     

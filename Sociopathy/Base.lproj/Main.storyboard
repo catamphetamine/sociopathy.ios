@@ -129,6 +129,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tabBar" destination="Jou-aN-YaL" id="Y2H-Ic-O4i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3Z-8F-yks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
