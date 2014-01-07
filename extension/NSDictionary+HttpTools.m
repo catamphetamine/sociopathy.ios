@@ -9,7 +9,7 @@
 #import "NSDictionary+HttpTools.h"
 
 @implementation NSDictionary (HttpTools)
-- (NSData*) postParameters
+- (NSString*) httpParameters
 {
     NSMutableString* parameters = [NSMutableString new];
     
@@ -27,6 +27,11 @@
         [parameters appendString:[value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     }
     
-    return [parameters dataUsingEncoding:NSUTF8StringEncoding];
+    return [parameters copy];
+}
+
+- (NSData*) postParameters
+{
+    return [[self httpParameters] dataUsingEncoding:NSUTF8StringEncoding];
 }
 @end

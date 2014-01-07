@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDictionary (HttpTools)
+- (NSString*) httpParameters;
 - (NSData*) postParameters;
 @end

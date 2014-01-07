@@ -17,4 +17,10 @@
     [details setValue:text forKey:NSLocalizedDescriptionKey];
     return [NSError errorWithDomain:domain code:code userInfo:details];
 }
+
++ (NSError*) error: (NSString*) text
+              code: (int) code
+{
+    return [NSError error:text code:code domain:@"world"];
+}
 @end

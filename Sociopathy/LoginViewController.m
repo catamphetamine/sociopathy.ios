@@ -17,19 +17,7 @@
 #import "PushSegue.h"
 
 @interface LoginViewController ()
-@property (nonatomic, strong) NSURLSession* session;
 @end
-
-typedef enum LoginErrorCode
-{
-    LoginError_HttpConnectionError = 1,
-    LoginError_HttpResponseError = 2,
-    LoginError_JsonError = 3,
-    LoginError_ServerError = 4
-}
-LoginErrorCode;
-
-typedef void (^ActionBlock)(void);
 
 @implementation LoginViewController
 {
@@ -43,6 +31,8 @@ typedef void (^ActionBlock)(void);
     __weak IBOutlet UIActivityIndicatorView *loginProgressIndicator;
     
     __weak IBOutlet UILabel *errorMessage;
+    
+    __weak AppDelegate* appDelegate;
     
     UIColor* borderColor;
     UIColor* placeholderColor;
@@ -58,10 +48,9 @@ typedef void (^ActionBlock)(void);
         //activeBorderColor = [UIColor colorWithRed:0.878 green:0 blue:0.133 alpha:1.0];
         placeholderColor = [UIColor colorWithRed:0.118 green:0.118 blue:0.118 alpha:1.0];
         
-        NSURLSessionConfiguration* config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-        _session = [NSURLSession sessionWithConfiguration:config];
-        
         iPad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
+        
+        appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     }
     return self;
 }
@@ -282,7 +271,7 @@ typedef void (^ActionBlock)(void);
     }
 }
 
-- (NSString*) loginErrorMessage: (NSError*) error
+- (NSString*) remoteApiErrorMessage: (NSError*) error
 {
     if ([error.localizedDescription isEqualToString:@"user not found"])
     {
@@ -294,22 +283,12 @@ typedef void (^ActionBlock)(void);
         return NSLocalizedString(@"Login. Wrong password", nil);
     }
     
-    if (error.code == LoginError_HttpConnectionError || error.code == LoginError_HttpResponseError)
-    {
-        return NSLocalizedString(@"Login. Connection to the server failed", nil);
-    }
-    
-    if (error.code == LoginError_JsonError || error.code == LoginError_ServerError)
-    {
-        return NSLocalizedString(@"Login. Server error", nil);
-    }
-    
-    return NSLocalizedString(@"Login. Generic error", nil);
+    return [appDelegate remoteApiErrorMessage:error];
 }
 
 - (void) loginFailed: (NSError*) error
 {
-    dispatch_async(dispatch_get_main_queue(),^
+    dispatch_async(dispatch_get_main_queue(), ^
     {
         //NSLog(@"%@", error);
     
@@ -317,7 +296,7 @@ typedef void (^ActionBlock)(void);
         
         ActionBlock finish = ^
         {
-            [self showError:[self loginErrorMessage:error]];
+            [self showError:[self remoteApiErrorMessage:error]];
             [loginButton fadeIn:0.1];
         };
         
@@ -339,7 +318,7 @@ typedef void (^ActionBlock)(void);
 
 - (void) loginSucceeded: (NSDictionary*) data
 {
-    dispatch_async(dispatch_get_main_queue(),^
+    dispatch_async(dispatch_get_main_queue(), ^
     {
         NSLog(@"%@", data);
 
@@ -398,10 +377,6 @@ typedef void (^ActionBlock)(void);
         [loginProgressIndicator fadeIn:0.1];
     }];
     
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
     NSURL* url = [NSURL URLWithString:appDelegate.urls[@"login"]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
@@ -415,7 +390,7 @@ typedef void (^ActionBlock)(void);
 
     __weak typeof(self) controller = self;
     
-    NSURLSessionUploadTask* checkCredentials = [_session
+    NSURLSessionUploadTask* checkCredentials = [appDelegate.session
                                           uploadTaskWithRequest:request
                                           fromData:[loginCredentials postParameters]
                                           completionHandler:^(NSData *data,
@@ -424,13 +399,13 @@ typedef void (^ActionBlock)(void);
     {
         if (error)
         {
-            return [controller loginFailed:[NSError error:error.localizedDescription code:LoginError_HttpConnectionError domain:@"login"]];
+            return [controller loginFailed:[NSError error:error.localizedDescription code:RemoteApiError_HttpConnectionError]];
         }
     
         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
         if (httpResponse.statusCode != 200)
         {
-            return [controller loginFailed:[NSError error:[NSString stringWithFormat:@"(%d)", httpResponse.statusCode] code:LoginError_HttpResponseError domain:@"login"]];
+            return [controller loginFailed:[NSError error:[NSString stringWithFormat:@"(%d)", httpResponse.statusCode] code:RemoteApiError_HttpResponseError]];
         }
     
         NSError* jsonError;
@@ -442,16 +417,18 @@ typedef void (^ActionBlock)(void);
         
         if (jsonError)
         {
-            return [controller loginFailed:[NSError error:jsonError.localizedDescription code:LoginError_JsonError domain:@"login"]];
+            return [controller loginFailed:[NSError error:jsonError.localizedDescription code:RemoteApiError_JsonError]];
         }
         
         if (json[@"error"])
         {
-            return [controller loginFailed:[NSError error:json[@"error"] code:LoginError_ServerError domain:@"login"]];
+            return [controller loginFailed:[NSError error:json[@"error"] code:RemoteApiError_ServerError]];
         }
         
         [controller loginSucceeded:json];
     }];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     [checkCredentials resume];
 }

@@ -12,4 +12,6 @@
 + (NSError*) error: (NSString*) text
               code: (int) code
             domain: (NSString*) domain;
++ (NSError*) error: (NSString*) text
+              code: (int) code;
 @end

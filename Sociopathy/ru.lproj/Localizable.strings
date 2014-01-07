@@ -6,16 +6,20 @@
   Copyright (c) 2014 kuchumovn. All rights reserved.
  */
 
-"Login. Connection to the server failed" = "Не удалось связаться с сервером";
+"Remote Api. Connection to the server failed" = "Не удалось связаться с сервером";
 
 "Login. Wrong password" = "Неверный пароль";
 
-"Login. Server error" = "Произошла ошибка на сервере";
+"Remote Api. Server error" = "Произошла ошибка на сервере";
 
-"Login. Generic error" = "Не удалось войти";
+"Remote Api. Generic error" = "Не удалось войти";
 
 "Login. User doesn't exist" = "Пользователя %@ не существует";
 
 "Login. Enter the username" = "Введите имя пользователя";
 
 "Login. Enter the password" = "Введите пароль";
+
+"Error" = "Ошибка";
+
+"Error. Dismiss" = "Ясно";
