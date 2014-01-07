@@ -59,6 +59,8 @@
 	    [_urls setValue:newValue forKey:key];
     }
     
+    _url = [[Url alloc] initWithAppDelegate:self];
+    
     NSURLSessionConfiguration* config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     _session = [NSURLSession sessionWithConfiguration:config];
     

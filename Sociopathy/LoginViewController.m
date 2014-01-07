@@ -85,7 +85,7 @@
     errorMessage.hidden = YES;
     errorMessage.alpha = 0;
     
-    NSDictionary *views = NSDictionaryOfVariableBindings(logoIcon, logoText, login, password, loginButton, loginProgressIndicator, errorMessage);
+    NSDictionary* views = NSDictionaryOfVariableBindings(logoIcon, logoText, login, password, loginButton, loginProgressIndicator, errorMessage);
     
     // center logo icon horizontally
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:logoIcon
@@ -156,7 +156,7 @@
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:nil
                                                           attribute:NSLayoutAttributeNotAnAttribute
-                                                         multiplier:0
+                                                         multiplier:1
                                                            constant:190.0]];
     
     // set login height
@@ -165,7 +165,7 @@
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:nil
                                                           attribute:NSLayoutAttributeNotAnAttribute
-                                                         multiplier:0
+                                                         multiplier:1
                                                            constant:36.0]];
     
     // set password width
@@ -320,7 +320,7 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^
     {
-        NSLog(@"%@", data);
+        //NSLog(@"%@", data);
 
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         

@@ -15,6 +15,9 @@
 #import "LibraryCategory.h"
 #import "LibraryArticle.h"
 #import "LibraryCollectionViewCell.h"
+#import "Url.h"
+#import "ImageRequest.h"
+#import "ArticleViewController.h"
 
 @interface LibraryViewController ()
 @end
@@ -26,15 +29,10 @@
     
     NSMutableArray* categories;
     NSMutableArray* articles;
-}
-
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    
+    UIColor* iconBorderColor;
+    
+    LibraryArticle* article;
 }
 
 - (id) initWithCoder: (NSCoder*) decoder
@@ -42,12 +40,12 @@
     if (self = [super initWithCoder:decoder])
     {
         appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        iconBorderColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1.0];
     }
     return self;
 }
 
--
-(NSString*) remoteApiErrorMessage: (NSError*) error
+- (NSString*) remoteApiErrorMessage: (NSError*) error
 {
     return [appDelegate remoteApiErrorMessage:error];
 }
@@ -156,6 +154,8 @@
                                                          multiplier:1.0
                                                            constant:0.0]];
     
+    [self collectionView].allowsMultipleSelection = NO;
+    
     [self fetchContent];
 }
 
@@ -223,8 +223,6 @@
 - (NSInteger) collectionView: (UICollectionView*) collectionView
       numberOfItemsInSection: (NSInteger) section
 {
-    NSLog(@"%ld", (long) section);
-    
     switch (section)
     {
         case 0:
@@ -246,24 +244,76 @@
     
     long row = [indexPath row];
     
-    NSLog(@"%@", indexPath);
-    
     switch (indexPath.section)
     {
         case 0:
-            //UIImage* icon = [UIImage imageNamed:_carImages[row]];
-            //cell.icon.image = icon;
+        {
+            LibraryCategory* category = [categories objectAtIndex:row];
             
-            cell.label.text = [[categories objectAtIndex:row] title];
+            NSURL* url = [appDelegate.url libraryCategoryTinyIconUrl:category];
+            
+            // note that this can be a web url or file url
+            
+            ImageRequest* request = [[ImageRequest alloc] initWithURL:url];
+            
+            UIImage* image = [request cachedResult];
+            
+            if (image)
+            {
+                cell.icon.image = image;
+                [cell.icon.layer setBorderColor:[iconBorderColor CGColor]];
+                [cell.icon.layer setBorderWidth:1.0];
+            }
+            else
+            {
+                [request startWithCompletion:^(UIImage* image, NSError* error)
+                {
+                    if (image && [[collectionView indexPathsForVisibleItems] containsObject:indexPath])
+                    {
+                        [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                    }
+                }];
+            }
+            
+            cell.label.text = [category title];
             break;
+        }
             
         case 1:
-            NSLog(@"%@", [[articles objectAtIndex:row] title]);
+        {
             cell.label.text = [[articles objectAtIndex:row] title];
             break;
+        }
     }
     
     return cell;
+}
+
+- (BOOL) shouldPerformSegueWithIdentifier: (NSString*) identifier
+                                   sender: (id) sender
+{
+    if ([identifier isEqualToString:@"showArticle"])
+    {
+        NSArray* selectedCellsPaths = self.collectionView.indexPathsForSelectedItems;
+        NSIndexPath* selectedCellPath = [selectedCellsPaths objectAtIndex:0];
+        
+        return selectedCellPath.section == 1;
+    }
+    
+    return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
+}
+
+- (void) prepareForSegue: (UIStoryboardSegue*) segue
+                  sender: (id) sender
+{
+    if ([segue.identifier isEqualToString:@"showArticle"])
+    {
+        NSArray* selectedCellsPaths = self.collectionView.indexPathsForSelectedItems;
+        NSIndexPath* selectedCellPath = [selectedCellsPaths objectAtIndex:0];
+        
+        ArticleViewController* articleController = (ArticleViewController*) segue.destinationViewController;
+        articleController.article = [articles objectAtIndex:selectedCellPath.row];
+    }
 }
 
 - (void) didReceiveMemoryWarning

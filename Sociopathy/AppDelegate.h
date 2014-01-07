@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Url.h"
+
 typedef void (^ActionBlock)(void);
 
 typedef enum RemoteApiErrors
@@ -25,6 +27,7 @@ RemoteApiErrors;
 @property (nonatomic) NSDictionary* settings;
 @property (nonatomic) NSDictionary* urls;
 @property (nonatomic) NSURLSession* session;
+@property (nonatomic) Url* url;
 
 - (NSString*) remoteApiErrorMessage: (NSError*) error;
 
