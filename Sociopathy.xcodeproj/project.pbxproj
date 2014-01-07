@@ -45,6 +45,7 @@
 		846BCD81187AE58400A27C9C /* tab bar chat icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD7D187AE58400A27C9C /* tab bar chat icon@2x.png */; };
 		846BCD95187B379000A27C9C /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD91187B379000A27C9C /* Main_iPad.storyboard */; };
 		846BCD96187B379000A27C9C /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD93187B379000A27C9C /* Main_iPhone.storyboard */; };
+		846BCD9D187BCD5A00A27C9C /* UIImage+Transformations.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCD9C187BCD5A00A27C9C /* UIImage+Transformations.m */; };
 		84913A7D1877487A0032D34E /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84913A7C187748790032D34E /* settings.plist */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,8 @@
 		846BCD98187B3BA900A27C9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPad.strings; sourceTree = "<group>"; };
 		846BCD99187B3BAF00A27C9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		846BCD9A187B3BB100A27C9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
+		846BCD9B187BCD5A00A27C9C /* UIImage+Transformations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Transformations.h"; sourceTree = "<group>"; };
+		846BCD9C187BCD5A00A27C9C /* UIImage+Transformations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Transformations.m"; sourceTree = "<group>"; };
 		84913A7C187748790032D34E /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -269,6 +272,8 @@
 				846BCD4F1879A48700A27C9C /* NSString+Tools.m */,
 				846BCD501879A48700A27C9C /* UITextField+Tools.h */,
 				846BCD511879A48700A27C9C /* UITextField+Tools.m */,
+				846BCD9B187BCD5A00A27C9C /* UIImage+Transformations.h */,
+				846BCD9C187BCD5A00A27C9C /* UIImage+Transformations.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 			files = (
 				8406883C186C25BA00AC61DE /* LoginViewController.m in Sources */,
 				846BCD551879A48700A27C9C /* UITextField+Tools.m in Sources */,
+				846BCD9D187BCD5A00A27C9C /* UIImage+Transformations.m in Sources */,
 				846BCD531879A48700A27C9C /* NSError+Tools.m in Sources */,
 				846BCD521879A48700A27C9C /* NSDictionary+HttpTools.m in Sources */,
 				846BCD6B1879CD4500A27C9C /* UIView+Animator.m in Sources */,

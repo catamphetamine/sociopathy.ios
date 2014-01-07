@@ -9,6 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface PushSegue : UIStoryboardSegue
-@property(nonatomic) BOOL isDismiss;
-@property(nonatomic) BOOL isLandscapeOrientation;
 @end
