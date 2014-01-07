@@ -21,7 +21,7 @@
 		8406884F186C25BA00AC61DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8406884D186C25BA00AC61DE /* InfoPlist.strings */; };
 		84068851186C25BA00AC61DE /* SociopathyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84068850186C25BA00AC61DE /* SociopathyTests.m */; };
 		8408892418785B69004B84BD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8408892318785B69004B84BD /* README.md */; };
-		8408892718785CD3004B84BD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8408892618785CD3004B84BD /* MainViewController.m */; };
+		8408892718785CD3004B84BD /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8408892618785CD3004B84BD /* TabBarViewController.m */; };
 		846BCD3F1878841900A27C9C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD361878841900A27C9C /* InfoPlist.strings */; };
 		846BCD411878841900A27C9C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD3B1878841900A27C9C /* InfoPlist.strings */; };
 		846BCD4518788A6100A27C9C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD4318788A6100A27C9C /* Localizable.strings */; };
@@ -46,6 +46,9 @@
 		846BCD95187B379000A27C9C /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD91187B379000A27C9C /* Main_iPad.storyboard */; };
 		846BCD96187B379000A27C9C /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD93187B379000A27C9C /* Main_iPhone.storyboard */; };
 		846BCD9D187BCD5A00A27C9C /* UIImage+Transformations.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCD9C187BCD5A00A27C9C /* UIImage+Transformations.m */; };
+		846BCDA3187BF42A00A27C9C /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDA2187BF42A00A27C9C /* LibraryViewController.m */; };
+		846BCDA6187BF44100A27C9C /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDA5187BF44100A27C9C /* ChatViewController.m */; };
+		846BCDAF187BF93800A27C9C /* UITabBarController+TabBarItemIconEnhancer.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDAE187BF93800A27C9C /* UITabBarController+TabBarItemIconEnhancer.m */; };
 		84913A7D1877487A0032D34E /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84913A7C187748790032D34E /* settings.plist */; };
 /* End PBXBuildFile section */
 
@@ -79,8 +82,8 @@
 		8406884E186C25BA00AC61DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84068850186C25BA00AC61DE /* SociopathyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SociopathyTests.m; sourceTree = "<group>"; };
 		8408892318785B69004B84BD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		8408892518785CD3004B84BD /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		8408892618785CD3004B84BD /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8408892518785CD3004B84BD /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		8408892618785CD3004B84BD /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		84088928187880FB004B84BD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84088929187880FB004B84BD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		846BCD371878841900A27C9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -119,6 +122,12 @@
 		846BCD9A187B3BB100A27C9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		846BCD9B187BCD5A00A27C9C /* UIImage+Transformations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Transformations.h"; sourceTree = "<group>"; };
 		846BCD9C187BCD5A00A27C9C /* UIImage+Transformations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Transformations.m"; sourceTree = "<group>"; };
+		846BCDA1187BF42A00A27C9C /* LibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController.h; sourceTree = "<group>"; };
+		846BCDA2187BF42A00A27C9C /* LibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewController.m; sourceTree = "<group>"; };
+		846BCDA4187BF44100A27C9C /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		846BCDA5187BF44100A27C9C /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		846BCDAD187BF93800A27C9C /* UITabBarController+TabBarItemIconEnhancer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+TabBarItemIconEnhancer.h"; sourceTree = "<group>"; };
+		846BCDAE187BF93800A27C9C /* UITabBarController+TabBarItemIconEnhancer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+TabBarItemIconEnhancer.m"; sourceTree = "<group>"; };
 		84913A7C187748790032D34E /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,8 +209,12 @@
 				84068835186C25BA00AC61DE /* AppDelegate.m */,
 				8406883A186C25BA00AC61DE /* LoginViewController.h */,
 				8406883B186C25BA00AC61DE /* LoginViewController.m */,
-				8408892518785CD3004B84BD /* MainViewController.h */,
-				8408892618785CD3004B84BD /* MainViewController.m */,
+				8408892518785CD3004B84BD /* TabBarViewController.h */,
+				8408892618785CD3004B84BD /* TabBarViewController.m */,
+				846BCDA4187BF44100A27C9C /* ChatViewController.h */,
+				846BCDA5187BF44100A27C9C /* ChatViewController.m */,
+				846BCDA1187BF42A00A27C9C /* LibraryViewController.h */,
+				846BCDA2187BF42A00A27C9C /* LibraryViewController.m */,
 				8406883D186C25BA00AC61DE /* Images.xcassets */,
 				8406882C186C25B900AC61DE /* Supporting Files */,
 			);
@@ -258,6 +271,8 @@
 		846BCD491879A48700A27C9C /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				846BCDAD187BF93800A27C9C /* UITabBarController+TabBarItemIconEnhancer.h */,
+				846BCDAE187BF93800A27C9C /* UITabBarController+TabBarItemIconEnhancer.m */,
 				846BCD6F187ACF8C00A27C9C /* PushSegue.h */,
 				846BCD70187ACF8C00A27C9C /* PushSegue.m */,
 				846BCD6C1879D14000A27C9C /* UIButton+Animator.h */,
@@ -411,16 +426,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				8406883C186C25BA00AC61DE /* LoginViewController.m in Sources */,
+				846BCDAF187BF93800A27C9C /* UITabBarController+TabBarItemIconEnhancer.m in Sources */,
 				846BCD551879A48700A27C9C /* UITextField+Tools.m in Sources */,
 				846BCD9D187BCD5A00A27C9C /* UIImage+Transformations.m in Sources */,
 				846BCD531879A48700A27C9C /* NSError+Tools.m in Sources */,
 				846BCD521879A48700A27C9C /* NSDictionary+HttpTools.m in Sources */,
 				846BCD6B1879CD4500A27C9C /* UIView+Animator.m in Sources */,
-				8408892718785CD3004B84BD /* MainViewController.m in Sources */,
+				8408892718785CD3004B84BD /* TabBarViewController.m in Sources */,
+				846BCDA3187BF42A00A27C9C /* LibraryViewController.m in Sources */,
 				846BCD541879A48700A27C9C /* NSString+Tools.m in Sources */,
 				84068836186C25BA00AC61DE /* AppDelegate.m in Sources */,
 				846BCD6E1879D14000A27C9C /* UIButton+Animator.m in Sources */,
 				846BCD71187ACF8C00A27C9C /* PushSegue.m in Sources */,
+				846BCDA6187BF44100A27C9C /* ChatViewController.m in Sources */,
 				84068832186C25B900AC61DE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

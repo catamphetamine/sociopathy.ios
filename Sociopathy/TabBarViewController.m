@@ -6,14 +6,16 @@
 //  Copyright (c) 2014 kuchumovn. All rights reserved.
 //
 
-#import "MainViewController.h"
+#import "TabBarViewController.h"
 
-@interface MainViewController ()
+#import "UITabBarController+TabBarItemIconEnhancer.h"
+
+@interface TabBarViewController ()
 @end
 
-@implementation MainViewController
+@implementation TabBarViewController
 {
-    __weak IBOutlet UITabBar *tabBar;
+    __weak IBOutlet UITabBar* tabBar;
 }
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,19 +33,8 @@
     
     // make tab bar icon colors better
     
-    NSArray* images = @[@"tab bar archive icon", @"tab bar chat icon"];
-    
-    int index = 0;
-    for (NSString* image in images)
-    {
-        UITabBarItem *item = [tabBar.items objectAtIndex:index];
+    [self enhanceTabBarIcons:@[@"tab bar archive icon", @"tab bar chat icon"]];
         
-        item.image = [[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        item.selectedImage = [UIImage imageNamed:image];
-        
-        index++;
-    }
-    
     // layout
     
     [tabBar setTranslatesAutoresizingMaskIntoConstraints:NO];
