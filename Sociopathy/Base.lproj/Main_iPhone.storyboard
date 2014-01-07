@@ -143,10 +143,10 @@
             </objects>
             <point key="canvasLocation" x="1837" y="-545"/>
         </scene>
-        <!--Library Navigation Controller - Library-->
+        <!--Navigation Controller - Library-->
         <scene sceneID="Sr1-Yd-LKl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZBs-SX-RHk" customClass="LibraryNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZBs-SX-RHk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Library" image="tab bar archive icon.png" id="bGp-HC-SMH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9hz-9g-TIQ">
