@@ -50,6 +50,7 @@
 		846BCDB2187C2FEB00A27C9C /* NSURL+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDB1187C2FEB00A27C9C /* NSURL+Tools.m */; };
 		846BCDBE187C628C00A27C9C /* LibraryArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDBB187C628C00A27C9C /* LibraryArticle.m */; };
 		846BCDBF187C628C00A27C9C /* LibraryCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDBD187C628C00A27C9C /* LibraryCategory.m */; };
+		846BCDC8187C87B100A27C9C /* LibraryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDC7187C87B100A27C9C /* LibraryCollectionViewCell.m */; };
 		84913A7D1877487A0032D34E /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84913A7C187748790032D34E /* settings.plist */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +134,8 @@
 		846BCDBB187C628C00A27C9C /* LibraryArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryArticle.m; sourceTree = "<group>"; };
 		846BCDBC187C628C00A27C9C /* LibraryCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryCategory.h; sourceTree = "<group>"; };
 		846BCDBD187C628C00A27C9C /* LibraryCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryCategory.m; sourceTree = "<group>"; };
+		846BCDC6187C87B100A27C9C /* LibraryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryCollectionViewCell.h; sourceTree = "<group>"; };
+		846BCDC7187C87B100A27C9C /* LibraryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryCollectionViewCell.m; sourceTree = "<group>"; };
 		84913A7C187748790032D34E /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -220,6 +223,8 @@
 				846BCDA5187BF44100A27C9C /* ChatViewController.m */,
 				846BCDA1187BF42A00A27C9C /* LibraryViewController.h */,
 				846BCDA2187BF42A00A27C9C /* LibraryViewController.m */,
+				846BCDC6187C87B100A27C9C /* LibraryCollectionViewCell.h */,
+				846BCDC7187C87B100A27C9C /* LibraryCollectionViewCell.m */,
 				846BCDB9187C628C00A27C9C /* model */,
 				8406883D186C25BA00AC61DE /* Images.xcassets */,
 				8406882C186C25B900AC61DE /* Supporting Files */,
@@ -447,6 +452,7 @@
 				846BCD551879A48700A27C9C /* UITextField+Tools.m in Sources */,
 				846BCD9D187BCD5A00A27C9C /* UIImage+Transformations.m in Sources */,
 				846BCD531879A48700A27C9C /* NSError+Tools.m in Sources */,
+				846BCDC8187C87B100A27C9C /* LibraryCollectionViewCell.m in Sources */,
 				846BCD521879A48700A27C9C /* NSDictionary+HttpTools.m in Sources */,
 				846BCD6B1879CD4500A27C9C /* UIView+Animator.m in Sources */,
 				8408892718785CD3004B84BD /* TabBarViewController.m in Sources */,

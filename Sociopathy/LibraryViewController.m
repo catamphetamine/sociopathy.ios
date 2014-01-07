@@ -14,6 +14,7 @@
 #import "NSError+Tools.h"
 #import "LibraryCategory.h"
 #import "LibraryArticle.h"
+#import "LibraryCollectionViewCell.h"
 
 @interface LibraryViewController ()
 @end
@@ -23,8 +24,8 @@
     __weak IBOutlet UIActivityIndicatorView* progressIndicator;
     __weak AppDelegate* appDelegate;
     
-    NSArray* categories;
-    NSArray* articles;
+    NSMutableArray* categories;
+    NSMutableArray* articles;
 }
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -67,23 +68,24 @@
 
 - (void) fetchSucceeded: (NSDictionary*) data
 {
-    NSMutableArray* categories = [[NSMutableArray alloc] init];
-    NSMutableArray* articles = [[NSMutableArray alloc] init];
+    //NSMutableArray* categories = [[NSMutableArray alloc] init];
+    //NSMutableArray* articles = [[NSMutableArray alloc] init];
+    
+    categories = [NSMutableArray new];
+    articles = [NSMutableArray new];
     
     data = data[@"раздел"];
     
+    // [data[@"flag"] boolValue]
+    
     for (NSDictionary* categoryData in data[@"подразделы"])
     {
-        //if (![data[@"is_dir"] boolValue])
-        
         LibraryCategory* category = [[LibraryCategory alloc] initWithJSON:categoryData];
         [categories addObject:category];
     }
     
     for (NSDictionary* articleData in data[@"заметки"])
     {
-        //if (![data[@"is_dir"] boolValue])
-        
         LibraryArticle* category = [[LibraryArticle alloc] initWithJSON:articleData];
         [articles addObject:category];
     }
@@ -98,15 +100,15 @@
         return [first.order compare:second.order];
     }];
     
-    NSLog(@"%@", categories);
-    NSLog(@"%@", articles);
+    //NSLog(@"%@", categories);
+    //NSLog(@"%@", articles);
     
-    self->categories = categories;
-    self->articles = articles;
+    //self->categories = categories;
+    //self->articles = articles;
     
     dispatch_async(dispatch_get_main_queue(), ^
     {
-        NSLog(@"%@", data);
+        //NSLog(@"%@", data);
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
@@ -118,7 +120,7 @@
 
 - (void) showError: (NSString*) message
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
                                                     message:message delegate:nil
                                           cancelButtonTitle:NSLocalizedString(@"Error. Dismiss", nil)
                                           otherButtonTitles:nil];
@@ -127,7 +129,7 @@
 
 - (void) viewDidLoad
 {
-    NSLog(@"loaded library");
+    //NSLog(@"loaded library");
     
     [super viewDidLoad];
     
@@ -161,12 +163,13 @@
 {
     NSDictionary* parameters = @
     {
+        //@"_id": @"51d04cc5b6f8da5c1f000001"
         @"_id": @""
     };
     
     NSURL* url = [NSURL URLWithString:appDelegate.urls[@"get library section content"] parameters:parameters];
 
-    NSLog(@"%@", url);
+    //NSLog(@"%@", url);
     
     __weak typeof(self) controller = self;
     
@@ -210,6 +213,57 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     [fetchContent resume];
+}
+
+- (NSInteger) numberOfSectionsInCollectionView: (UICollectionView*) collectionView
+{
+    return 2;
+}
+
+- (NSInteger) collectionView: (UICollectionView*) collectionView
+      numberOfItemsInSection: (NSInteger) section
+{
+    NSLog(@"%ld", (long) section);
+    
+    switch (section)
+    {
+        case 0:
+            return [categories count];
+            
+        case 1:
+            return [articles count];
+    }
+    
+    return 0;
+}
+
+- (UICollectionViewCell*) collectionView: (UICollectionView*) collectionView
+                  cellForItemAtIndexPath: (NSIndexPath*) indexPath
+{
+    LibraryCollectionViewCell* cell = [collectionView
+                                         dequeueReusableCellWithReuseIdentifier:@"LibraryCell"
+                                                                   forIndexPath:indexPath];
+    
+    long row = [indexPath row];
+    
+    NSLog(@"%@", indexPath);
+    
+    switch (indexPath.section)
+    {
+        case 0:
+            //UIImage* icon = [UIImage imageNamed:_carImages[row]];
+            //cell.icon.image = icon;
+            
+            cell.label.text = [[categories objectAtIndex:row] title];
+            break;
+            
+        case 1:
+            NSLog(@"%@", [[articles objectAtIndex:row] title]);
+            cell.label.text = [[articles objectAtIndex:row] title];
+            break;
+    }
+    
+    return cell;
 }
 
 - (void) didReceiveMemoryWarning
