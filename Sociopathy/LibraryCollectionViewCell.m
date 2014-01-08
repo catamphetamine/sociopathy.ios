@@ -11,7 +11,7 @@
 
 @implementation LibraryCollectionViewCell
 
-- (id )initWithFrame: (CGRect) frame
+- (id) initWithFrame: (CGRect) frame
 {
     self = [super initWithFrame:frame];
     if (self)
@@ -19,6 +19,23 @@
         // Initialization code
         
         //[self setTranslatesAutoresizingMaskIntoConstraints:NO];
+        
+        /*
+        [_icon setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_label setTranslatesAutoresizingMaskIntoConstraints:NO];
+        
+        NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_label);
+        NSDictionary *insetMetrics = @{
+                                       @"left" : @(10.0f),
+                                       @"right" : @(10.0f),
+                                       @"top" : @(10.0f),
+                                       @"bottom" : @(10.0f)
+                                       };
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(left)-[_label]-(right)-|" options:0 metrics:insetMetrics views:viewDictionary]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(top)-[_label]-(bottom)-|" options:0 metrics:insetMetrics views:viewDictionary]];
+        */
+        
         
         /*
         [_icon setTranslatesAutoresizingMaskIntoConstraints:NO];

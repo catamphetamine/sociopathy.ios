@@ -11,13 +11,21 @@
 #import "AppDelegate.h"
 #import "UIView+Animator.h"
 #import "NSURL+Tools.h"
-#import "NSError+Tools.h"
 #import "LibraryCategory.h"
 #import "LibraryArticle.h"
 #import "LibraryCollectionViewCell.h"
 #import "Url.h"
 #import "ImageRequest.h"
-#import "ArticleViewController.h"
+#import "LibraryArticleViewController.h"
+
+typedef enum LibrarySection
+{
+    LibrarySection_Categories = 0,
+    LibrarySection_Articles = 1
+}
+LibrarySection;
+
+static int kCategoryCellHeight = 42;
 
 @interface LibraryViewController ()
 @end
@@ -44,6 +52,115 @@
     }
     return self;
 }
+
+
+- (void) viewDidLoad
+{
+    //NSLog(@"loaded library");
+    
+    [super viewDidLoad];
+    
+    if (_category)
+    {
+        self.title = _category.title;
+    }
+    
+    /*
+    UIView* scrollView = [self collectionView];
+    
+    NSDictionary* views = NSDictionaryOfVariableBindings(scrollView);
+    
+    [scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scrollView]|" options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scrollView]|" options:0 metrics:nil views:views]];
+    */
+    
+    [progressIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    //progressIndicator.hidden = YES;
+    //progressIndicator.alpha = 0;
+    
+    // center progress indicator horizontally
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:progressIndicator
+                                                          attribute:NSLayoutAttributeCenterX
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeCenterX
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    
+    // center progress indicator vertically
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:progressIndicator
+                                                          attribute:NSLayoutAttributeCenterY
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeCenterY
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    
+    [self collectionView].allowsMultipleSelection = NO;
+    
+    [self fetchContent];
+}
+
+- (void) fetchContent
+{
+    NSMutableDictionary* parameters = [@{} mutableCopy];
+    
+    if (_category)
+    {
+        [parameters setObject:_category.id forKey:@"_id"];
+    }
+    
+    NSURL* url = [NSURL URLWithString:appDelegate.urls[@"get library section content"] parameters:parameters];
+    
+    //NSLog(@"%@", url);
+    
+    __weak typeof(self) controller = self;
+    
+    NSURLSessionDataTask* fetchContent = [appDelegate.session
+                                          dataTaskWithURL:url
+                                          completionHandler:^(NSData* data,
+                                                              NSURLResponse* response,
+                                                              NSError* error)
+      {
+          if (error)
+          {
+              return [controller fetchFailed:[NSError error:error.localizedDescription code:RemoteApiError_HttpConnectionError]];
+          }
+          
+          NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
+          if (httpResponse.statusCode != 200)
+          {
+              return [controller fetchFailed:[NSError error:[NSString stringWithFormat:@"(%d)", httpResponse.statusCode] code:RemoteApiError_HttpResponseError]];
+          }
+          
+          NSError* jsonError;
+          
+          NSDictionary* json =
+          [NSJSONSerialization JSONObjectWithData:data
+                                          options:NSJSONReadingAllowFragments
+                                            error:&jsonError];
+          
+          if (jsonError)
+          {
+              return [controller fetchFailed:[NSError error:jsonError.localizedDescription code:RemoteApiError_JsonError]];
+          }
+          
+          if (json[@"error"])
+          {
+              return [controller fetchFailed:[NSError error:json[@"error"] code:RemoteApiError_ServerError]];
+          }
+          
+          [controller fetchSucceeded:json];
+      }];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    [fetchContent resume];
+}
+
 
 - (NSString*) remoteApiErrorMessage: (NSError*) error
 {
@@ -125,96 +242,6 @@
     [alert show];
 }
 
-- (void) viewDidLoad
-{
-    //NSLog(@"loaded library");
-    
-    [super viewDidLoad];
-    
-    [progressIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
-    //progressIndicator.hidden = YES;
-    //progressIndicator.alpha = 0;
-    
-    // center progress indicator horizontally
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:progressIndicator
-                                                          attribute:NSLayoutAttributeCenterX
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterX
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    // center progress indicator vertically
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:progressIndicator
-                                                          attribute:NSLayoutAttributeCenterY
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterY
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    [self collectionView].allowsMultipleSelection = NO;
-    
-    [self fetchContent];
-}
-
-- (void) fetchContent
-{
-    NSDictionary* parameters = @
-    {
-        //@"_id": @"51d04cc5b6f8da5c1f000001"
-        @"_id": @""
-    };
-    
-    NSURL* url = [NSURL URLWithString:appDelegate.urls[@"get library section content"] parameters:parameters];
-
-    //NSLog(@"%@", url);
-    
-    __weak typeof(self) controller = self;
-    
-    NSURLSessionDataTask* fetchContent = [appDelegate.session
-                                                  dataTaskWithURL:url
-                                                completionHandler:^(NSData *data,
-                                                                    NSURLResponse *response,
-                                                                    NSError *error)
-    {
-        if (error)
-        {
-            return [controller fetchFailed:[NSError error:error.localizedDescription code:RemoteApiError_HttpConnectionError]];
-        }
-        
-        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
-        if (httpResponse.statusCode != 200)
-        {
-            return [controller fetchFailed:[NSError error:[NSString stringWithFormat:@"(%d)", httpResponse.statusCode] code:RemoteApiError_HttpResponseError]];
-        }
-        
-        NSError* jsonError;
-        
-        NSDictionary* json =
-        [NSJSONSerialization JSONObjectWithData:data
-                                        options:NSJSONReadingAllowFragments
-                                          error:&jsonError];
-        
-        if (jsonError)
-        {
-            return [controller fetchFailed:[NSError error:jsonError.localizedDescription code:RemoteApiError_JsonError]];
-        }
-        
-        if (json[@"error"])
-        {
-            return [controller fetchFailed:[NSError error:json[@"error"] code:RemoteApiError_ServerError]];
-        }
-        
-        [controller fetchSucceeded:json];
-    }];
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    [fetchContent resume];
-}
-
 - (NSInteger) numberOfSectionsInCollectionView: (UICollectionView*) collectionView
 {
     return 2;
@@ -225,15 +252,108 @@
 {
     switch (section)
     {
-        case 0:
+        case LibrarySection_Categories:
             return [categories count];
             
-        case 1:
+        case LibrarySection_Articles:
             return [articles count];
     }
     
     return 0;
 }
+
+- (UIEdgeInsets) collectionView: (UICollectionView*) collectionView
+                         layout: (UICollectionViewLayout*) collectionViewLayout
+         insetForSectionAtIndex: (NSInteger) section
+{
+    // (top, left, bottom, right)
+    
+    switch (section)
+    {
+        case LibrarySection_Categories:
+            // (top, left, bottom, right)
+            return UIEdgeInsetsMake(15, 15, 0, 15);
+            
+        case LibrarySection_Articles:
+            // (top, left, bottom, right)
+            return UIEdgeInsetsMake(0, 15, 0, 15);
+    }
+    
+    return UIEdgeInsetsMake(0, 0, 0, 0);
+}
+
+- (CGFloat) collectionView: (UICollectionView*) collectionView
+                    layout: (UICollectionViewLayout*) collectionViewLayout
+minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
+{
+    switch (section)
+    {
+        case LibrarySection_Categories:
+            return 7.0;
+            
+        case LibrarySection_Articles:
+            return 0;
+    }
+    
+    return 0;
+}
+
+/*
+- (CGSize) collectionView: (UICollectionView*) collectionView
+                   layout: (UICollectionViewLayout*) collectionViewLayout
+   sizeForItemAtIndexPath: (NSIndexPath*) indexPath
+{
+//    CGSize collectionViewSize = [[self collectionView].collectionViewLayout collectionViewContentSize];
+    
+//    return CGSizeMake(collectionViewSize.width, kCategoryCellHeight);
+    
+    float collectionViewWidth = [[UIApplication sharedApplication] keyWindow].frame.size.width;
+    
+    switch ([UIApplication sharedApplication].statusBarOrientation)
+    {
+        case UIInterfaceOrientationPortrait:
+        case UIInterfaceOrientationPortraitUpsideDown:
+        {
+            return CGSizeMake(collectionViewWidth, kCategoryCellHeight);
+        }
+        
+        case UIInterfaceOrientationLandscapeLeft:
+        case UIInterfaceOrientationLandscapeRight:
+        {
+            return CGSizeMake(collectionViewWidth, kCategoryCellHeight);
+        }
+    }
+    
+    return CGSizeMake(0, 0);
+}
+*/
+
+- (void) willRotateToInterfaceOrientation: (UIInterfaceOrientation) toInterfaceOrientation
+                                 duration: (NSTimeInterval) duration
+{
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    
+    /*
+    NSArray* currentVisibleItems = self.collectionView.indexPathsForVisibleItems;
+    currentVisibleItem = [currentVisibleItems objectAtIndex:0];
+    NSLog(@"selected item = %d",currentVisibleItem.row);
+    */
+    
+    NSLog(@"%f", [self collectionView].bounds.size.width);
+    NSLog(@"%f", [self collectionView].bounds.size.height);
+    
+    //[[self collectionView].collectionViewLayout invalidateLayout];
+}
+
+/*
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    
+    [self.collectionView.collectionViewLayout invalidateLayout];
+    [self.collectionView scrollToItemAtIndexPath:currentVisibleItem atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+}
+*/
 
 - (UICollectionViewCell*) collectionView: (UICollectionView*) collectionView
                   cellForItemAtIndexPath: (NSIndexPath*) indexPath
@@ -246,42 +366,50 @@
     
     switch (indexPath.section)
     {
-        case 0:
+        case LibrarySection_Categories:
         {
             LibraryCategory* category = [categories objectAtIndex:row];
             
-            NSURL* url = [appDelegate.url libraryCategoryTinyIconUrl:category];
+            [cell.icon.layer setBorderColor:[iconBorderColor CGColor]];
+            [cell.icon.layer setBorderWidth:1.0];
             
-            // note that this can be a web url or file url
+            NSURL* url = [appDelegate.url libraryCategoryTinyIcon:category];
             
-            ImageRequest* request = [[ImageRequest alloc] initWithURL:url];
-            
-            UIImage* image = [request cachedResult];
-            
-            if (image)
+            if (url)
             {
-                cell.icon.image = image;
-                [cell.icon.layer setBorderColor:[iconBorderColor CGColor]];
-                [cell.icon.layer setBorderWidth:1.0];
-            }
-            else
-            {
-                [request startWithCompletion:^(UIImage* image, NSError* error)
+                ImageRequest* request = [[ImageRequest alloc] initWithURL:url];
+                
+                UIImage* image = [request cachedResult];
+                
+                if (image)
                 {
-                    if (image && [[collectionView indexPathsForVisibleItems] containsObject:indexPath])
+                    cell.icon.image = image;
+                }
+                else
+                {
+                    [request startWithCompletion:^(UIImage* image, NSError* error)
                     {
-                        [collectionView reloadItemsAtIndexPaths:@[indexPath]];
-                    }
-                }];
+                        if (image && [[collectionView indexPathsForVisibleItems] containsObject:indexPath])
+                        {
+                            [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                        }
+                    }];
+                }
             }
             
             cell.label.text = [category title];
+            cell.label.numberOfLines = 1;
             break;
         }
             
-        case 1:
+        case LibrarySection_Articles:
         {
+            cell.icon.image = nil;
             cell.label.text = [[articles objectAtIndex:row] title];
+            cell.label.numberOfLines = 0;
+            
+            cell.label.preferredMaxLayoutWidth = [cell.label alignmentRectForFrame:cell.label.frame].size.width;
+            
             break;
         }
     }
@@ -297,7 +425,20 @@
         NSArray* selectedCellsPaths = self.collectionView.indexPathsForSelectedItems;
         NSIndexPath* selectedCellPath = [selectedCellsPaths objectAtIndex:0];
         
-        return selectedCellPath.section == 1;
+        return selectedCellPath.section == LibrarySection_Articles;
+    }
+    
+    if ([identifier isEqualToString:@"enterCategory"])
+    {
+        NSArray* selectedCellsPaths = self.collectionView.indexPathsForSelectedItems;
+        NSIndexPath* selectedCellPath = [selectedCellsPaths objectAtIndex:0];
+        
+        if (selectedCellPath.section == LibrarySection_Articles)
+        {
+            [self performSegueWithIdentifier:@"showArticle" sender:sender];
+        }
+        
+        return selectedCellPath.section == LibrarySection_Categories;
     }
     
     return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
@@ -311,8 +452,17 @@
         NSArray* selectedCellsPaths = self.collectionView.indexPathsForSelectedItems;
         NSIndexPath* selectedCellPath = [selectedCellsPaths objectAtIndex:0];
         
-        ArticleViewController* articleController = (ArticleViewController*) segue.destinationViewController;
+        LibraryArticleViewController* articleController = (LibraryArticleViewController*) segue.destinationViewController;
         articleController.article = [articles objectAtIndex:selectedCellPath.row];
+    }
+    
+    if ([segue.identifier isEqualToString:@"enterCategory"])
+    {
+        NSArray* selectedCellsPaths = self.collectionView.indexPathsForSelectedItems;
+        NSIndexPath* selectedCellPath = [selectedCellsPaths objectAtIndex:0];
+        
+        LibraryViewController* categoryController = (LibraryViewController*) segue.destinationViewController;
+        categoryController.category = [categories objectAtIndex:selectedCellPath.row];
     }
 }
 

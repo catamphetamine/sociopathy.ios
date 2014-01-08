@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "Url.h"
+#import "NSError+Tools.h"
 
 typedef void (^ActionBlock)(void);
 
@@ -28,6 +29,8 @@ RemoteApiErrors;
 @property (nonatomic) NSDictionary* urls;
 @property (nonatomic) NSURLSession* session;
 @property (nonatomic) Url* url;
+@property (nonatomic) BOOL iPad;
+@property (nonatomic) BOOL iPhone;
 
 - (NSString*) remoteApiErrorMessage: (NSError*) error;
 

@@ -53,8 +53,12 @@
 		846BCDC8187C87B100A27C9C /* LibraryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDC7187C87B100A27C9C /* LibraryCollectionViewCell.m */; };
 		846BCDCB187CA49400A27C9C /* Url.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDCA187CA49400A27C9C /* Url.m */; };
 		846BCDCE187CA6D000A27C9C /* ImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDCD187CA6D000A27C9C /* ImageRequest.m */; };
-		846BCDD1187CB56100A27C9C /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDD0187CB56100A27C9C /* ArticleViewController.m */; };
+		846BCDD1187CB56100A27C9C /* LibraryArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDD0187CB56100A27C9C /* LibraryArticleViewController.m */; };
 		84913A7D1877487A0032D34E /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84913A7C187748790032D34E /* settings.plist */; };
+		84E5D8A3187D993F002B07CC /* Main_iPad.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D89F187D993F002B07CC /* Main_iPad.strings */; };
+		84E5D8A4187D993F002B07CC /* Main_iPhone.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8A1187D993F002B07CC /* Main_iPhone.strings */; };
+		84E5D8A9187D9948002B07CC /* Main_iPad.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8A5187D9948002B07CC /* Main_iPad.strings */; };
+		84E5D8AA187D9948002B07CC /* Main_iPhone.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8A7187D9948002B07CC /* Main_iPhone.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,10 +123,6 @@
 		846BCD7D187AE58400A27C9C /* tab bar chat icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab bar chat icon@2x.png"; path = "pictures/tab bar/tab bar chat icon@2x.png"; sourceTree = "<group>"; };
 		846BCD92187B379000A27C9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		846BCD94187B379000A27C9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		846BCD97187B3BA600A27C9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPad.strings; sourceTree = "<group>"; };
-		846BCD98187B3BA900A27C9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPad.strings; sourceTree = "<group>"; };
-		846BCD99187B3BAF00A27C9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
-		846BCD9A187B3BB100A27C9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		846BCD9B187BCD5A00A27C9C /* UIImage+Transformations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Transformations.h"; sourceTree = "<group>"; };
 		846BCD9C187BCD5A00A27C9C /* UIImage+Transformations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Transformations.m"; sourceTree = "<group>"; };
 		846BCDA1187BF42A00A27C9C /* LibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController.h; sourceTree = "<group>"; };
@@ -143,9 +143,17 @@
 		846BCDCA187CA49400A27C9C /* Url.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Url.m; sourceTree = "<group>"; };
 		846BCDCC187CA6D000A27C9C /* ImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageRequest.h; sourceTree = "<group>"; };
 		846BCDCD187CA6D000A27C9C /* ImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageRequest.m; sourceTree = "<group>"; };
-		846BCDCF187CB56100A27C9C /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
-		846BCDD0187CB56100A27C9C /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
+		846BCDCF187CB56100A27C9C /* LibraryArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryArticleViewController.h; sourceTree = "<group>"; };
+		846BCDD0187CB56100A27C9C /* LibraryArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryArticleViewController.m; sourceTree = "<group>"; };
 		84913A7C187748790032D34E /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
+		84E5D8A0187D993F002B07CC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Main_iPad.strings; sourceTree = "<group>"; };
+		84E5D8A2187D993F002B07CC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Main_iPhone.strings; sourceTree = "<group>"; };
+		84E5D8A6187D9948002B07CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Main_iPad.strings; sourceTree = "<group>"; };
+		84E5D8A8187D9948002B07CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Main_iPhone.strings; sourceTree = "<group>"; };
+		84E5D8B0187D9C34002B07CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPad.strings; sourceTree = "<group>"; };
+		84E5D8B4187D9C40002B07CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
+		84E5D8B6187D9C46002B07CC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
+		84E5D8B8187D9C50002B07CC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPad.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,8 +242,8 @@
 				846BCDA2187BF42A00A27C9C /* LibraryViewController.m */,
 				846BCDC6187C87B100A27C9C /* LibraryCollectionViewCell.h */,
 				846BCDC7187C87B100A27C9C /* LibraryCollectionViewCell.m */,
-				846BCDCF187CB56100A27C9C /* ArticleViewController.h */,
-				846BCDD0187CB56100A27C9C /* ArticleViewController.m */,
+				846BCDCF187CB56100A27C9C /* LibraryArticleViewController.h */,
+				846BCDD0187CB56100A27C9C /* LibraryArticleViewController.m */,
 				846BCDC9187CA49400A27C9C /* Url.h */,
 				846BCDCA187CA49400A27C9C /* Url.m */,
 				846BCDB9187C628C00A27C9C /* model */,
@@ -277,6 +285,8 @@
 		846BCD351878841900A27C9C /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
+				84E5D8A5187D9948002B07CC /* Main_iPad.strings */,
+				84E5D8A7187D9948002B07CC /* Main_iPhone.strings */,
 				846BCD4618788A6900A27C9C /* Localizable.strings */,
 			);
 			path = en.lproj;
@@ -285,6 +295,8 @@
 		846BCD3A1878841900A27C9C /* ru.lproj */ = {
 			isa = PBXGroup;
 			children = (
+				84E5D89F187D993F002B07CC /* Main_iPad.strings */,
+				84E5D8A1187D993F002B07CC /* Main_iPhone.strings */,
 				846BCD4318788A6100A27C9C /* Localizable.strings */,
 			);
 			path = ru.lproj;
@@ -422,9 +434,13 @@
 				846BCD95187B379000A27C9C /* Main_iPad.storyboard in Resources */,
 				846BCD80187AE58400A27C9C /* tab bar chat icon.png in Resources */,
 				846BCD601879A51900A27C9C /* iTunesArtwork in Resources */,
+				84E5D8A3187D993F002B07CC /* Main_iPad.strings in Resources */,
 				846BCD641879A51900A27C9C /* login screen logo text.png in Resources */,
+				84E5D8A9187D9948002B07CC /* Main_iPad.strings in Resources */,
 				846BCD4518788A6100A27C9C /* Localizable.strings in Resources */,
 				8408892418785B69004B84BD /* README.md in Resources */,
+				84E5D8A4187D993F002B07CC /* Main_iPhone.strings in Resources */,
+				84E5D8AA187D9948002B07CC /* Main_iPhone.strings in Resources */,
 				84913A7D1877487A0032D34E /* settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,7 +479,7 @@
 				846BCDBE187C628C00A27C9C /* LibraryArticle.m in Sources */,
 				8406883C186C25BA00AC61DE /* LoginViewController.m in Sources */,
 				846BCDAF187BF93800A27C9C /* UITabBarController+TabBarItemIconEnhancer.m in Sources */,
-				846BCDD1187CB56100A27C9C /* ArticleViewController.m in Sources */,
+				846BCDD1187CB56100A27C9C /* LibraryArticleViewController.m in Sources */,
 				846BCDBF187C628C00A27C9C /* LibraryCategory.m in Sources */,
 				846BCD551879A48700A27C9C /* UITextField+Tools.m in Sources */,
 				846BCD9D187BCD5A00A27C9C /* UIImage+Transformations.m in Sources */,
@@ -542,8 +558,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				846BCD92187B379000A27C9C /* Base */,
-				846BCD97187B3BA600A27C9C /* en */,
-				846BCD98187B3BA900A27C9C /* ru */,
+				84E5D8B0187D9C34002B07CC /* en */,
+				84E5D8B8187D9C50002B07CC /* ru */,
 			);
 			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
@@ -552,10 +568,42 @@
 			isa = PBXVariantGroup;
 			children = (
 				846BCD94187B379000A27C9C /* Base */,
-				846BCD99187B3BAF00A27C9C /* en */,
-				846BCD9A187B3BB100A27C9C /* ru */,
+				84E5D8B4187D9C40002B07CC /* en */,
+				84E5D8B6187D9C46002B07CC /* ru */,
 			);
 			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		84E5D89F187D993F002B07CC /* Main_iPad.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84E5D8A0187D993F002B07CC /* ru */,
+			);
+			name = Main_iPad.strings;
+			sourceTree = "<group>";
+		};
+		84E5D8A1187D993F002B07CC /* Main_iPhone.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84E5D8A2187D993F002B07CC /* ru */,
+			);
+			name = Main_iPhone.strings;
+			sourceTree = "<group>";
+		};
+		84E5D8A5187D9948002B07CC /* Main_iPad.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84E5D8A6187D9948002B07CC /* en */,
+			);
+			name = Main_iPad.strings;
+			sourceTree = "<group>";
+		};
+		84E5D8A7187D9948002B07CC /* Main_iPhone.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84E5D8A8187D9948002B07CC /* en */,
+			);
+			name = Main_iPhone.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

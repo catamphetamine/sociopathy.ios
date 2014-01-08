@@ -10,6 +10,6 @@
 
 #import "LibraryArticle.h"
 
-@interface ArticleViewController : UIViewController
+@interface LibraryArticleViewController : UIViewController
 @property(nonatomic) LibraryArticle* article;
 @end

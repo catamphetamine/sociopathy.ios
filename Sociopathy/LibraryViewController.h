@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LibraryCategory.h"
 
 @interface LibraryViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
+@property(nonatomic) LibraryCategory* category;
 @end

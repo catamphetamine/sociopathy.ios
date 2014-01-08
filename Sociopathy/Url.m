@@ -8,30 +8,54 @@
 
 #import "Url.h"
 
-#import "LibraryCategory.h"
 #import "AppDelegate.h"
+#import "NSDictionary+HttpTools.h"
 
 @implementation Url
+{
+    NSString* httpPrefix;
+    NSString* backendPrefix;
+}
 
 - (id) initWithAppDelegate: (AppDelegate*) appDelegate
 {
     if (self = [super init])
     {
-        self.appDelegate = appDelegate;
+        httpPrefix = [@"http://" stringByAppendingString:appDelegate.settings[@"domain"]];
+        backendPrefix = appDelegate.settings[@"backendPrefix"];
     }
     return self;
 }
 
-- (NSURL*) libraryCategoryTinyIconUrl: (LibraryCategory*) category
+- (NSURL*) libraryArticleMarkup: (LibraryArticle*) article
 {
     NSMutableString* url = [NSMutableString new];
     
-    NSString* httpPrefix = [@"http://" stringByAppendingString:_appDelegate.settings[@"domain"]];
+    [url appendString:backendPrefix];
+    [url appendString:@"/читальня/заметка/разметка"];
     
-    [url appendString:httpPrefix];
-    [url appendString:@"/"];
-     
-    [url appendString:@"загруженное/читальня/разделы/"];
+    url = [[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
+    
+    NSDictionary* parameters = @
+    {
+        @"_id": article.id,
+        @"разметка": @"html"
+    };
+    
+    [url appendString:@"?"];
+    [url appendString:[parameters httpParameters]];
+    
+    return [NSURL URLWithString:[httpPrefix stringByAppendingString:url]];
+}
+
+- (NSURL*) libraryCategoryTinyIcon: (LibraryCategory*) category
+{
+    if (!category.icon_version)
+        return nil;
+    
+    NSMutableString* url = [NSMutableString new];
+    
+    [url appendString:@"/загруженное/читальня/разделы/"];
     [url appendString:category.id];
     [url appendString:@"/крошечная обложка.jpg"];
     
@@ -40,7 +64,7 @@
     [url appendString:@"?version="];
     [url appendString:[category.icon_version stringValue]];
      
-    return [NSURL URLWithString:[url copy]];
+    return [NSURL URLWithString:[httpPrefix stringByAppendingString:url]];
 }
 
 @end

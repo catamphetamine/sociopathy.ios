@@ -36,8 +36,6 @@
     
     UIColor* borderColor;
     UIColor* placeholderColor;
-    
-    BOOL iPad;
 }
 
 - (id) initWithCoder: (NSCoder*) decoder
@@ -47,8 +45,6 @@
         borderColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
         //activeBorderColor = [UIColor colorWithRed:0.878 green:0 blue:0.133 alpha:1.0];
         placeholderColor = [UIColor colorWithRed:0.118 green:0.118 blue:0.118 alpha:1.0];
-        
-        iPad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
         
         appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     }
@@ -148,7 +144,7 @@
                                                              toItem:self.view
                                                           attribute:NSLayoutAttributeCenterY
                                                          multiplier:1.0
-                                                           constant:iPad ? -20 : -5]];
+                                                           constant:appDelegate.iPad ? -20 : -5]];
     
     // set login width
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:login
@@ -193,7 +189,7 @@
                                                              toItem:login
                                                           attribute:NSLayoutAttributeTop
                                                          multiplier:1.0
-                                                           constant:iPad ? -60 : -30]];
+                                                           constant:appDelegate.iPad ? -60 : -30]];
     
     // place logo icon above logo text
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:logoIcon
@@ -238,13 +234,13 @@
                                                              toItem:loginButton
                                                           attribute:NSLayoutAttributeBottom
                                                          multiplier:1.0
-                                                           constant:iPad ? 40 : 10]];
+                                                           constant:appDelegate.iPad ? 40 : 10]];
     
     // size error message
     
     NSDictionary* metrics = @{ @"sideMargin": @20.0 };
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-sideMargin-[errorMessage]-sideMargin-|"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-sideMargin-[errorMessage]-sideMargin-|"
                                                                       options:0
                                                                       metrics:metrics
                                                                         views:views]];
@@ -253,19 +249,24 @@
 - (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation) toOrientation
                                  duration:(NSTimeInterval) duration
 {
-    if (!iPad)
+    [super willRotateToInterfaceOrientation:toOrientation duration:duration];
+    
+    if (appDelegate.iPhone)
     {
-        if (toOrientation == UIInterfaceOrientationPortrait ||
-            toOrientation == UIInterfaceOrientationPortraitUpsideDown)
+        switch (toOrientation)
         {
-            logoIcon.hidden = NO;
-        }
-        else
-        {
-            if (toOrientation == UIInterfaceOrientationLandscapeLeft ||
-                toOrientation == UIInterfaceOrientationLandscapeRight)
+            case UIInterfaceOrientationPortrait:
+            case UIInterfaceOrientationPortraitUpsideDown:
+            {
+                logoIcon.hidden = NO;
+                break;
+            }
+            
+            case UIInterfaceOrientationLandscapeLeft:
+            case UIInterfaceOrientationLandscapeRight:
             {
                 logoIcon.hidden = YES;
+                break;
             }
         }
     }
@@ -379,7 +380,7 @@
     
     NSURL* url = [NSURL URLWithString:appDelegate.urls[@"login"]];
     
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:url];
     [request setHTTPMethod:@"POST"];
     
     NSDictionary* loginCredentials = @

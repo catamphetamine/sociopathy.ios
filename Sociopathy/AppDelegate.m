@@ -64,6 +64,9 @@
     NSURLSessionConfiguration* config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     _session = [NSURLSession sessionWithConfiguration:config];
     
+    _iPad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
+    _iPhone = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone;
+    
     // Override point for customization after application launch.
     return YES;
 }

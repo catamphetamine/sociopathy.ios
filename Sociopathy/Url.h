@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "LibraryCategory.h"
+#import "LibraryArticle.h"
 
 @class AppDelegate;
 
 @interface Url : NSObject
 
-@property(nonatomic, weak) AppDelegate* appDelegate;
 - (id) initWithAppDelegate: (AppDelegate*) appDelegate;
-- (NSURL*) libraryCategoryTinyIconUrl: (LibraryCategory*) category;
+- (NSURL*) libraryCategoryTinyIcon: (LibraryCategory*) category;
+- (NSURL*) libraryArticleMarkup: (LibraryArticle*) article;
 @end
