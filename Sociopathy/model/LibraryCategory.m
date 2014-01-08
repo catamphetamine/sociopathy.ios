@@ -9,6 +9,7 @@
 #import "LibraryCategory.h"
 
 @implementation LibraryCategory
+
 - (id) initWithJSON: (NSDictionary*) data
 {
     if (self = [super init])

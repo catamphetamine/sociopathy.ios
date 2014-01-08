@@ -409,6 +409,20 @@
             return [controller loginFailed:[NSError error:[NSString stringWithFormat:@"(%d)", httpResponse.statusCode] code:RemoteApiError_HttpResponseError]];
         }
     
+        /*
+        NSArray* cookies = [NSHTTPCookie
+                            cookiesWithResponseHeaderFields:[httpResponse allHeaderFields]
+                            forURL:[NSURL URLWithString:@""]]; // send to URL, return NSArray
+        
+        for (NSHTTPCookie* cookie in cookies)
+        {
+            if ([cookie.name isEqualToString:@"user"])
+            {
+                appDelegate.userSessionId = cookie.value;
+            }
+        }
+        */
+        
         NSError* jsonError;
         
         NSDictionary* json =

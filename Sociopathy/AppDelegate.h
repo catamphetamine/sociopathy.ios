@@ -13,7 +13,7 @@
 
 typedef void (^ActionBlock)(void);
 
-typedef enum RemoteApiErrors
+typedef enum
 {
     RemoteApiError_HttpConnectionError = 1,
     RemoteApiError_HttpResponseError = 2,
@@ -31,6 +31,7 @@ RemoteApiErrors;
 @property (nonatomic) Url* url;
 @property (nonatomic) BOOL iPad;
 @property (nonatomic) BOOL iPhone;
+@property (nonatomic) NSString* userSessionId;
 
 - (NSString*) remoteApiErrorMessage: (NSError*) error;
 

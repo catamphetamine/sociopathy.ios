@@ -231,48 +231,77 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="r92-Jo-2mg" kind="relationship" relationship="rootViewController" id="gVg-yY-4eb"/>
+                        <segue destination="ASb-O0-ZRP" kind="relationship" relationship="rootViewController" id="623-jy-6Tl"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0F8-8y-Nsz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1311" y="188"/>
         </scene>
-        <!--Chat View Controller - Chat-->
-        <scene sceneID="Ha3-8V-dni">
+        <!--Chat View Controller-->
+        <scene sceneID="XlT-Rq-62M">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="r92-Jo-2mg" customClass="ChatViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="9Jl-zf-Ghr">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="ASb-O0-ZRP" customClass="ChatViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="ZhV-R6-GhI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wb9-es-aBV">
-                            <size key="itemSize" width="50" height="50"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="JBC-ff-M6H">
+                            <size key="itemSize" width="290" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="15" minY="15" maxX="15" maxY="0.0"/>
                         </collectionViewFlowLayout>
+                        <activityIndicatorView key="backgroundView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="1mH-Yn-qAi">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="if5-RS-8Xt">
-                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChatMessageCell" id="xMJ-Xk-xif" customClass="ChatMessageCell">
+                                <rect key="frame" x="15" y="79" width="290" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="290" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cKN-QY-Nva">
+                                            <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hn3-DP-f8i">
+                                            <rect key="frame" x="253" y="8" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <webView contentMode="scaleToFill" id="YPW-Wv-0KN">
+                                            <rect key="frame" x="46" y="0.0" width="199" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </webView>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <outlet property="avatar" destination="cKN-QY-Nva" id="SA5-RN-cZ4"/>
+                                    <outlet property="content" destination="YPW-Wv-0KN" id="3bF-qH-K4m"/>
+                                    <outlet property="when" destination="hn3-DP-f8i" id="Ylo-Ve-usy"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
-                            <outlet property="dataSource" destination="r92-Jo-2mg" id="GtZ-4R-x09"/>
-                            <outlet property="delegate" destination="r92-Jo-2mg" id="Eay-sh-csi"/>
+                            <outlet property="dataSource" destination="ASb-O0-ZRP" id="YA4-cU-WB1"/>
+                            <outlet property="delegate" destination="ASb-O0-ZRP" id="1WE-Qd-E0l"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Chat" id="dQE-kl-SaG"/>
+                    <navigationItem key="navigationItem" id="oJU-76-7Kr"/>
+                    <connections>
+                        <outlet property="progressIndicator" destination="1mH-Yn-qAi" id="IBy-I2-laT"/>
+                    </connections>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fAO-La-34s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fdc-mo-DMc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1778" y="188"/>
+            <point key="canvasLocation" x="1842" y="188"/>
         </scene>
     </scenes>
     <resources>

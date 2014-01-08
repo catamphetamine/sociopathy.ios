@@ -9,12 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "LibraryCategory.h"
 #import "LibraryArticle.h"
+#import "User.h"
 
 @class AppDelegate;
 
 @interface Url : NSObject
 
 - (id) initWithAppDelegate: (AppDelegate*) appDelegate;
+- (NSURL*) libraryCategoryContent: (LibraryCategory*) category;
 - (NSURL*) libraryCategoryTinyIcon: (LibraryCategory*) category;
 - (NSURL*) libraryArticleMarkup: (LibraryArticle*) article;
+- (NSURL*) chatMessages;
+- (NSURL*) smallerAvatar: (User*) user;
 @end

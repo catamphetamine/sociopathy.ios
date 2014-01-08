@@ -88,15 +88,6 @@
               return [controller fetchFailed:[NSError error:[NSString stringWithFormat:@"(%d)", httpResponse.statusCode] code:RemoteApiError_HttpResponseError]];
           }
           
-          NSDictionary* headers = [httpResponse allHeaderFields];
-          
-          if ([[headers objectForKey:@"content-type"] hasPrefix:@"text/html"])
-          {
-              NSString* markup = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-              
-              return [controller fetchSucceeded:markup];
-          }
-          
           NSError* jsonError;
           
           NSDictionary* json =
@@ -114,9 +105,7 @@
               return [controller fetchFailed:[NSError error:json[@"error"] code:RemoteApiError_ServerError]];
           }
           
-          //NSLog(@"Unexpected response: %@", json);
-          
-          [controller fetchFailed:[NSError error:[json description] code:RemoteApiError_ServerError]];
+          return [controller fetchSucceeded:json[@"заметка"][@"содержимое"]];
       }];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;

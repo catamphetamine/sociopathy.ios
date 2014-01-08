@@ -45,9 +45,7 @@
     NSDictionary* urls = @
     {
         @"login": @"вход",
-        @"logout": @"выход",
-        
-        @"get library section content": @"читальня/раздел",
+        @"logout": @"выход"
     };
     
     _urls = [NSMutableDictionary new];
@@ -61,8 +59,13 @@
     
     _url = [[Url alloc] initWithAppDelegate:self];
     
-    NSURLSessionConfiguration* config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-    _session = [NSURLSession sessionWithConfiguration:config];
+    NSURLSessionConfiguration* configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    
+    configuration.HTTPCookieAcceptPolicy = NSHTTPCookieAcceptPolicyAlways;
+    configuration.HTTPCookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    configuration.HTTPShouldSetCookies = YES;
+    
+    _session = [NSURLSession sessionWithConfiguration:configuration];
     
     _iPad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
     _iPhone = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone;

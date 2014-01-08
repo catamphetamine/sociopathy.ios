@@ -56,8 +56,6 @@ static int kCategoryCellHeight = 42;
 
 - (void) viewDidLoad
 {
-    //NSLog(@"loaded library");
-    
     [super viewDidLoad];
     
     if (_category)
@@ -106,16 +104,7 @@ static int kCategoryCellHeight = 42;
 
 - (void) fetchContent
 {
-    NSMutableDictionary* parameters = [@{} mutableCopy];
-    
-    if (_category)
-    {
-        [parameters setObject:_category.id forKey:@"_id"];
-    }
-    
-    NSURL* url = [NSURL URLWithString:appDelegate.urls[@"get library section content"] parameters:parameters];
-    
-    //NSLog(@"%@", url);
+    NSURL* url = [appDelegate.url libraryCategoryContent:_category];
     
     __weak typeof(self) controller = self;
     
@@ -161,7 +150,6 @@ static int kCategoryCellHeight = 42;
     [fetchContent resume];
 }
 
-
 - (NSString*) remoteApiErrorMessage: (NSError*) error
 {
     return [appDelegate remoteApiErrorMessage:error];
@@ -183,15 +171,10 @@ static int kCategoryCellHeight = 42;
 
 - (void) fetchSucceeded: (NSDictionary*) data
 {
-    //NSMutableArray* categories = [[NSMutableArray alloc] init];
-    //NSMutableArray* articles = [[NSMutableArray alloc] init];
-    
     categories = [NSMutableArray new];
     articles = [NSMutableArray new];
     
     data = data[@"раздел"];
-    
-    // [data[@"flag"] boolValue]
     
     for (NSDictionary* categoryData in data[@"подразделы"])
     {
@@ -215,16 +198,8 @@ static int kCategoryCellHeight = 42;
         return [first.order compare:second.order];
     }];
     
-    //NSLog(@"%@", categories);
-    //NSLog(@"%@", articles);
-    
-    //self->categories = categories;
-    //self->articles = articles;
-    
     dispatch_async(dispatch_get_main_queue(), ^
     {
-        //NSLog(@"%@", data);
-        
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         [self.collectionView reloadData];

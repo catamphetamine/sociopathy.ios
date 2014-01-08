@@ -59,6 +59,9 @@
 		84E5D8A4187D993F002B07CC /* Main_iPhone.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8A1187D993F002B07CC /* Main_iPhone.strings */; };
 		84E5D8A9187D9948002B07CC /* Main_iPad.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8A5187D9948002B07CC /* Main_iPad.strings */; };
 		84E5D8AA187D9948002B07CC /* Main_iPhone.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8A7187D9948002B07CC /* Main_iPhone.strings */; };
+		84E5D8BB187DD183002B07CC /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5D8BA187DD183002B07CC /* ChatMessage.m */; };
+		84E5D8BE187DD1C8002B07CC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5D8BD187DD1C8002B07CC /* User.m */; };
+		84E5D8C1187DD6C3002B07CC /* ChatMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5D8C0187DD6C3002B07CC /* ChatMessageCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +157,12 @@
 		84E5D8B4187D9C40002B07CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		84E5D8B6187D9C46002B07CC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		84E5D8B8187D9C50002B07CC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPad.strings; sourceTree = "<group>"; };
+		84E5D8B9187DD183002B07CC /* ChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessage.h; sourceTree = "<group>"; };
+		84E5D8BA187DD183002B07CC /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
+		84E5D8BC187DD1C8002B07CC /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		84E5D8BD187DD1C8002B07CC /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		84E5D8BF187DD6C3002B07CC /* ChatMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageCell.h; sourceTree = "<group>"; };
+		84E5D8C0187DD6C3002B07CC /* ChatMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +247,8 @@
 				8408892618785CD3004B84BD /* TabBarViewController.m */,
 				846BCDA4187BF44100A27C9C /* ChatViewController.h */,
 				846BCDA5187BF44100A27C9C /* ChatViewController.m */,
+				84E5D8BF187DD6C3002B07CC /* ChatMessageCell.h */,
+				84E5D8C0187DD6C3002B07CC /* ChatMessageCell.m */,
 				846BCDA1187BF42A00A27C9C /* LibraryViewController.h */,
 				846BCDA2187BF42A00A27C9C /* LibraryViewController.m */,
 				846BCDC6187C87B100A27C9C /* LibraryCollectionViewCell.h */,
@@ -338,6 +349,10 @@
 				846BCDBB187C628C00A27C9C /* LibraryArticle.m */,
 				846BCDBC187C628C00A27C9C /* LibraryCategory.h */,
 				846BCDBD187C628C00A27C9C /* LibraryCategory.m */,
+				84E5D8B9187DD183002B07CC /* ChatMessage.h */,
+				84E5D8BA187DD183002B07CC /* ChatMessage.m */,
+				84E5D8BC187DD1C8002B07CC /* User.h */,
+				84E5D8BD187DD1C8002B07CC /* User.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -484,10 +499,13 @@
 				846BCD551879A48700A27C9C /* UITextField+Tools.m in Sources */,
 				846BCD9D187BCD5A00A27C9C /* UIImage+Transformations.m in Sources */,
 				846BCD531879A48700A27C9C /* NSError+Tools.m in Sources */,
+				84E5D8BE187DD1C8002B07CC /* User.m in Sources */,
 				846BCDC8187C87B100A27C9C /* LibraryCollectionViewCell.m in Sources */,
 				846BCD521879A48700A27C9C /* NSDictionary+HttpTools.m in Sources */,
+				84E5D8C1187DD6C3002B07CC /* ChatMessageCell.m in Sources */,
 				846BCDCE187CA6D000A27C9C /* ImageRequest.m in Sources */,
 				846BCD6B1879CD4500A27C9C /* UIView+Animator.m in Sources */,
+				84E5D8BB187DD183002B07CC /* ChatMessage.m in Sources */,
 				8408892718785CD3004B84BD /* TabBarViewController.m in Sources */,
 				846BCDB2187C2FEB00A27C9C /* NSURL+Tools.m in Sources */,
 				846BCDA3187BF42A00A27C9C /* LibraryViewController.m in Sources */,
