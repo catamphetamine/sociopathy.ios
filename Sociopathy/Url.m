@@ -11,10 +11,15 @@
 #import "AppDelegate.h"
 #import "NSDictionary+HttpTools.h"
 
+static int kChatMessagesPerPage = 18;
+
 @implementation Url
 {
     NSString* httpPrefix;
     NSString* backendPrefix;
+    NSString* userSpacePrefix;
+    
+    NSNumber* chatMessagesPerPage;
 }
 
 - (id) initWithAppDelegate: (AppDelegate*) appDelegate
@@ -23,48 +28,70 @@
     {
         httpPrefix = [@"http://" stringByAppendingString:appDelegate.settings[@"domain"]];
         backendPrefix = appDelegate.settings[@"backendPrefix"];
+        userSpacePrefix = appDelegate.settings[@"userSpacePrefix"];
+        
+        chatMessagesPerPage = [NSNumber numberWithInt:kChatMessagesPerPage];
     }
     return self;
 }
 
-- (NSURL*) libraryArticleMarkup: (LibraryArticle*) article
+- (NSURL*) withPath: (NSString*) path
+           prefixes: (NSArray*) prefixes
+         parameters: (NSDictionary*) parameters
 {
     NSMutableString* url = [NSMutableString new];
     
-    [url appendString:backendPrefix];
-    [url appendString:@"/читальня/заметка/разметка"];
+    for (NSString* prefix in prefixes)
+    {
+        [url appendString:prefix];
+    }
+    
+    [url appendString:path];
     
     url = [[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
     
-    NSDictionary* parameters = @
+    if (parameters)
+    {
+        [url appendString:@"?"];
+        [url appendString:[parameters httpParameters]];
+    }
+    
+    return [NSURL URLWithString:[httpPrefix stringByAppendingString:url]];
+}
+
+- (NSURL*) chatMessages
+{
+    return [self withPath:@"/болталка/сообщения" prefixes:@[backendPrefix, userSpacePrefix] parameters:@
+    {
+        @"сколько": [chatMessagesPerPage stringValue],
+        @"первый_раз": @"true"
+    }];
+}
+
+- (NSURL*) libraryArticleMarkup: (LibraryArticle*) article
+{
+    return [self withPath:@"/читальня/заметка/разметка" prefixes:@[backendPrefix] parameters:@
     {
         @"_id": article.id,
         @"разметка": @"html"
-    };
-    
-    [url appendString:@"?"];
-    [url appendString:[parameters httpParameters]];
-    
-    return [NSURL URLWithString:[httpPrefix stringByAppendingString:url]];
+    }];
 }
 
 - (NSURL*) libraryCategoryTinyIcon: (LibraryCategory*) category
 {
     if (!category.icon_version)
         return nil;
+
+    NSMutableString* path = [NSMutableString new];
     
-    NSMutableString* url = [NSMutableString new];
+    [path appendString:@"/загруженное/читальня/разделы/"];
+    [path appendString:category.id];
+    [path appendString:@"/крошечная обложка.jpg"];
     
-    [url appendString:@"/загруженное/читальня/разделы/"];
-    [url appendString:category.id];
-    [url appendString:@"/крошечная обложка.jpg"];
-    
-    url = [[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
-    
-    [url appendString:@"?version="];
-    [url appendString:[category.icon_version stringValue]];
-     
-    return [NSURL URLWithString:[httpPrefix stringByAppendingString:url]];
+    return [self withPath:path prefixes:nil parameters:@
+    {
+        @"version": [category.icon_version stringValue]
+    }];
 }
 
 @end
