@@ -10,6 +10,6 @@
 
 #import "LibraryArticle.h"
 
-@interface LibraryArticleViewController : UIViewController
+@interface LibraryArticleViewController : UIViewController <UIWebViewDelegate>
 @property(nonatomic) LibraryArticle* article;
 @end

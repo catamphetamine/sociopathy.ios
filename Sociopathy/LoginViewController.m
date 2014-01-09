@@ -42,11 +42,11 @@
 {
     if (self = [super initWithCoder:decoder])
     {
+        appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
         borderColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
         //activeBorderColor = [UIColor colorWithRed:0.878 green:0 blue:0.133 alpha:1.0];
         placeholderColor = [UIColor colorWithRed:0.118 green:0.118 blue:0.118 alpha:1.0];
-        
-        appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     }
     return self;
 }
@@ -67,183 +67,17 @@
     [login setPlaceholderColor:placeholderColor];
     [password setPlaceholderColor:placeholderColor];
     
-    [logoIcon setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [logoText setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [login setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [password setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [loginButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [loginProgressIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [errorMessage setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
     loginProgressIndicator.hidden = YES;
     loginProgressIndicator.alpha = 0;
     
     errorMessage.hidden = YES;
     errorMessage.alpha = 0;
     
-    NSDictionary* views = NSDictionaryOfVariableBindings(logoIcon, logoText, login, password, loginButton, loginProgressIndicator, errorMessage);
-    
-    // center logo icon horizontally
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:logoIcon
-                                                          attribute:NSLayoutAttributeCenterX
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterX
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    // center logo text horizontally
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:logoText
-                                                          attribute:NSLayoutAttributeCenterX
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterX
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    // center login horizontally
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:login
-                                                          attribute:NSLayoutAttributeCenterX
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterX
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    // center password horizontally
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:password
-                                                          attribute:NSLayoutAttributeCenterX
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterX
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    // center login button horizontally
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:loginButton
-                                                          attribute:NSLayoutAttributeCenterX
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterX
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    // center login button progress horizontally
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:loginProgressIndicator
-                                                          attribute:NSLayoutAttributeCenterX
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterX
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    // center login vertically and shift it upward
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:login
-                                                          attribute:NSLayoutAttributeBottom
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterY
-                                                         multiplier:1.0
-                                                           constant:appDelegate.iPad ? -20 : -5]];
-    
-    // set login width
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:login
-                                                          attribute:NSLayoutAttributeWidth
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:nil
-                                                          attribute:NSLayoutAttributeNotAnAttribute
-                                                         multiplier:1
-                                                           constant:190.0]];
-    
-    // set login height
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:login
-                                                          attribute:NSLayoutAttributeHeight
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:nil
-                                                          attribute:NSLayoutAttributeNotAnAttribute
-                                                         multiplier:1
-                                                           constant:36.0]];
-    
-    // set password width
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:password
-                                                          attribute:NSLayoutAttributeWidth
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:login
-                                                          attribute:NSLayoutAttributeWidth
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    // set password height
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:password
-                                                          attribute:NSLayoutAttributeHeight
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:login
-                                                          attribute:NSLayoutAttributeHeight
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    // place logo text above login
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:logoText
-                                                          attribute:NSLayoutAttributeBottom
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:login
-                                                          attribute:NSLayoutAttributeTop
-                                                         multiplier:1.0
-                                                           constant:appDelegate.iPad ? -60 : -30]];
-    
-    // place logo icon above logo text
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:logoIcon
-                                                          attribute:NSLayoutAttributeBottom
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:logoText
-                                                          attribute:NSLayoutAttributeTop
-                                                         multiplier:1.0
-                                                           constant:-40.0]];
-    
-    // place password under login
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:password
-                                                          attribute:NSLayoutAttributeTop
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:login
-                                                          attribute:NSLayoutAttributeBottom
-                                                         multiplier:1.0
-                                                           constant:10.0]];
-    
-    // place login button under password
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:loginButton
-                                                          attribute:NSLayoutAttributeTop
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:password
-                                                          attribute:NSLayoutAttributeBottom
-                                                         multiplier:1.0
-                                                           constant:15.0]];
-    
-    // place login button indicator at the same point as the login button
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:loginProgressIndicator
-                                                          attribute:NSLayoutAttributeCenterY
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:loginButton
-                                                          attribute:NSLayoutAttributeCenterY
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    // place error message under login button
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:errorMessage
-                                                          attribute:NSLayoutAttributeTop
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:loginButton
-                                                          attribute:NSLayoutAttributeBottom
-                                                         multiplier:1.0
-                                                           constant:appDelegate.iPad ? 40 : 10]];
-    
-    // size error message
-    
-    NSDictionary* metrics = @{ @"sideMargin": @20.0 };
-    
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-sideMargin-[errorMessage]-sideMargin-|"
-                                                                      options:0
-                                                                      metrics:metrics
-                                                                        views:views]];
+    // on iPad:
+    //
+    // login field center y constant += 15 pt (should dismiss this)
+    // place logo text 30 pt higher
+    // place error message 30 pt lower
 }
 
 - (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation) toOrientation

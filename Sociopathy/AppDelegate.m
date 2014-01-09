@@ -70,6 +70,16 @@
     _iPad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
     _iPhone = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone;
     
+    if (_iPad)
+    {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+                                                        message:@"The version for iPad is under development and is out of date. Run the application on iPhone"
+                                                       delegate:nil
+                                              cancelButtonTitle:NSLocalizedString(@"Error. Dismiss", nil)
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
     // Override point for customization after application launch.
     return YES;
 }

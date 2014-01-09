@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChatViewController : UICollectionViewController
+@interface ChatViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end

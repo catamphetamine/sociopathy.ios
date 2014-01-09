@@ -9,12 +9,14 @@
 #import "LibraryArticleViewController.h"
 #import "Url.h"
 #import "AppDelegate.h"
+#import "UIViewController+TopBarAndBottomBarSpacing.h"
 
 @implementation LibraryArticleViewController
 {
+    __weak AppDelegate* appDelegate;
+    
     __weak IBOutlet UIActivityIndicatorView* progressIndicator;
     __weak IBOutlet UIWebView* webView;
-    __weak AppDelegate* appDelegate;
 }
 
 - (id) initWithCoder: (NSCoder*) decoder
@@ -26,6 +28,13 @@
     return self;
 }
 
+- (void) viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    [self insetOnTopAndBottom:webView];
+}
+
 - (void) viewDidLoad
 {
     [super viewDidLoad];
@@ -33,6 +42,7 @@
     self.title = _article.title;
     
     [progressIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
+    //[webView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     //progressIndicator.hidden = YES;
     //progressIndicator.alpha = 0;
@@ -140,9 +150,8 @@
        
        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
        
+       webView.delegate = self;
        [webView loadHTMLString:markup baseURL:nil];
-       
-       [progressIndicator stopAnimating];
    });
 }
 
@@ -153,6 +162,17 @@
                                           cancelButtonTitle:NSLocalizedString(@"Error. Dismiss", nil)
                                           otherButtonTitles:nil];
     [alert show];
+}
+
+- (void) webViewDidFinishLoad: (UIWebView*) webView
+{
+    [progressIndicator stopAnimating];
+    webView.hidden = NO;
+}
+
+- (void) dealloc
+{
+    webView.delegate = nil;
 }
 
 /*

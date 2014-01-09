@@ -17,6 +17,7 @@
 #import "Url.h"
 #import "ImageRequest.h"
 #import "LibraryArticleViewController.h"
+#import "UIViewController+TopBarAndBottomBarSpacing.h"
 
 typedef enum LibrarySection
 {
@@ -32,8 +33,10 @@ static int kCategoryCellHeight = 42;
 
 @implementation LibraryViewController
 {
-    __weak IBOutlet UIActivityIndicatorView* progressIndicator;
     __weak AppDelegate* appDelegate;
+    
+    __weak IBOutlet UIActivityIndicatorView* progressIndicator;
+    __weak IBOutlet UICollectionView* collectionView;
     
     NSMutableArray* categories;
     NSMutableArray* articles;
@@ -48,11 +51,11 @@ static int kCategoryCellHeight = 42;
     if (self = [super initWithCoder:decoder])
     {
         appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
         iconBorderColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1.0];
     }
     return self;
 }
-
 
 - (void) viewDidLoad
 {
@@ -63,43 +66,19 @@ static int kCategoryCellHeight = 42;
         self.title = _category.title;
     }
     
-    /*
-    UIView* scrollView = [self collectionView];
+    collectionView.delegate = self;
+    collectionView.dataSource = self;
     
-    NSDictionary* views = NSDictionaryOfVariableBindings(scrollView);
-    
-    [scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scrollView]|" options:0 metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scrollView]|" options:0 metrics:nil views:views]];
-    */
-    
-    [progressIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
-    //progressIndicator.hidden = YES;
-    //progressIndicator.alpha = 0;
-    
-    // center progress indicator horizontally
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:progressIndicator
-                                                          attribute:NSLayoutAttributeCenterX
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterX
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    // center progress indicator vertically
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:progressIndicator
-                                                          attribute:NSLayoutAttributeCenterY
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterY
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    [self collectionView].allowsMultipleSelection = NO;
+    collectionView.allowsMultipleSelection = NO;
     
     [self fetchContent];
+}
+
+- (void) viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    [self insetOnTopAndBottom:collectionView];
 }
 
 - (void) fetchContent
@@ -202,8 +181,9 @@ static int kCategoryCellHeight = 42;
     {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
-        [self.collectionView reloadData];
+        [collectionView reloadData];
         
+        collectionView.hidden = NO;
         [progressIndicator stopAnimating];
     });
 }
@@ -314,8 +294,8 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
     NSLog(@"selected item = %d",currentVisibleItem.row);
     */
     
-    NSLog(@"%f", [self collectionView].bounds.size.width);
-    NSLog(@"%f", [self collectionView].bounds.size.height);
+    NSLog(@"%f", collectionView.bounds.size.width);
+    NSLog(@"%f", collectionView.bounds.size.height);
     
     //[[self collectionView].collectionViewLayout invalidateLayout];
 }
@@ -371,6 +351,10 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
                     }];
                 }
             }
+            else
+            {
+                cell.icon.image = [UIImage imageNamed:@"no library category icon"];
+            }
             
             cell.label.text = [category title];
             cell.label.numberOfLines = 1;
@@ -385,6 +369,8 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
             
             cell.label.preferredMaxLayoutWidth = [cell.label alignmentRectForFrame:cell.label.frame].size.width;
             
+            //cell.icon.frame = CGRectMake(0, 0, 0, 0);
+            
             break;
         }
     }
@@ -397,7 +383,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
 {
     if ([identifier isEqualToString:@"showArticle"])
     {
-        NSArray* selectedCellsPaths = self.collectionView.indexPathsForSelectedItems;
+        NSArray* selectedCellsPaths = collectionView.indexPathsForSelectedItems;
         NSIndexPath* selectedCellPath = [selectedCellsPaths objectAtIndex:0];
         
         return selectedCellPath.section == LibrarySection_Articles;
@@ -405,7 +391,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
     
     if ([identifier isEqualToString:@"enterCategory"])
     {
-        NSArray* selectedCellsPaths = self.collectionView.indexPathsForSelectedItems;
+        NSArray* selectedCellsPaths = collectionView.indexPathsForSelectedItems;
         NSIndexPath* selectedCellPath = [selectedCellsPaths objectAtIndex:0];
         
         if (selectedCellPath.section == LibrarySection_Articles)
@@ -424,7 +410,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
 {
     if ([segue.identifier isEqualToString:@"showArticle"])
     {
-        NSArray* selectedCellsPaths = self.collectionView.indexPathsForSelectedItems;
+        NSArray* selectedCellsPaths = collectionView.indexPathsForSelectedItems;
         NSIndexPath* selectedCellPath = [selectedCellsPaths objectAtIndex:0];
         
         LibraryArticleViewController* articleController = (LibraryArticleViewController*) segue.destinationViewController;
@@ -433,7 +419,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
     
     if ([segue.identifier isEqualToString:@"enterCategory"])
     {
-        NSArray* selectedCellsPaths = self.collectionView.indexPathsForSelectedItems;
+        NSArray* selectedCellsPaths = collectionView.indexPathsForSelectedItems;
         NSIndexPath* selectedCellPath = [selectedCellsPaths objectAtIndex:0];
         
         LibraryViewController* categoryController = (LibraryViewController*) segue.destinationViewController;

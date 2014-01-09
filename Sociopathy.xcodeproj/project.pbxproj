@@ -42,7 +42,6 @@
 		846BCD80187AE58400A27C9C /* tab bar chat icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD7C187AE58400A27C9C /* tab bar chat icon.png */; };
 		846BCD81187AE58400A27C9C /* tab bar chat icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD7D187AE58400A27C9C /* tab bar chat icon@2x.png */; };
 		846BCD95187B379000A27C9C /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD91187B379000A27C9C /* Main_iPad.storyboard */; };
-		846BCD96187B379000A27C9C /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD93187B379000A27C9C /* Main_iPhone.storyboard */; };
 		846BCD9D187BCD5A00A27C9C /* UIImage+Transformations.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCD9C187BCD5A00A27C9C /* UIImage+Transformations.m */; };
 		846BCDA3187BF42A00A27C9C /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDA2187BF42A00A27C9C /* LibraryViewController.m */; };
 		846BCDA6187BF44100A27C9C /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDA5187BF44100A27C9C /* ChatViewController.m */; };
@@ -56,12 +55,18 @@
 		846BCDD1187CB56100A27C9C /* LibraryArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BCDD0187CB56100A27C9C /* LibraryArticleViewController.m */; };
 		84913A7D1877487A0032D34E /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84913A7C187748790032D34E /* settings.plist */; };
 		84E5D8A3187D993F002B07CC /* Main_iPad.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D89F187D993F002B07CC /* Main_iPad.strings */; };
-		84E5D8A4187D993F002B07CC /* Main_iPhone.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8A1187D993F002B07CC /* Main_iPhone.strings */; };
 		84E5D8A9187D9948002B07CC /* Main_iPad.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8A5187D9948002B07CC /* Main_iPad.strings */; };
-		84E5D8AA187D9948002B07CC /* Main_iPhone.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8A7187D9948002B07CC /* Main_iPhone.strings */; };
 		84E5D8BB187DD183002B07CC /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5D8BA187DD183002B07CC /* ChatMessage.m */; };
 		84E5D8BE187DD1C8002B07CC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5D8BD187DD1C8002B07CC /* User.m */; };
 		84E5D8C1187DD6C3002B07CC /* ChatMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5D8C0187DD6C3002B07CC /* ChatMessageCell.m */; };
+		84E5D8CC187EBB2A002B07CC /* no avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8CA187EBB2A002B07CC /* no avatar.png */; };
+		84E5D8CD187EBB2A002B07CC /* no avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8CB187EBB2A002B07CC /* no avatar@2x.png */; };
+		84E5D8D0187EBD2F002B07CC /* no library category icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8CE187EBD2F002B07CC /* no library category icon.png */; };
+		84E5D8D1187EBD2F002B07CC /* no library category icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8CF187EBD2F002B07CC /* no library category icon@2x.png */; };
+		84E5D8D6187EE16F002B07CC /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846BCD93187B379000A27C9C /* Main_iPhone.storyboard */; };
+		84E5D8D9187EE1A6002B07CC /* Main_iPhone.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8D7187EE1A6002B07CC /* Main_iPhone.strings */; };
+		84E5D8DC187EE1B2002B07CC /* Main_iPhone.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8DA187EE1B2002B07CC /* Main_iPhone.strings */; };
+		84E5D8E4187EF672002B07CC /* UIViewController+TopBarAndBottomBarSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5D8E3187EF672002B07CC /* UIViewController+TopBarAndBottomBarSpacing.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,7 +130,6 @@
 		846BCD7C187AE58400A27C9C /* tab bar chat icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab bar chat icon.png"; path = "pictures/tab bar/tab bar chat icon.png"; sourceTree = "<group>"; };
 		846BCD7D187AE58400A27C9C /* tab bar chat icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab bar chat icon@2x.png"; path = "pictures/tab bar/tab bar chat icon@2x.png"; sourceTree = "<group>"; };
 		846BCD92187B379000A27C9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		846BCD94187B379000A27C9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		846BCD9B187BCD5A00A27C9C /* UIImage+Transformations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Transformations.h"; sourceTree = "<group>"; };
 		846BCD9C187BCD5A00A27C9C /* UIImage+Transformations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Transformations.m"; sourceTree = "<group>"; };
 		846BCDA1187BF42A00A27C9C /* LibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController.h; sourceTree = "<group>"; };
@@ -150,12 +154,8 @@
 		846BCDD0187CB56100A27C9C /* LibraryArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryArticleViewController.m; sourceTree = "<group>"; };
 		84913A7C187748790032D34E /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		84E5D8A0187D993F002B07CC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Main_iPad.strings; sourceTree = "<group>"; };
-		84E5D8A2187D993F002B07CC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Main_iPhone.strings; sourceTree = "<group>"; };
 		84E5D8A6187D9948002B07CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Main_iPad.strings; sourceTree = "<group>"; };
-		84E5D8A8187D9948002B07CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Main_iPhone.strings; sourceTree = "<group>"; };
 		84E5D8B0187D9C34002B07CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPad.strings; sourceTree = "<group>"; };
-		84E5D8B4187D9C40002B07CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
-		84E5D8B6187D9C46002B07CC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		84E5D8B8187D9C50002B07CC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPad.strings; sourceTree = "<group>"; };
 		84E5D8B9187DD183002B07CC /* ChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessage.h; sourceTree = "<group>"; };
 		84E5D8BA187DD183002B07CC /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
@@ -163,6 +163,17 @@
 		84E5D8BD187DD1C8002B07CC /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		84E5D8BF187DD6C3002B07CC /* ChatMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageCell.h; sourceTree = "<group>"; };
 		84E5D8C0187DD6C3002B07CC /* ChatMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageCell.m; sourceTree = "<group>"; };
+		84E5D8CA187EBB2A002B07CC /* no avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no avatar.png"; path = "pictures/no avatar.png"; sourceTree = "<group>"; };
+		84E5D8CB187EBB2A002B07CC /* no avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no avatar@2x.png"; path = "pictures/no avatar@2x.png"; sourceTree = "<group>"; };
+		84E5D8CE187EBD2F002B07CC /* no library category icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no library category icon.png"; path = "pictures/no library category icon.png"; sourceTree = "<group>"; };
+		84E5D8CF187EBD2F002B07CC /* no library category icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no library category icon@2x.png"; path = "pictures/no library category icon@2x.png"; sourceTree = "<group>"; };
+		84E5D8D8187EE1A6002B07CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Main_iPhone.strings; sourceTree = "<group>"; };
+		84E5D8DB187EE1B2002B07CC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Main_iPhone.strings; sourceTree = "<group>"; };
+		84E5D8DE187EE1D1002B07CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		84E5D8E0187EE1D7002B07CC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
+		84E5D8E1187EE1DC002B07CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
+		84E5D8E2187EF672002B07CC /* UIViewController+TopBarAndBottomBarSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TopBarAndBottomBarSpacing.h"; sourceTree = "<group>"; };
+		84E5D8E3187EF672002B07CC /* UIViewController+TopBarAndBottomBarSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TopBarAndBottomBarSpacing.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +220,10 @@
 				846BCD7B187AE58400A27C9C /* tab bar archive icon@2x.png */,
 				846BCD7C187AE58400A27C9C /* tab bar chat icon.png */,
 				846BCD7D187AE58400A27C9C /* tab bar chat icon@2x.png */,
+				84E5D8CA187EBB2A002B07CC /* no avatar.png */,
+				84E5D8CB187EBB2A002B07CC /* no avatar@2x.png */,
+				84E5D8CE187EBD2F002B07CC /* no library category icon.png */,
+				84E5D8CF187EBD2F002B07CC /* no library category icon@2x.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -297,7 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				84E5D8A5187D9948002B07CC /* Main_iPad.strings */,
-				84E5D8A7187D9948002B07CC /* Main_iPhone.strings */,
+				84E5D8D7187EE1A6002B07CC /* Main_iPhone.strings */,
 				846BCD4618788A6900A27C9C /* Localizable.strings */,
 			);
 			path = en.lproj;
@@ -307,7 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				84E5D89F187D993F002B07CC /* Main_iPad.strings */,
-				84E5D8A1187D993F002B07CC /* Main_iPhone.strings */,
+				84E5D8DA187EE1B2002B07CC /* Main_iPhone.strings */,
 				846BCD4318788A6100A27C9C /* Localizable.strings */,
 			);
 			path = ru.lproj;
@@ -338,6 +353,8 @@
 				846BCD511879A48700A27C9C /* UITextField+Tools.m */,
 				846BCD9B187BCD5A00A27C9C /* UIImage+Transformations.h */,
 				846BCD9C187BCD5A00A27C9C /* UIImage+Transformations.m */,
+				84E5D8E2187EF672002B07CC /* UIViewController+TopBarAndBottomBarSpacing.h */,
+				84E5D8E3187EF672002B07CC /* UIViewController+TopBarAndBottomBarSpacing.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -439,23 +456,27 @@
 				846BCD611879A51900A27C9C /* iTunesArtwork@2x in Resources */,
 				846BCD81187AE58400A27C9C /* tab bar chat icon@2x.png in Resources */,
 				846BCD4818788A6900A27C9C /* Localizable.strings in Resources */,
+				84E5D8D6187EE16F002B07CC /* Main_iPhone.storyboard in Resources */,
 				8406883E186C25BA00AC61DE /* Images.xcassets in Resources */,
 				84068830186C25B900AC61DE /* InfoPlist.strings in Resources */,
+				84E5D8CC187EBB2A002B07CC /* no avatar.png in Resources */,
 				846BCD631879A51900A27C9C /* login screen logo icon@2x.png in Resources */,
 				846BCD7E187AE58400A27C9C /* tab bar archive icon.png in Resources */,
-				846BCD96187B379000A27C9C /* Main_iPhone.storyboard in Resources */,
+				84E5D8CD187EBB2A002B07CC /* no avatar@2x.png in Resources */,
 				846BCD651879A51900A27C9C /* login screen logo text@2x.png in Resources */,
 				846BCD7F187AE58400A27C9C /* tab bar archive icon@2x.png in Resources */,
+				84E5D8D9187EE1A6002B07CC /* Main_iPhone.strings in Resources */,
 				846BCD95187B379000A27C9C /* Main_iPad.storyboard in Resources */,
 				846BCD80187AE58400A27C9C /* tab bar chat icon.png in Resources */,
+				84E5D8D1187EBD2F002B07CC /* no library category icon@2x.png in Resources */,
 				846BCD601879A51900A27C9C /* iTunesArtwork in Resources */,
+				84E5D8DC187EE1B2002B07CC /* Main_iPhone.strings in Resources */,
 				84E5D8A3187D993F002B07CC /* Main_iPad.strings in Resources */,
 				846BCD641879A51900A27C9C /* login screen logo text.png in Resources */,
 				84E5D8A9187D9948002B07CC /* Main_iPad.strings in Resources */,
 				846BCD4518788A6100A27C9C /* Localizable.strings in Resources */,
 				8408892418785B69004B84BD /* README.md in Resources */,
-				84E5D8A4187D993F002B07CC /* Main_iPhone.strings in Resources */,
-				84E5D8AA187D9948002B07CC /* Main_iPhone.strings in Resources */,
+				84E5D8D0187EBD2F002B07CC /* no library category icon.png in Resources */,
 				84913A7D1877487A0032D34E /* settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,7 +503,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n# Update storyboard string files\n#\n# by 2013 André Pinto andredsp@gmail.com\n# based on http://forums.macrumors.com/showthread.php?t=1467446\n\nstoryboardExt=\".storyboard\"\nstringsExt=\".strings\"\nnewStringsExt=\".strings.new\"\noldStringsExt=\".strings.old\"\nlocaleDirExt=\".lproj\"\nbaselprojName=\"Base.lproj\"\n\n# Find Base internationalization folders\nfind . -name \"$baselprojName\" | while read baselprojPath\ndo\n# Get Base project dir\nbaselprojDir=$(dirname \"$baselprojPath\")\n\n# Find storyboard file full path inside base project folder\nfind \"$baselprojPath\" -name \"*$storyboardExt\" | while read storyboardPath\ndo\n# Get Base strings file full path\nbaseStringsPath=$(echo \"$storyboardPath\" | sed \"s/$storyboardExt/$stringsExt/\")\n\n# Get storyboard file name and folder\nstoryboardFile=$(basename \"$storyboardPath\")\nstoryboardDir=$(dirname \"$storyboardPath\")\n\n# Create strings file only when storyboard file newer\nnewer=$(find \"$storyboardPath\" -prune -newer \"$baseStringsPath\")\n[ -f \"$baseStringsPath\" -a -z \"$newer\" ] && {\n    echo \"$storyboardFile file not modified.\"\n    continue\n}\n\n# Get New Base strings file full path and strings file name\nnewBaseStringsPath=$(echo \"$storyboardPath\" | sed \"s/$storyboardExt/$newStringsExt/\")\nstringsFile=$(basename \"$baseStringsPath\")\n\necho \"Creating default $stringsFile for $storyboardFile...\"\nibtool --export-strings-file \"$newBaseStringsPath\" \"$storyboardPath\"\niconv -f UTF-16 -t UTF-8 \"$newBaseStringsPath\" > \"$baseStringsPath\"\nrm \"$newBaseStringsPath\"\n\n# Get all locale strings folder with same parent as Base\nls -d \"$baselprojDir/\"*\"$localeDirExt\" | while read localeStringsDir\ndo\n# Skip Base strings folder\n[ \"$localeStringsDir\" = \"$storyboardDir\" ] && continue\n\nlocaleDir=$(basename \"$localeStringsDir\")\nlocaleStringsPath=\"$localeStringsDir/$stringsFile\"\n\n# Just copy base strings file on first time\nif [ ! -e \"$localeStringsPath\" ]; then\necho \"Copying default $stringsFile for $localeDir...\"\ncp \"$baseStringsPath\" \"$localeStringsPath\"\nelse\necho \"Merging $stringsFile changes for $localeDir...\"\noldLocaleStringsPath=$(echo \"$localeStringsPath\" | sed \"s/$stringsExt/$oldStringsExt/\")\ncp \"$localeStringsPath\" \"$oldLocaleStringsPath\"\n\n# Merge baseStringsPath to localeStringsPath\nawk '\nNR == FNR && /^\\/\\*/ {\n    x=$0\n    getline\n    a[x]=$0\n    next\n}\n/^\\/\\*/ {\n    x=$0\n    print\n    getline\n    $0=a[x]?a[x]:$0\n    printf $0\"\\n\\n\"\n}'  \"$oldLocaleStringsPath\" \"$baseStringsPath\" > \"$localeStringsPath\"\n\nrm \"$oldLocaleStringsPath\"\nfi\ndone\ndone\ndone";
+			shellScript = "#!/bin/sh\n# Update storyboard string files\n#\n# by 2013 André Pinto andredsp@gmail.com\n# based on http://forums.macrumors.com/showthread.php?t=1467446\n\nexit 0\n\nstoryboardExt=\".storyboard\"\nstringsExt=\".strings\"\nnewStringsExt=\".strings.new\"\noldStringsExt=\".strings.old\"\nlocaleDirExt=\".lproj\"\nbaselprojName=\"Base.lproj\"\n\n# Find Base internationalization folders\nfind . -name \"$baselprojName\" | while read baselprojPath\ndo\n# Get Base project dir\nbaselprojDir=$(dirname \"$baselprojPath\")\n\n# Find storyboard file full path inside base project folder\nfind \"$baselprojPath\" -name \"*$storyboardExt\" | while read storyboardPath\ndo\n# Get Base strings file full path\nbaseStringsPath=$(echo \"$storyboardPath\" | sed \"s/$storyboardExt/$stringsExt/\")\n\n# Get storyboard file name and folder\nstoryboardFile=$(basename \"$storyboardPath\")\nstoryboardDir=$(dirname \"$storyboardPath\")\n\n# Create strings file only when storyboard file newer\nnewer=$(find \"$storyboardPath\" -prune -newer \"$baseStringsPath\")\n[ -f \"$baseStringsPath\" -a -z \"$newer\" ] && {\n    echo \"$storyboardFile file not modified.\"\n    continue\n}\n\n# Get New Base strings file full path and strings file name\nnewBaseStringsPath=$(echo \"$storyboardPath\" | sed \"s/$storyboardExt/$newStringsExt/\")\nstringsFile=$(basename \"$baseStringsPath\")\n\necho \"Creating default $stringsFile for $storyboardFile...\"\nibtool --export-strings-file \"$newBaseStringsPath\" \"$storyboardPath\"\niconv -f UTF-16 -t UTF-8 \"$newBaseStringsPath\" > \"$baseStringsPath\"\nrm \"$newBaseStringsPath\"\n\n# Get all locale strings folder with same parent as Base\nls -d \"$baselprojDir/\"*\"$localeDirExt\" | while read localeStringsDir\ndo\n# Skip Base strings folder\n[ \"$localeStringsDir\" = \"$storyboardDir\" ] && continue\n\nlocaleDir=$(basename \"$localeStringsDir\")\nlocaleStringsPath=\"$localeStringsDir/$stringsFile\"\n\n# Just copy base strings file on first time\nif [ ! -e \"$localeStringsPath\" ]; then\necho \"Copying default $stringsFile for $localeDir...\"\ncp \"$baseStringsPath\" \"$localeStringsPath\"\nelse\necho \"Merging $stringsFile changes for $localeDir...\"\noldLocaleStringsPath=$(echo \"$localeStringsPath\" | sed \"s/$stringsExt/$oldStringsExt/\")\ncp \"$localeStringsPath\" \"$oldLocaleStringsPath\"\n\n# Merge baseStringsPath to localeStringsPath\nawk '\nNR == FNR && /^\\/\\*/ {\n    x=$0\n    getline\n    a[x]=$0\n    next\n}\n/^\\/\\*/ {\n    x=$0\n    print\n    getline\n    $0=a[x]?a[x]:$0\n    printf $0\"\\n\\n\"\n}'  \"$oldLocaleStringsPath\" \"$baseStringsPath\" > \"$localeStringsPath\"\n\nrm \"$oldLocaleStringsPath\"\nfi\ndone\ndone\ndone";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -510,6 +531,7 @@
 				846BCDB2187C2FEB00A27C9C /* NSURL+Tools.m in Sources */,
 				846BCDA3187BF42A00A27C9C /* LibraryViewController.m in Sources */,
 				846BCD541879A48700A27C9C /* NSString+Tools.m in Sources */,
+				84E5D8E4187EF672002B07CC /* UIViewController+TopBarAndBottomBarSpacing.m in Sources */,
 				84068836186C25BA00AC61DE /* AppDelegate.m in Sources */,
 				846BCDCB187CA49400A27C9C /* Url.m in Sources */,
 				846BCD6E1879D14000A27C9C /* UIButton+Animator.m in Sources */,
@@ -585,9 +607,9 @@
 		846BCD93187B379000A27C9C /* Main_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				846BCD94187B379000A27C9C /* Base */,
-				84E5D8B4187D9C40002B07CC /* en */,
-				84E5D8B6187D9C46002B07CC /* ru */,
+				84E5D8DE187EE1D1002B07CC /* Base */,
+				84E5D8E0187EE1D7002B07CC /* ru */,
+				84E5D8E1187EE1DC002B07CC /* en */,
 			);
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
@@ -600,14 +622,6 @@
 			name = Main_iPad.strings;
 			sourceTree = "<group>";
 		};
-		84E5D8A1187D993F002B07CC /* Main_iPhone.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84E5D8A2187D993F002B07CC /* ru */,
-			);
-			name = Main_iPhone.strings;
-			sourceTree = "<group>";
-		};
 		84E5D8A5187D9948002B07CC /* Main_iPad.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -616,10 +630,18 @@
 			name = Main_iPad.strings;
 			sourceTree = "<group>";
 		};
-		84E5D8A7187D9948002B07CC /* Main_iPhone.strings */ = {
+		84E5D8D7187EE1A6002B07CC /* Main_iPhone.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				84E5D8A8187D9948002B07CC /* en */,
+				84E5D8D8187EE1A6002B07CC /* en */,
+			);
+			name = Main_iPhone.strings;
+			sourceTree = "<group>";
+		};
+		84E5D8DA187EE1B2002B07CC /* Main_iPhone.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84E5D8DB187EE1B2002B07CC /* ru */,
 			);
 			name = Main_iPhone.strings;
 			sourceTree = "<group>";

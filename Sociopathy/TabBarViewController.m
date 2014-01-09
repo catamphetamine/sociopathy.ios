@@ -34,25 +34,6 @@
     // make tab bar icon colors better
     
     [self enhanceTabBarIcons:@[@"tab bar archive icon", @"tab bar chat icon"]];
-        
-    // layout
-    
-    [tabBar setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
-    /*
-    NSDictionary *views = NSDictionaryOfVariableBindings(tabBar);
-    
-    // place the tab bar on the bottom
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[tabBar]|"
-                                                                      options:0
-                                                                      metrics:nil
-                                                                        views:views]];
-   
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tabBar]|"
-                                                                      options:0
-                                                                      metrics:nil
-                                                                        views:views]];
-     */
 }
 
 - (void) didReceiveMemoryWarning

@@ -11,6 +11,7 @@
 #import "ChatMessage.h"
 #import "ImageRequest.h"
 #import "ChatMessageCell.h"
+#import "UIViewController+TopBarAndBottomBarSpacing.h"
 
 @interface ChatViewController ()
 
@@ -19,7 +20,9 @@
 @implementation ChatViewController
 {
     __weak AppDelegate* appDelegate;
+    
     __weak IBOutlet UIActivityIndicatorView* progressIndicator;
+    __weak IBOutlet UICollectionView* collectionView;
     
     UIColor* avatarBorderColor;
     
@@ -31,6 +34,7 @@
     if (self = [super initWithCoder:decoder])
     {
         appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
         avatarBorderColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1.0];
     }
     return self;
@@ -40,27 +44,17 @@
 {
     [super viewDidLoad];
     
-    [progressIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
-    // center progress indicator horizontally
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:progressIndicator
-                                                          attribute:NSLayoutAttributeCenterX
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterX
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    // center progress indicator vertically
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:progressIndicator
-                                                          attribute:NSLayoutAttributeCenterY
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterY
-                                                         multiplier:1.0
-                                                           constant:0.0]];
+    collectionView.delegate = self;
+    collectionView.dataSource = self;
     
     [self fetchContent];
+}
+
+- (void) viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    [self insetOnTopAndBottom:collectionView];
 }
 
 - (void) fetchContent
@@ -157,8 +151,9 @@
        
        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
        
-       [self.collectionView reloadData];
+       [collectionView reloadData];
        
+       collectionView.hidden = NO;
        [progressIndicator stopAnimating];
    });
 }
@@ -216,14 +211,18 @@
              }];
         }
     }
+    else
+    {
+        cell.avatar.image = [UIImage imageNamed:@"no avatar"];
+    }
     
     [cell.content loadHTMLString:message.content baseURL:nil];
+    cell.content.delegate = cell;
     
     // переделать на нормальную давность типа: минутой ранее, часом ранее и т.п.
     
     NSDateFormatter* dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
-    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    [dateFormatter setDateFormat:@"dd.MM\nHH:mm"];
     
     cell.when.text = [dateFormatter stringFromDate:message.date];
     

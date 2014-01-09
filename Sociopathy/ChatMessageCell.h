@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChatMessageCell : UICollectionViewCell
+@interface ChatMessageCell : UICollectionViewCell <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UIWebView *content;
