@@ -67,6 +67,7 @@
 		84E5D8D9187EE1A6002B07CC /* Main_iPhone.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8D7187EE1A6002B07CC /* Main_iPhone.strings */; };
 		84E5D8DC187EE1B2002B07CC /* Main_iPhone.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E5D8DA187EE1B2002B07CC /* Main_iPhone.strings */; };
 		84E5D8E4187EF672002B07CC /* UIViewController+TopBarAndBottomBarSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5D8E3187EF672002B07CC /* UIViewController+TopBarAndBottomBarSpacing.m */; };
+		84E5D8E7187F21C5002B07CC /* ServerCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5D8E6187F21C5002B07CC /* ServerCommunication.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +175,8 @@
 		84E5D8E1187EE1DC002B07CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		84E5D8E2187EF672002B07CC /* UIViewController+TopBarAndBottomBarSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TopBarAndBottomBarSpacing.h"; sourceTree = "<group>"; };
 		84E5D8E3187EF672002B07CC /* UIViewController+TopBarAndBottomBarSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TopBarAndBottomBarSpacing.m"; sourceTree = "<group>"; };
+		84E5D8E5187F21C5002B07CC /* ServerCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerCommunication.h; sourceTree = "<group>"; };
+		84E5D8E6187F21C5002B07CC /* ServerCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerCommunication.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +275,8 @@
 				846BCDD0187CB56100A27C9C /* LibraryArticleViewController.m */,
 				846BCDC9187CA49400A27C9C /* Url.h */,
 				846BCDCA187CA49400A27C9C /* Url.m */,
+				84E5D8E5187F21C5002B07CC /* ServerCommunication.h */,
+				84E5D8E6187F21C5002B07CC /* ServerCommunication.m */,
 				846BCDB9187C628C00A27C9C /* model */,
 				8406883D186C25BA00AC61DE /* Images.xcassets */,
 				8406882C186C25B900AC61DE /* Supporting Files */,
@@ -527,6 +532,7 @@
 				846BCDCE187CA6D000A27C9C /* ImageRequest.m in Sources */,
 				846BCD6B1879CD4500A27C9C /* UIView+Animator.m in Sources */,
 				84E5D8BB187DD183002B07CC /* ChatMessage.m in Sources */,
+				84E5D8E7187F21C5002B07CC /* ServerCommunication.m in Sources */,
 				8408892718785CD3004B84BD /* TabBarViewController.m in Sources */,
 				846BCDB2187C2FEB00A27C9C /* NSURL+Tools.m in Sources */,
 				846BCDA3187BF42A00A27C9C /* LibraryViewController.m in Sources */,

@@ -106,72 +106,6 @@
     }
 }
 
-- (NSString*) remoteApiErrorMessage: (NSError*) error
-{
-    if ([error.localizedDescription isEqualToString:@"user not found"])
-    {
-        return [NSString localizedStringWithFormat:NSLocalizedString(@"Login. User doesn't exist", nil), [login.text trim]];
-    }
-    
-    if ([error.localizedDescription isEqualToString:@"wrong password"])
-    {
-        return NSLocalizedString(@"Login. Wrong password", nil);
-    }
-    
-    return [appDelegate remoteApiErrorMessage:error];
-}
-
-- (void) loginFailed: (NSError*) error
-{
-    dispatch_async(dispatch_get_main_queue(), ^
-    {
-        //NSLog(@"%@", error);
-    
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-        ActionBlock finish = ^
-        {
-            [self showError:[self remoteApiErrorMessage:error]];
-            [loginButton fadeIn:0.1];
-        };
-        
-        if ([loginProgressIndicator isVisible])
-        {
-            [loginProgressIndicator fadeOut:0.1 completion:^
-            {
-                [loginProgressIndicator stopAnimating];
-                
-                finish();
-            }];
-        }
-        else
-        {
-            finish();
-        }
-    });
-}
-
-- (void) loginSucceeded: (NSDictionary*) data
-{
-    dispatch_async(dispatch_get_main_queue(), ^
-    {
-        //NSLog(@"%@", data);
-
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-        if ([loginProgressIndicator isVisible])
-        {
-            [loginButton.layer removeAllAnimations];
-            [loginProgressIndicator fadeOut:0.1 completion:^
-            {
-                [loginProgressIndicator stopAnimating];
-            }];
-        }
-        
-        [self performSegueWithIdentifier:@"goToMainScreenAfterLogin" sender:self];
-    });
-}
-
 - (void) showError: (NSString*) message
 {
     errorMessage.text = message;
@@ -214,72 +148,66 @@
     
     NSURL* url = [NSURL URLWithString:appDelegate.urls[@"login"]];
     
-    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:url];
-    [request setHTTPMethod:@"POST"];
-    
     NSDictionary* loginCredentials = @
     {
         @"имя": [login.text trim],
         @"пароль": [password.text trim]
     };
+    
+    [[[ServerCommunication alloc] initWithSession:appDelegate.session delegate:self] communicate:url method:@"post" parameters:loginCredentials];
+}
 
-    __weak typeof(self) controller = self;
-    
-    NSURLSessionUploadTask* checkCredentials = [appDelegate.session
-                                          uploadTaskWithRequest:request
-                                          fromData:[loginCredentials postParameters]
-                                          completionHandler:^(NSData *data,
-                                                              NSURLResponse *response,
-                                                              NSError *error)
+- (void) communicationFailed: (NSError*) error
+                     message: (NSString*) errorMessage
+{
+    ActionBlock finish = ^
     {
-        if (error)
+        [self showError:errorMessage];
+        [loginButton fadeIn:0.1];
+    };
+   
+    if ([loginProgressIndicator isVisible])
+    {
+        [loginProgressIndicator fadeOut:0.1 completion:^
         {
-            return [controller loginFailed:[NSError error:error.localizedDescription code:RemoteApiError_HttpConnectionError]];
-        }
+            [loginProgressIndicator stopAnimating];
+            
+            finish();
+        }];
+    }
+    else
+    {
+        finish();
+    }
+}
+
+- (NSString*) communicationErrorMessage: (NSError*) error
+{
+    if ([error.localizedDescription isEqualToString:@"user not found"])
+    {
+        return [NSString localizedStringWithFormat:NSLocalizedString(@"Login. User doesn't exist", nil), [login.text trim]];
+    }
     
-        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
-        if (httpResponse.statusCode != 200)
-        {
-            return [controller loginFailed:[NSError error:[NSString stringWithFormat:@"(%d)", httpResponse.statusCode] code:RemoteApiError_HttpResponseError]];
-        }
+    if ([error.localizedDescription isEqualToString:@"wrong password"])
+    {
+        return NSLocalizedString(@"Login. Wrong password", nil);
+    }
     
-        /*
-        NSArray* cookies = [NSHTTPCookie
-                            cookiesWithResponseHeaderFields:[httpResponse allHeaderFields]
-                            forURL:[NSURL URLWithString:@""]]; // send to URL, return NSArray
-        
-        for (NSHTTPCookie* cookie in cookies)
+    return nil;
+}
+
+- (void) serverResponds: (NSDictionary*) data
+{
+    if ([loginProgressIndicator isVisible])
+    {
+        [loginButton.layer removeAllAnimations];
+        [loginProgressIndicator fadeOut:0.1 completion:^
         {
-            if ([cookie.name isEqualToString:@"user"])
-            {
-                appDelegate.userSessionId = cookie.value;
-            }
-        }
-        */
-        
-        NSError* jsonError;
-        
-        NSDictionary* json =
-        [NSJSONSerialization JSONObjectWithData:data
-                                        options:NSJSONReadingAllowFragments
-                                          error:&jsonError];
-        
-        if (jsonError)
-        {
-            return [controller loginFailed:[NSError error:jsonError.localizedDescription code:RemoteApiError_JsonError]];
-        }
-        
-        if (json[@"error"])
-        {
-            return [controller loginFailed:[NSError error:json[@"error"] code:RemoteApiError_ServerError]];
-        }
-        
-        [controller loginSucceeded:json];
-    }];
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    [checkCredentials resume];
+            [loginProgressIndicator stopAnimating];
+        }];
+    }
+   
+    [self performSegueWithIdentifier:@"goToMainScreenAfterLogin" sender:self];
 }
 
 - (void) updateLabelPreferredMaxLayoutWidthToCurrentWidth: (UILabel*) label

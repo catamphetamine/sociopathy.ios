@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 #import "LibraryArticle.h"
+#import "ServerCommunication.h"
 
-@interface LibraryArticleViewController : UIViewController <UIWebViewDelegate>
+@interface LibraryArticleViewController : UIViewController <UIWebViewDelegate, ServerCommunicationDelegate>
 @property(nonatomic) LibraryArticle* article;
 @end

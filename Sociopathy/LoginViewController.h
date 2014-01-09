@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServerCommunication.h"
 
-@interface LoginViewController : UIViewController <UITextFieldDelegate>
+@interface LoginViewController : UIViewController <UITextFieldDelegate, ServerCommunicationDelegate>
 
 @end

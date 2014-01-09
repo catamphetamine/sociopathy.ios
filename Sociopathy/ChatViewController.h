@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServerCommunication.h"
 
-@interface ChatViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ChatViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, ServerCommunicationDelegate>
 
 @end

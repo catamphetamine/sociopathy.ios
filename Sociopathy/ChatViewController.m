@@ -61,72 +61,18 @@
 {
     NSURL* url = [appDelegate.url chatMessages];
     
-    //NSLog(@"%@", url);
-    
-    __weak typeof(self) controller = self;
-    
-    NSURLSessionDataTask* fetchContent = [appDelegate.session
-                                          dataTaskWithURL:url
-                                          completionHandler:^(NSData* data,
-                                                              NSURLResponse* response,
-                                                              NSError* error)
-      {
-          if (error)
-          {
-              return [controller fetchFailed:[NSError error:error.localizedDescription code:RemoteApiError_HttpConnectionError]];
-          }
-          
-          NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
-          if (httpResponse.statusCode != 200)
-          {
-              return [controller fetchFailed:[NSError error:[NSString stringWithFormat:@"(%d)", httpResponse.statusCode] code:RemoteApiError_HttpResponseError]];
-          }
-          
-          NSError* jsonError;
-          
-          NSDictionary* json =
-          [NSJSONSerialization JSONObjectWithData:data
-                                          options:NSJSONReadingAllowFragments
-                                            error:&jsonError];
-          
-          if (jsonError)
-          {
-              return [controller fetchFailed:[NSError error:jsonError.localizedDescription code:RemoteApiError_JsonError]];
-          }
-          
-          if (json[@"error"])
-          {
-              return [controller fetchFailed:[NSError error:json[@"error"] code:RemoteApiError_ServerError]];
-          }
-          
-          [controller fetchSucceeded:json];
-      }];
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    [fetchContent resume];
+    [[[ServerCommunication alloc] initWithSession:appDelegate.session delegate:self] communicate:url method:nil parameters:nil];
 }
 
-- (NSString*) remoteApiErrorMessage: (NSError*) error
+- (void) communicationFailed: (NSError*) error
+                     message: (NSString*) errorMessage
 {
-    return [appDelegate remoteApiErrorMessage:error];
+    [progressIndicator stopAnimating];
+   
+    [self showError:errorMessage];
 }
 
-- (void) fetchFailed: (NSError*) error
-{
-    dispatch_async(dispatch_get_main_queue(), ^
-   {
-       //NSLog(@"%@", error);
-       
-       [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-       
-       [progressIndicator stopAnimating];
-       
-       [self showError:[self remoteApiErrorMessage:error]];
-   });
-}
-
-- (void) fetchSucceeded: (NSDictionary*) data
+- (void) whenServerResponds: (NSDictionary*) data
 {
     messages = [NSMutableArray new];
     
@@ -135,27 +81,14 @@
         ChatMessage* message = [[ChatMessage alloc] initWithJSON:messageData];
         [messages addObject:message];
     }
+}
     
-    /*
-    [messages sortUsingComparator:^NSComparisonResult(ChatMessage* first, ChatMessage* second)
-     {
-         return [first.id compare:second.id];
-     }];
-    */
-    
-    //NSLog(@"%@", messages);
-    
-    dispatch_async(dispatch_get_main_queue(), ^
-   {
-       //NSLog(@"%@", data);
+- (void) serverResponds: (NSDictionary*) data
+{
+    [collectionView reloadData];
        
-       [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-       
-       [collectionView reloadData];
-       
-       collectionView.hidden = NO;
-       [progressIndicator stopAnimating];
-   });
+    collectionView.hidden = NO;
+    [progressIndicator stopAnimating];
 }
 
 - (void) showError: (NSString*) message
@@ -172,7 +105,6 @@
 {
     return [messages count];
 }
-
 
 - (UICollectionViewCell*) collectionView: (UICollectionView*) collectionView
                   cellForItemAtIndexPath: (NSIndexPath*) indexPath

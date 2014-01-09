@@ -83,21 +83,6 @@
     // Override point for customization after application launch.
     return YES;
 }
-
-- (NSString*) remoteApiErrorMessage: (NSError*) error
-{
-    if (error.code == RemoteApiError_HttpConnectionError || error.code == RemoteApiError_HttpResponseError)
-    {
-        return NSLocalizedString(@"Remote Api. Connection to the server failed", nil);
-    }
-    
-    if (error.code == RemoteApiError_JsonError || error.code == RemoteApiError_ServerError)
-    {
-        return NSLocalizedString(@"Remote Api. Server error", nil);
-    }
-    
-    return NSLocalizedString(@"Remote Api. Generic error", nil);
-}
 							
 - (void) applicationWillResignActive: (UIApplication*) application
 {

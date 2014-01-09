@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "LibraryCategory.h"
+#import "ServerCommunication.h"
 
-@interface LibraryViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface LibraryViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, ServerCommunicationDelegate>
 
 @property(nonatomic) LibraryCategory* category;
 @end

@@ -13,15 +13,6 @@
 
 typedef void (^ActionBlock)(void);
 
-typedef enum
-{
-    RemoteApiError_HttpConnectionError = 1,
-    RemoteApiError_HttpResponseError = 2,
-    RemoteApiError_JsonError = 3,
-    RemoteApiError_ServerError = 4
-}
-RemoteApiErrors;
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic) UIWindow* window;
