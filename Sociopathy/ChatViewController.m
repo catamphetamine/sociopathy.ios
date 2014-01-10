@@ -22,7 +22,7 @@
     __weak AppDelegate* appDelegate;
     
     __weak IBOutlet UIActivityIndicatorView* progressIndicator;
-    __weak IBOutlet UICollectionView* collectionView;
+    __weak IBOutlet UITableView* tableView;
     
     UIColor* avatarBorderColor;
     
@@ -44,8 +44,8 @@
 {
     [super viewDidLoad];
     
-    collectionView.delegate = self;
-    collectionView.dataSource = self;
+    tableView.delegate = self;
+    tableView.dataSource = self;
     
     [self fetchContent];
 }
@@ -54,7 +54,7 @@
 {
     [super viewDidLayoutSubviews];
     
-    [self insetOnTopAndBottom:collectionView];
+    [self insetOnTopAndBottom:tableView];
 }
 
 - (void) fetchContent
@@ -85,9 +85,9 @@
     
 - (void) serverResponds: (NSDictionary*) data
 {
-    [collectionView reloadData];
+    [tableView reloadData];
        
-    collectionView.hidden = NO;
+    tableView.hidden = NO;
     [progressIndicator stopAnimating];
 }
 
@@ -100,17 +100,16 @@
     [alert show];
 }
 
-- (NSInteger) collectionView: (UICollectionView*) tableView
-      numberOfItemsInSection: (NSInteger) section
+- (NSInteger) tableView: (UITableView*) tableView
+      numberOfRowsInSection: (NSInteger) section
 {
     return [messages count];
 }
 
-- (UICollectionViewCell*) collectionView: (UICollectionView*) collectionView
-                  cellForItemAtIndexPath: (NSIndexPath*) indexPath
+- (UITableViewCell*) tableView: (UITableView*) tableView
+                  cellForRowAtIndexPath: (NSIndexPath*) indexPath
 {
-    ChatMessageCell* cell = [collectionView
-                                       dequeueReusableCellWithReuseIdentifier:@"ChatMessageCell"
+    ChatMessageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"ChatMessageCell"
                                        forIndexPath:indexPath];
     
     long row = [indexPath row];
@@ -136,9 +135,9 @@
         {
             [request startWithCompletion:^(UIImage* image, NSError* error)
              {
-                 if (image && [[collectionView indexPathsForVisibleItems] containsObject:indexPath])
+                 if (image && [[tableView indexPathsForVisibleRows] containsObject:indexPath])
                  {
-                     [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
                  }
              }];
         }
@@ -147,6 +146,9 @@
     {
         cell.avatar.image = [UIImage imageNamed:@"no avatar"];
     }
+    
+    cell.content.scrollView.scrollEnabled = NO;
+    cell.content.scrollView.bounces = NO;
     
     [cell.content loadHTMLString:message.content baseURL:nil];
     cell.content.delegate = cell;

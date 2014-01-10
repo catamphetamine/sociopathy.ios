@@ -13,7 +13,7 @@
 #import "NSURL+Tools.h"
 #import "LibraryCategory.h"
 #import "LibraryArticle.h"
-#import "LibraryCollectionViewCell.h"
+#import "LibraryCell.h"
 #import "Url.h"
 #import "ImageRequest.h"
 #import "LibraryArticleViewController.h"
@@ -36,7 +36,7 @@ static int kCategoryCellHeight = 42;
     __weak AppDelegate* appDelegate;
     
     __weak IBOutlet UIActivityIndicatorView* progressIndicator;
-    __weak IBOutlet UICollectionView* collectionView;
+    __weak IBOutlet UITableView* tableView;
     
     NSMutableArray* categories;
     NSMutableArray* articles;
@@ -66,10 +66,11 @@ static int kCategoryCellHeight = 42;
         self.title = _category.title;
     }
     
-    collectionView.delegate = self;
-    collectionView.dataSource = self;
+    // UIEdgeInsetsMake(<#CGFloat top#>, <#CGFloat left#>, <#CGFloat bottom#>, <#CGFloat right#>)
+    tableView.contentInset = UIEdgeInsetsMake(10, 10, 10, 0);
     
-    collectionView.allowsMultipleSelection = NO;
+    tableView.delegate = self;
+    tableView.dataSource = self;
     
     [self fetchContent];
 }
@@ -78,7 +79,7 @@ static int kCategoryCellHeight = 42;
 {
     [super viewDidLayoutSubviews];
     
-    [self insetOnTopAndBottom:collectionView];
+    [self insetOnTopAndBottom:tableView];
 }
 
 - (void) fetchContent
@@ -129,9 +130,9 @@ static int kCategoryCellHeight = 42;
 
 - (void) serverResponds: (NSDictionary*) data
 {
-    [collectionView reloadData];
+    [tableView reloadData];
     
-    collectionView.hidden = NO;
+    tableView.hidden = NO;
     [progressIndicator stopAnimating];
 }
 
@@ -144,13 +145,13 @@ static int kCategoryCellHeight = 42;
     [alert show];
 }
 
-- (NSInteger) numberOfSectionsInCollectionView: (UICollectionView*) collectionView
+- (NSInteger) numberOfSectionsInTableView: (UITableView*) tableView
 {
     return 2;
 }
 
-- (NSInteger) collectionView: (UICollectionView*) collectionView
-      numberOfItemsInSection: (NSInteger) section
+- (NSInteger) tableView: (UITableView*) tableView
+  numberOfRowsInSection: (NSInteger) section
 {
     switch (section)
     {
@@ -164,6 +165,7 @@ static int kCategoryCellHeight = 42;
     return 0;
 }
 
+/*
 - (UIEdgeInsets) collectionView: (UICollectionView*) collectionView
                          layout: (UICollectionViewLayout*) collectionViewLayout
          insetForSectionAtIndex: (NSInteger) section
@@ -199,6 +201,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
     
     return 0;
 }
+*/
 
 /*
 - (CGSize) collectionView: (UICollectionView*) collectionView
@@ -241,8 +244,8 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
     NSLog(@"selected item = %d",currentVisibleItem.row);
     */
     
-    NSLog(@"%f", collectionView.bounds.size.width);
-    NSLog(@"%f", collectionView.bounds.size.height);
+    NSLog(@"%f", tableView.bounds.size.width);
+    NSLog(@"%f", tableView.bounds.size.height);
     
     //[[self collectionView].collectionViewLayout invalidateLayout];
 }
@@ -257,12 +260,11 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
 }
 */
 
-- (UICollectionViewCell*) collectionView: (UICollectionView*) collectionView
-                  cellForItemAtIndexPath: (NSIndexPath*) indexPath
+- (UITableViewCell*) tableView: (UITableView*) tableView
+         cellForRowAtIndexPath: (NSIndexPath*) indexPath
 {
-    LibraryCollectionViewCell* cell = [collectionView
-                                         dequeueReusableCellWithReuseIdentifier:@"LibraryCell"
-                                                                   forIndexPath:indexPath];
+    LibraryCell* cell = [tableView dequeueReusableCellWithIdentifier:@"LibraryCell"
+                                                        forIndexPath:indexPath];
     
     long row = [indexPath row];
     
@@ -291,9 +293,10 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
                 {
                     [request startWithCompletion:^(UIImage* image, NSError* error)
                     {
-                        if (image && [[collectionView indexPathsForVisibleItems] containsObject:indexPath])
+                        // if loaded image and still visible
+                        if (image && [[tableView indexPathsForVisibleRows] containsObject:indexPath])
                         {
-                            [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
                         }
                     }];
                 }
@@ -303,6 +306,8 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
                 cell.icon.image = [UIImage imageNamed:@"no library category icon"];
             }
             
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
             cell.label.text = [category title];
             cell.label.numberOfLines = 1;
             break;
@@ -310,6 +315,8 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
             
         case LibrarySection_Articles:
         {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            
             cell.icon.image = nil;
             cell.label.text = [[articles objectAtIndex:row] title];
             cell.label.numberOfLines = 0;
@@ -330,7 +337,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
 {
     if ([identifier isEqualToString:@"showArticle"])
     {
-        NSArray* selectedCellsPaths = collectionView.indexPathsForSelectedItems;
+        NSArray* selectedCellsPaths = tableView.indexPathsForSelectedRows;
         NSIndexPath* selectedCellPath = [selectedCellsPaths objectAtIndex:0];
         
         return selectedCellPath.section == LibrarySection_Articles;
@@ -338,7 +345,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
     
     if ([identifier isEqualToString:@"enterCategory"])
     {
-        NSArray* selectedCellsPaths = collectionView.indexPathsForSelectedItems;
+        NSArray* selectedCellsPaths = tableView.indexPathsForSelectedRows;
         NSIndexPath* selectedCellPath = [selectedCellsPaths objectAtIndex:0];
         
         if (selectedCellPath.section == LibrarySection_Articles)
@@ -357,7 +364,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
 {
     if ([segue.identifier isEqualToString:@"showArticle"])
     {
-        NSArray* selectedCellsPaths = collectionView.indexPathsForSelectedItems;
+        NSArray* selectedCellsPaths = tableView.indexPathsForSelectedRows;
         NSIndexPath* selectedCellPath = [selectedCellsPaths objectAtIndex:0];
         
         LibraryArticleViewController* articleController = (LibraryArticleViewController*) segue.destinationViewController;
@@ -366,7 +373,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
     
     if ([segue.identifier isEqualToString:@"enterCategory"])
     {
-        NSArray* selectedCellsPaths = collectionView.indexPathsForSelectedItems;
+        NSArray* selectedCellsPaths = tableView.indexPathsForSelectedRows;
         NSIndexPath* selectedCellPath = [selectedCellsPaths objectAtIndex:0];
         
         LibraryViewController* categoryController = (LibraryViewController*) segue.destinationViewController;

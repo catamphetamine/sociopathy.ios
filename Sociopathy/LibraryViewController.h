@@ -10,7 +10,7 @@
 #import "LibraryCategory.h"
 #import "ServerCommunication.h"
 
-@interface LibraryViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, ServerCommunicationDelegate>
+@interface LibraryViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, ServerCommunicationDelegate>
 
 @property(nonatomic) LibraryCategory* category;
 @end

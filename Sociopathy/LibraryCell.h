@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LibraryCollectionViewCell : UICollectionViewCell
+@interface LibraryCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel* label;
 @property (weak, nonatomic) IBOutlet UIImageView* icon;

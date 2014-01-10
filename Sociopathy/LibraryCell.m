@@ -7,9 +7,9 @@
 //  Copyright (c) 2014 kuchumovn. All rights reserved.
 //
 
-#import "LibraryCollectionViewCell.h"
+#import "LibraryCell.h"
 
-@implementation LibraryCollectionViewCell
+@implementation LibraryCell
 
 - (id) initWithFrame: (CGRect) frame
 {

@@ -10,11 +10,10 @@
 
 @implementation ChatMessageCell
 
-- (id)initWithFrame:(CGRect)frame
+- (id) initWithCoder: (NSCoder*) aDecoder
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+    if (self = [super initWithCoder:aDecoder])
+    {
     }
     return self;
 }

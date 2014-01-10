@@ -13,10 +13,10 @@
 {
     UIEdgeInsets inset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, self.bottomLayoutGuide.length, 0);
     
-    if ([subview isKindOfClass:[UICollectionView class]])
+    if ([subview isKindOfClass:[UIScrollView class]])
     {
-        UICollectionView* collectionView = (UICollectionView*) subview;
-        collectionView.contentInset = inset;
+        UIScrollView* scrollView = (UIScrollView*) subview;
+        scrollView.contentInset = inset;
     }
     else if ([subview isKindOfClass:[UIWebView class]])
     {
