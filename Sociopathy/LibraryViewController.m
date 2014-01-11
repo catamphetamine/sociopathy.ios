@@ -13,7 +13,8 @@
 #import "NSURL+Tools.h"
 #import "LibraryCategory.h"
 #import "LibraryArticle.h"
-#import "LibraryCell.h"
+#import "LibraryCategoryCell.h"
+#import "LibraryArticleCell.h"
 #import "Url.h"
 #import "ImageRequest.h"
 #import "LibraryArticleViewController.h"
@@ -25,8 +26,6 @@ typedef enum LibrarySection
     LibrarySection_Articles = 1
 }
 LibrarySection;
-
-static int kCategoryCellHeight = 42;
 
 @interface LibraryViewController ()
 @end
@@ -40,10 +39,6 @@ static int kCategoryCellHeight = 42;
     
     NSMutableArray* categories;
     NSMutableArray* articles;
-    
-    UIColor* iconBorderColor;
-    
-    LibraryArticle* article;
 }
 
 - (id) initWithCoder: (NSCoder*) decoder
@@ -51,8 +46,6 @@ static int kCategoryCellHeight = 42;
     if (self = [super initWithCoder:decoder])
     {
         appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        
-        iconBorderColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1.0];
     }
     return self;
 }
@@ -72,7 +65,108 @@ static int kCategoryCellHeight = 42;
     tableView.delegate = self;
     tableView.dataSource = self;
     
+    
+    /*
+    self.articleSizingCell.autoresizingMask = UIViewAutoresizingFlexibleWidth; // this must be set for the cell heights to be calculated correctly in landscape
+    self.articleSizingCell.hidden = YES;
+    
+    [tableView addSubview:self.sizingCell];
+    
+    self.sizingCell.frame = CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 0);
+    
+    
+    NSLog(@"%@", self.sizingCell.label);
+    */
+    
     [self fetchContent];
+}
+
+- (void) viewWillAppear: (BOOL) animated
+{
+    [super viewWillAppear:animated];
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+}
+
+- (CGFloat) tableView: (UITableView*) tableView heightForRowAtIndexPath: (NSIndexPath*) indexPath
+{
+    static LibraryArticleCell* categorySizingCell;
+    static LibraryArticleCell* articleSizingCell;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^
+    {
+        categorySizingCell = (LibraryCategoryCell*)[tableView dequeueReusableCellWithIdentifier: @"LibraryCategoryCell"];
+        articleSizingCell = (LibraryArticleCell*)[tableView dequeueReusableCellWithIdentifier: @"LibraryArticleCell"];
+    });
+    
+    long row = [indexPath row];
+    
+    switch (indexPath.section)
+    {
+        case LibrarySection_Categories:
+        {
+            return categorySizingCell.bounds.size.height;
+        }
+        
+        case LibrarySection_Articles:
+        {
+            [articleSizingCell article:[articles objectAtIndex:row]];
+            
+            // force layout
+            [articleSizingCell setNeedsLayout];
+            [articleSizingCell layoutIfNeeded];
+            
+            // get the fitting size
+            CGSize fittingSize = [articleSizingCell.contentView systemLayoutSizeFittingSize: UILayoutFittingCompressedSize];
+            //NSLog( @"fittingSize: %@", NSStringFromCGSize( fittingSize ));
+            
+            return fittingSize.height;
+        }
+    }
+
+    return 0;
+    
+    /*
+    
+    NSLog(@"cell");
+    NSLog(@"%@", self.sizingCell.label.text);
+    
+//    self.sizingCell.message = message;
+    
+    [self.sizingCell setNeedsLayout];
+    [self.sizingCell layoutIfNeeded];
+    
+    NSLog(@"%f", [self.sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height);
+    
+    calculatedHeight = [self.sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    
+    return calculatedHeight;
+     */
+}
+
+- (CGFloat) tableView: (UITableView*) tableView heightForHeaderInSection: (NSInteger) section
+{
+    switch (section)
+    {
+        case LibrarySection_Categories:
+        {
+            return 5;
+        }
+            
+        case LibrarySection_Articles:
+        {
+            return 5;
+        }
+    }
+    
+    return 0;
+}
+
+- (UIView*) tableView: (UITableView*) tableView viewForHeaderInSection: (NSInteger) section
+{
+    UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [headerView setBackgroundColor:[UIColor whiteColor]];
+    return headerView;
 }
 
 - (void) viewDidLayoutSubviews
@@ -263,19 +357,18 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
 - (UITableViewCell*) tableView: (UITableView*) tableView
          cellForRowAtIndexPath: (NSIndexPath*) indexPath
 {
-    LibraryCell* cell = [tableView dequeueReusableCellWithIdentifier:@"LibraryCell"
-                                                        forIndexPath:indexPath];
-    
     long row = [indexPath row];
     
     switch (indexPath.section)
     {
         case LibrarySection_Categories:
         {
+            LibraryCategoryCell* cell = [tableView dequeueReusableCellWithIdentifier:@"LibraryCategoryCell"
+                                                                        forIndexPath:indexPath];
+            
             LibraryCategory* category = [categories objectAtIndex:row];
             
-            [cell.icon.layer setBorderColor:[iconBorderColor CGColor]];
-            [cell.icon.layer setBorderWidth:1.0];
+            [cell category:category];
             
             NSURL* url = [appDelegate.url libraryCategoryTinyIcon:category];
             
@@ -301,35 +394,21 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
                     }];
                 }
             }
-            else
-            {
-                cell.icon.image = [UIImage imageNamed:@"no library category icon"];
-            }
             
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            
-            cell.label.text = [category title];
-            cell.label.numberOfLines = 1;
-            break;
+            return cell;
         }
             
         case LibrarySection_Articles:
         {
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            LibraryArticleCell* cell = [tableView dequeueReusableCellWithIdentifier:@"LibraryArticleCell"
+                                                                       forIndexPath:indexPath];
             
-            cell.icon.image = nil;
-            cell.label.text = [[articles objectAtIndex:row] title];
-            cell.label.numberOfLines = 0;
-            
-            cell.label.preferredMaxLayoutWidth = [cell.label alignmentRectForFrame:cell.label.frame].size.width;
-            
-            //cell.icon.frame = CGRectMake(0, 0, 0, 0);
-            
-            break;
+            [cell article:[articles objectAtIndex:row]];
+            return cell;
         }
     }
     
-    return cell;
+    return nil;
 }
 
 - (BOOL) shouldPerformSegueWithIdentifier: (NSString*) identifier

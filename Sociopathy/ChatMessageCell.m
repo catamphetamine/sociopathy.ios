@@ -18,18 +18,19 @@
     return self;
 }
 
+- (void) prepareForReuse
+{
+    [super prepareForReuse];
+    
+    // empty the web view
+    [self.content stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML = \"\";"];
+    self.content.hidden = YES;
+}
+
 - (void) webViewDidFinishLoad: (UIWebView*) webView
 {
     [webView sizeToFit];
-    
-    /*
-    CGRect frame = webView.frame;
-    CGSize fittingSize = [webView sizeThatFits:CGSizeZero];
-    frame.size = fittingSize;
-    webView.frame = frame;
-    */
-    
-    //[webView setFrame:CGRectMake(webView.frame.origin.x, webView.frame.origin.y, 300.0, webView.frame.size.height)];
+    webView.hidden = NO;
 }
 
 - (void) dealloc

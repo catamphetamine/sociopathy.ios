@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LibraryCell : UITableViewCell
+#import "LibraryCategory.h"
 
-@property (weak, nonatomic) IBOutlet UILabel* label;
+@interface LibraryCategoryCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel* title;
 @property (weak, nonatomic) IBOutlet UIImageView* icon;
 
+- (void) category: (LibraryCategory*) category;
 @end

@@ -137,6 +137,8 @@
 
 - (IBAction) performLogin: (id) sender
 {
+    [self hideError];
+    
     if (![self validateForm])
         return;
     
@@ -208,20 +210,6 @@
     }
    
     [self performSegueWithIdentifier:@"goToMainScreenAfterLogin" sender:self];
-}
-
-- (void) updateLabelPreferredMaxLayoutWidthToCurrentWidth: (UILabel*) label
-{
-    label.preferredMaxLayoutWidth = [label alignmentRectForFrame:label.frame].size.width;
-}
-
-- (void) viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    [self updateLabelPreferredMaxLayoutWidthToCurrentWidth:errorMessage];
-    
-    [self.view layoutSubviews];
 }
 
 - (BOOL) textFieldShouldReturn: (UITextField*) textField

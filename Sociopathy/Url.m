@@ -99,7 +99,12 @@ static int kChatMessagesPerPage = 18;
     
     [path appendString:@"/загруженное/читальня/разделы/"];
     [path appendString:category.id];
-    [path appendString:@"/крошечная обложка.jpg"];
+    [path appendString:@"/крошечная обложка"];
+    
+    if ([[UIScreen mainScreen] scale] > 1.5)
+        [path appendString:@"@2x"];
+      
+    [path appendString:@".png"];
     
     return [self withPath:path prefixes:nil parameters:@
     {
@@ -116,7 +121,12 @@ static int kChatMessagesPerPage = 18;
     
     [path appendString:@"/загруженное/люди/"];
     [path appendString:user.identifier];
-    [path appendString:@"/картинка/чуть меньше.jpg"];
+    [path appendString:@"/картинка/чуть меньше"];
+    
+    if ([[UIScreen mainScreen] scale] > 1.5)
+        [path appendString:@"@2x"];
+    
+    [path appendString:@".png"];
     
     return [self withPath:path prefixes:nil parameters:@
     {
