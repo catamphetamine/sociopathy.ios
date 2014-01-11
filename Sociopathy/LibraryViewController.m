@@ -226,23 +226,6 @@ LibrarySection;
     return 0;
 }
 
-- (void) willRotateToInterfaceOrientation: (UIInterfaceOrientation) toInterfaceOrientation
-                                 duration: (NSTimeInterval) duration
-{
-    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-    
-    /*
-    NSArray* currentVisibleItems = self.collectionView.indexPathsForVisibleItems;
-    currentVisibleItem = [currentVisibleItems objectAtIndex:0];
-    NSLog(@"selected item = %d",currentVisibleItem.row);
-    */
-    
-    NSLog(@"%f", tableView.bounds.size.width);
-    NSLog(@"%f", tableView.bounds.size.height);
-    
-    //[[self collectionView].collectionViewLayout invalidateLayout];
-}
-
 - (UITableViewCell*) tableView: (UITableView*) tableView
          cellForRowAtIndexPath: (NSIndexPath*) indexPath
 {

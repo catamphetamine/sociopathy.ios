@@ -1,3 +1,5 @@
+// http://keighl.com/post/welcome-to-auto-layout/
+
 // https://github.com/jszumski/auto-layout-table-cells/blob/master/DynamicCellHeights/NSDate%2BTimeAgo.m
 
 #import "NSDate+TimeAgo.h"
