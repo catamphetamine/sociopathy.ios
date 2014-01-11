@@ -1,0 +1,23 @@
+/* Class = "IBUITextField"; placeholder = "Пароль"; ObjectID = "Co0-wT-tEd"; */
+"Co0-wT-tEd.placeholder" = "Password";
+
+/* Class = "IBUINavigationItem"; title = "Library"; ObjectID = "aGr-El-fv2"; */
+"aGr-El-fv2.title" = "Library";
+
+/* Class = "IBUITabBarItem"; title = "Library"; ObjectID = "bGp-HC-SMH"; */
+"bGp-HC-SMH.title" = "Library";
+
+/* Class = "IBUITextField"; placeholder = "Имя"; ObjectID = "bSv-Pz-lMm"; */
+"bSv-Pz-lMm.placeholder" = "Name";
+
+/* Class = "IBUITabBarItem"; title = "Chat"; ObjectID = "dSS-lg-zIx"; */
+"dSS-lg-zIx.title" = "Chat";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "fVp-8r-IT5"; */
+"fVp-8r-IT5.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "hn3-DP-f8i"; */
+"hn3-DP-f8i.text" = "Label";
+
+/* Class = "IBUIButton"; normalTitle = "Войти"; ObjectID = "zRf-ph-uh7"; */
+"zRf-ph-uh7.normalTitle" = "Sign in";
