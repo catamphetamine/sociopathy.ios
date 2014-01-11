@@ -12,6 +12,8 @@
 @implementation LibraryCategoryCell
 
 /*
+ or this: self.contentView.bounds = CGRectMake(0, 0, 99999, 99999);
+ 
  - (id) initWithCoder: (NSCoder*) decoder
  {
  if (self = [super initWithCoder:decoder])

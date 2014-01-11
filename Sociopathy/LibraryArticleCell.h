@@ -14,5 +14,4 @@
 
 @property (weak, nonatomic) IBOutlet UILabel* title;
 - (void) article: (LibraryArticle*) article;
-- (NSArray*) multilineLabels;
 @end

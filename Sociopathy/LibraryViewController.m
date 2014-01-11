@@ -59,24 +59,8 @@ LibrarySection;
         self.title = _category.title;
     }
     
-    // UIEdgeInsetsMake(<#CGFloat top#>, <#CGFloat left#>, <#CGFloat bottom#>, <#CGFloat right#>)
-    tableView.contentInset = UIEdgeInsetsMake(10, 10, 10, 0);
-    
     tableView.delegate = self;
     tableView.dataSource = self;
-    
-    
-    /*
-    self.articleSizingCell.autoresizingMask = UIViewAutoresizingFlexibleWidth; // this must be set for the cell heights to be calculated correctly in landscape
-    self.articleSizingCell.hidden = YES;
-    
-    [tableView addSubview:self.sizingCell];
-    
-    self.sizingCell.frame = CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 0);
-    
-    
-    NSLog(@"%@", self.sizingCell.label);
-    */
     
     [self fetchContent];
 }
@@ -125,23 +109,6 @@ LibrarySection;
     }
 
     return 0;
-    
-    /*
-    
-    NSLog(@"cell");
-    NSLog(@"%@", self.sizingCell.label.text);
-    
-//    self.sizingCell.message = message;
-    
-    [self.sizingCell setNeedsLayout];
-    [self.sizingCell layoutIfNeeded];
-    
-    NSLog(@"%f", [self.sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height);
-    
-    calculatedHeight = [self.sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-    
-    return calculatedHeight;
-     */
 }
 
 - (CGFloat) tableView: (UITableView*) tableView heightForHeaderInSection: (NSInteger) section
@@ -259,74 +226,6 @@ LibrarySection;
     return 0;
 }
 
-/*
-- (UIEdgeInsets) collectionView: (UICollectionView*) collectionView
-                         layout: (UICollectionViewLayout*) collectionViewLayout
-         insetForSectionAtIndex: (NSInteger) section
-{
-    // (top, left, bottom, right)
-    
-    switch (section)
-    {
-        case LibrarySection_Categories:
-            // (top, left, bottom, right)
-            return UIEdgeInsetsMake(15, 15, 0, 15);
-            
-        case LibrarySection_Articles:
-            // (top, left, bottom, right)
-            return UIEdgeInsetsMake(0, 15, 0, 15);
-    }
-    
-    return UIEdgeInsetsMake(0, 0, 0, 0);
-}
-
-- (CGFloat) collectionView: (UICollectionView*) collectionView
-                    layout: (UICollectionViewLayout*) collectionViewLayout
-minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
-{
-    switch (section)
-    {
-        case LibrarySection_Categories:
-            return 7.0;
-            
-        case LibrarySection_Articles:
-            return 0;
-    }
-    
-    return 0;
-}
-*/
-
-/*
-- (CGSize) collectionView: (UICollectionView*) collectionView
-                   layout: (UICollectionViewLayout*) collectionViewLayout
-   sizeForItemAtIndexPath: (NSIndexPath*) indexPath
-{
-//    CGSize collectionViewSize = [[self collectionView].collectionViewLayout collectionViewContentSize];
-    
-//    return CGSizeMake(collectionViewSize.width, kCategoryCellHeight);
-    
-    float collectionViewWidth = [[UIApplication sharedApplication] keyWindow].frame.size.width;
-    
-    switch ([UIApplication sharedApplication].statusBarOrientation)
-    {
-        case UIInterfaceOrientationPortrait:
-        case UIInterfaceOrientationPortraitUpsideDown:
-        {
-            return CGSizeMake(collectionViewWidth, kCategoryCellHeight);
-        }
-        
-        case UIInterfaceOrientationLandscapeLeft:
-        case UIInterfaceOrientationLandscapeRight:
-        {
-            return CGSizeMake(collectionViewWidth, kCategoryCellHeight);
-        }
-    }
-    
-    return CGSizeMake(0, 0);
-}
-*/
-
 - (void) willRotateToInterfaceOrientation: (UIInterfaceOrientation) toInterfaceOrientation
                                  duration: (NSTimeInterval) duration
 {
@@ -343,16 +242,6 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger) section
     
     //[[self collectionView].collectionViewLayout invalidateLayout];
 }
-
-/*
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-    
-    [self.collectionView.collectionViewLayout invalidateLayout];
-    [self.collectionView scrollToItemAtIndexPath:currentVisibleItem atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
-}
-*/
 
 - (UITableViewCell*) tableView: (UITableView*) tableView
          cellForRowAtIndexPath: (NSIndexPath*) indexPath
