@@ -9,6 +9,7 @@
 // http://stackoverflow.com/questions/15799432/poor-uicollectionview-scrolling-performance-with-uiimage
 
 // can be improved with collectionView:didEndDisplayingCell:forItemAtIndexPath:
+// and tableView:didEndDisplayingCell:forRowAtIndexPath:
 
 // This class keeps track of in-flight instances, creating only one NSURLConnection for
 // multiple matching requests (requests with matching URLs).  It also uses NSCache to cache

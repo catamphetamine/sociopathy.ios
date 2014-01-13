@@ -25,9 +25,6 @@
     __weak IBOutlet UITableView* tableView;
     
     NSMutableArray* messages;
-    
-    NSMutableDictionary* rowHeightCache;
-    NSMutableArray* rowHeightCacheLeft;
 }
 
 - (id) initWithCoder: (NSCoder*) decoder
@@ -35,8 +32,6 @@
     if (self = [super initWithCoder:decoder])
     {
         appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        rowHeightCache = [NSMutableDictionary dictionary];
-        rowHeightCacheLeft = [NSMutableArray new];
     }
     return self;
 }
@@ -93,9 +88,6 @@
 - (void) serverResponds: (NSDictionary*) data
 {
     [tableView reloadData];
-    
-    //tableView.hidden = NO;
-    //[progressIndicator stopAnimating];
 }
 
 - (void) showError: (NSString*) message
@@ -111,39 +103,10 @@
 {
     [super viewWillAppear:animated];
     
-    NSLog(@"viewWillAppear");
-}
-
-- (void) viewWillDisappear: (BOOL) animated
-{
-    NSLog(@"viewWillDisappear");
-    
-    [super viewWillDisappear:animated];
-}
-
-- (void) height: (CGFloat) height
-     forMessage: (ChatMessage*) message
-{
-    rowHeightCache[message.id] = @(height);
-    
-    //NSLog(@"caching height %f for message %@", height, message.id);
-    
-    [rowHeightCacheLeft removeObject:message.id];
-    
-    if (rowHeightCacheLeft && rowHeightCacheLeft.count == 0)
-    {
-        //NSLog(@"update table view");
-        
-        rowHeightCacheLeft = nil;
-        
-        //[tableView beginUpdates];
-        //[tableView endUpdates];
-        
-        tableView.hidden = NO;
-        progressIndicator.hidden = YES;
-        
-        [tableView reloadData];
-    }
+    // quick fix
+    // without this line, table view cell's subviews heights will be reset to the ones from Interface Builder
+    // can be improved by caching UIWebViews while calling [tableView reloadData]
+    [tableView reloadData];
 }
 
 - (CGFloat) tableView: (UITableView*) tableView heightForRowAtIndexPath: (NSIndexPath*) indexPath
@@ -162,19 +125,7 @@
     
     ChatMessage* message = [messages objectAtIndex:row];
     
-    NSNumber* cachedHeight = rowHeightCache[message.id];
-    
-    //NSLog(@"height for row %ld is %@", row, cachedHeight);
-    
-    CGFloat height = minimumHeight;
-    
-    if (cachedHeight != nil)
-    {
-        if ([cachedHeight floatValue] > height)
-            height = [cachedHeight floatValue];
-    }
-    
-    return height;
+    return [self getHeightForRowId:message.id minimumHeight:minimumHeight];
 }
 
 - (CGFloat) tableView: (UITableView*) tableView heightForHeaderInSection: (NSInteger) section
@@ -190,14 +141,14 @@
 - (UIView*) tableView: (UITableView*) tableView viewForHeaderInSection: (NSInteger) section
 {
     UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    [headerView setBackgroundColor:[UIColor whiteColor]];
+    [headerView setBackgroundColor:[UIColor clearColor]];
     return headerView;
 }
 
 - (UIView*) tableView: (UITableView*) tableView viewForFooterInSection: (NSInteger) section
 {
     UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    [headerView setBackgroundColor:[UIColor whiteColor]];
+    [headerView setBackgroundColor:[UIColor clearColor]];
     return headerView;
 }
 
@@ -217,11 +168,7 @@
 
     ChatMessage* message = [messages objectAtIndex:row];
     
-    if (rowHeightCache[message.id] == nil)
-    {
-        rowHeightCache[message.id] = [NSNumber numberWithInt:0];
-        [rowHeightCacheLeft addObject:message.id];
-    }
+    [self calculateRowHeightIfNeeded:message.id];
     
     cell.chatViewController = self;
     
@@ -242,19 +189,14 @@
     return cell;
 }
 
-- (void) willRotateToInterfaceOrientation: (UIInterfaceOrientation) toOrientation
-                                 duration: (NSTimeInterval) duration
+- (UITableView*) tableView
 {
-    [super willRotateToInterfaceOrientation:toOrientation duration:duration];
-    
-    tableView.hidden = YES;
-    progressIndicator.hidden = NO;
-    [progressIndicator startAnimating];
-    
-    [rowHeightCache removeAllObjects];
-    rowHeightCacheLeft = [NSMutableArray new];
-    
-    [tableView reloadData];
+    return tableView;
+}
+
+- (UIActivityIndicatorView*) busyIndicator
+{
+    return progressIndicator;
 }
 
 - (void) didReceiveMemoryWarning

@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ServerCommunication.h"
-#import "ChatMessage.h"
 
-@interface ChatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ServerCommunicationDelegate>
+#import "DynamicRowHeightTableViewController.h"
 
-- (void) height: (CGFloat) height
-     forMessage: (ChatMessage*) message;
+@interface ChatViewController : DynamicRowHeightTableViewController <UITableViewDataSource, UITableViewDelegate, ServerCommunicationDelegate>
 @end

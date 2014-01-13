@@ -147,14 +147,14 @@ LibrarySection;
 - (UIView*) tableView: (UITableView*) tableView viewForHeaderInSection: (NSInteger) section
 {
     UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    [headerView setBackgroundColor:[UIColor whiteColor]];
+    [headerView setBackgroundColor:[UIColor clearColor]];
     return headerView;
 }
 
 - (UIView*) tableView: (UITableView*) tableView viewForFooterInSection: (NSInteger) section
 {
     UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    [headerView setBackgroundColor:[UIColor whiteColor]];
+    [headerView setBackgroundColor:[UIColor clearColor]];
     return headerView;
 }
 

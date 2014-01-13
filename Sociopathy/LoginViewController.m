@@ -78,8 +78,8 @@
     errorMessage.hidden = YES;
     errorMessage.alpha = 0;
     
-    login.text = @"test";
-    password.text = @"123";
+    //login.text = @"test";
+    //password.text = @"123";
     //[self performLogin:nil];
     
     // on iPad:

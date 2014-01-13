@@ -47,8 +47,10 @@
     
     // переделать на нормальную давность типа: минутой ранее, часом ранее и т.п. (NSDate+TimeAgo)
     
+    static NSString* const dateFormat = @"dd.MM\nHH:mm";
+    
     NSDateFormatter* dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"dd.MM\nHH:mm"];
+    [dateFormatter setDateFormat:dateFormat];
     
     self.when.text = [dateFormatter stringFromDate:message.date];
 }
@@ -76,7 +78,7 @@
     
     CGFloat height = webView.bounds.size.height;
     
-    [self.chatViewController height:height forMessage:message];
+    [self.chatViewController height:height forRowId:message.id];
 }
 
 - (void) dealloc
