@@ -36,12 +36,7 @@
 - (void) category: (LibraryCategory*) category
 {
     static UIColor* iconBorderColor;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^
-    {
-        iconBorderColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1.0];
-    });
+    iconBorderColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1.0];
 
     [self.icon.layer setBorderColor:[iconBorderColor CGColor]];
     [self.icon.layer setBorderWidth:1.0];

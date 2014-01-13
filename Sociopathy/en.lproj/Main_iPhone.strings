@@ -1,8 +1,8 @@
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "8AL-LF-zeA"; */
+"8AL-LF-zeA.text" = "Label";
+
 /* Class = "IBUITextField"; placeholder = "Пароль"; ObjectID = "Co0-wT-tEd"; */
 "Co0-wT-tEd.placeholder" = "Password";
-
-/* Class = "IBUINavigationItem"; title = "Library"; ObjectID = "aGr-El-fv2"; */
-"aGr-El-fv2.title" = "Library";
 
 /* Class = "IBUITabBarItem"; title = "Library"; ObjectID = "bGp-HC-SMH"; */
 "bGp-HC-SMH.title" = "Library";
@@ -16,8 +16,12 @@
 /* Class = "IBUILabel"; text = "Label"; ObjectID = "fVp-8r-IT5"; */
 "fVp-8r-IT5.text" = "Label";
 
-/* Class = "IBUILabel"; text = "Label"; ObjectID = "hn3-DP-f8i"; */
-"hn3-DP-f8i.text" = "Label";
+/* Class = "IBUILabel"; text = "Empty"; ObjectID = "qKz-df-Mfh"; */
+"qKz-df-Mfh.text" = "Empty";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "ujR-Om-xVT"; */
+"ujR-Om-xVT.text" = "Label";
 
 /* Class = "IBUIButton"; normalTitle = "Войти"; ObjectID = "zRf-ph-uh7"; */
 "zRf-ph-uh7.normalTitle" = "Sign in";
+

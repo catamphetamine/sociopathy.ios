@@ -36,6 +36,7 @@ LibrarySection;
     
     __weak IBOutlet UIActivityIndicatorView* progressIndicator;
     __weak IBOutlet UITableView* tableView;
+    __weak IBOutlet UILabel* isEmpty;
     
     NSMutableArray* categories;
     NSMutableArray* articles;
@@ -75,6 +76,7 @@ LibrarySection;
 {
     static LibraryArticleCell* categorySizingCell;
     static LibraryArticleCell* articleSizingCell;
+    
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^
@@ -129,7 +131,27 @@ LibrarySection;
     return 0;
 }
 
+- (CGFloat) tableView: (UITableView*) tableView heightForFooterInSection: (NSInteger) section
+{
+    switch (section)
+    {
+        case LibrarySection_Articles:
+        {
+            return 5;
+        }
+    }
+    
+    return 0;
+}
+
 - (UIView*) tableView: (UITableView*) tableView viewForHeaderInSection: (NSInteger) section
+{
+    UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [headerView setBackgroundColor:[UIColor whiteColor]];
+    return headerView;
+}
+
+- (UIView*) tableView: (UITableView*) tableView viewForFooterInSection: (NSInteger) section
 {
     UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     [headerView setBackgroundColor:[UIColor whiteColor]];
@@ -186,14 +208,21 @@ LibrarySection;
     {
         return [first.order compare:second.order];
     }];
-    
 }
 
 - (void) serverResponds: (NSDictionary*) data
 {
-    [tableView reloadData];
+    if (categories.count > 0 || articles.count > 0)
+    {
+        [tableView reloadData];
+        
+        tableView.hidden = NO;
+    }
+    else
+    {
+        isEmpty.hidden = NO;
+    }
     
-    tableView.hidden = NO;
     [progressIndicator stopAnimating];
 }
 
@@ -246,25 +275,12 @@ LibrarySection;
             
             if (url)
             {
-                ImageRequest* request = [[ImageRequest alloc] initWithURL:url];
+                ImageRequest* request = [[ImageRequest alloc] initWithURL:url tableView:tableView indexPath:indexPath];
                 
-                UIImage* image = [request cachedResult];
-                
-                if (image)
-                {
-                    cell.icon.image = image;
-                }
+                if ([request available])
+                    cell.icon.image = [request cachedResult];
                 else
-                {
-                    [request startWithCompletion:^(UIImage* image, NSError* error)
-                    {
-                        // if loaded image and still visible
-                        if (image && [[tableView indexPathsForVisibleRows] containsObject:indexPath])
-                        {
-                            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-                        }
-                    }];
-                }
+                    [request load];
             }
             
             return cell;

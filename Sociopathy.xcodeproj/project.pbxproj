@@ -73,6 +73,7 @@
 		84E5D8EE18817952002B07CC /* MultilineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5D8ED18817952002B07CC /* MultilineLabel.m */; };
 		84E5D8F118817B61002B07CC /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5D8F018817B61002B07CC /* NSDate+TimeAgo.m */; };
 		84E5D8F41881A38A002B07CC /* LibraryArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5D8F31881A38A002B07CC /* LibraryArticleCell.m */; };
+		84E942511884311F00BFACED /* KeyboardAwareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E942501884311F00BFACED /* KeyboardAwareController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,8 @@
 		84E5D8F018817B61002B07CC /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeAgo.m"; sourceTree = "<group>"; };
 		84E5D8F21881A38A002B07CC /* LibraryArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryArticleCell.h; sourceTree = "<group>"; };
 		84E5D8F31881A38A002B07CC /* LibraryArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryArticleCell.m; sourceTree = "<group>"; };
+		84E9424F1884311F00BFACED /* KeyboardAwareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardAwareController.h; sourceTree = "<group>"; };
+		84E942501884311F00BFACED /* KeyboardAwareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardAwareController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +297,8 @@
 				846BCDCA187CA49400A27C9C /* Url.m */,
 				84E5D8E5187F21C5002B07CC /* ServerCommunication.h */,
 				84E5D8E6187F21C5002B07CC /* ServerCommunication.m */,
+				84E9424F1884311F00BFACED /* KeyboardAwareController.h */,
+				84E942501884311F00BFACED /* KeyboardAwareController.m */,
 				846BCDB9187C628C00A27C9C /* model */,
 				8406883D186C25BA00AC61DE /* Images.xcassets */,
 				8406882C186C25B900AC61DE /* Supporting Files */,
@@ -560,6 +565,7 @@
 				84E5D8BB187DD183002B07CC /* ChatMessage.m in Sources */,
 				84E5D8E7187F21C5002B07CC /* ServerCommunication.m in Sources */,
 				8408892718785CD3004B84BD /* TabBarViewController.m in Sources */,
+				84E942511884311F00BFACED /* KeyboardAwareController.m in Sources */,
 				846BCDB2187C2FEB00A27C9C /* NSURL+Tools.m in Sources */,
 				846BCDA3187BF42A00A27C9C /* LibraryViewController.m in Sources */,
 				846BCD541879A48700A27C9C /* NSString+Tools.m in Sources */,

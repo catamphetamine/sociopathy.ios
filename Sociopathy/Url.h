@@ -21,4 +21,6 @@
 - (NSURL*) libraryArticleMarkup: (LibraryArticle*) article;
 - (NSURL*) chatMessages;
 - (NSURL*) smallerAvatar: (User*) user;
+- (NSURL*) login;
+- (NSURL*) logout;
 @end

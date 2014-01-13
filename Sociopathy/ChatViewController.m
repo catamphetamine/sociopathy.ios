@@ -24,9 +24,10 @@
     __weak IBOutlet UIActivityIndicatorView* progressIndicator;
     __weak IBOutlet UITableView* tableView;
     
-    UIColor* avatarBorderColor;
-    
     NSMutableArray* messages;
+    
+    NSMutableDictionary* rowHeightCache;
+    NSMutableArray* rowHeightCacheLeft;
 }
 
 - (id) initWithCoder: (NSCoder*) decoder
@@ -34,8 +35,8 @@
     if (self = [super initWithCoder:decoder])
     {
         appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        
-        avatarBorderColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1.0];
+        rowHeightCache = [NSMutableDictionary dictionary];
+        rowHeightCacheLeft = [NSMutableArray new];
     }
     return self;
 }
@@ -61,7 +62,13 @@
 {
     NSURL* url = [appDelegate.url chatMessages];
     
-    [[[ServerCommunication alloc] initWithSession:appDelegate.session delegate:self] communicate:url method:nil parameters:nil];
+    NSDictionary* parameters = @
+    {
+        @"device": appDelegate.device,
+        @"view": @"chat"
+    };
+    
+    [[[ServerCommunication alloc] initWithSession:appDelegate.session delegate:self] communicate:url method:nil parameters:parameters];
 }
 
 - (void) communicationFailed: (NSError*) error
@@ -86,9 +93,9 @@
 - (void) serverResponds: (NSDictionary*) data
 {
     [tableView reloadData];
-       
-    tableView.hidden = NO;
-    [progressIndicator stopAnimating];
+    
+    //tableView.hidden = NO;
+    //[progressIndicator stopAnimating];
 }
 
 - (void) showError: (NSString*) message
@@ -100,14 +107,108 @@
     [alert show];
 }
 
+- (void) viewWillAppear: (BOOL) animated
+{
+    [super viewWillAppear:animated];
+    
+    NSLog(@"viewWillAppear");
+}
+
+- (void) viewWillDisappear: (BOOL) animated
+{
+    NSLog(@"viewWillDisappear");
+    
+    [super viewWillDisappear:animated];
+}
+
+- (void) height: (CGFloat) height
+     forMessage: (ChatMessage*) message
+{
+    rowHeightCache[message.id] = @(height);
+    
+    //NSLog(@"caching height %f for message %@", height, message.id);
+    
+    [rowHeightCacheLeft removeObject:message.id];
+    
+    if (rowHeightCacheLeft && rowHeightCacheLeft.count == 0)
+    {
+        //NSLog(@"update table view");
+        
+        rowHeightCacheLeft = nil;
+        
+        //[tableView beginUpdates];
+        //[tableView endUpdates];
+        
+        tableView.hidden = NO;
+        progressIndicator.hidden = YES;
+        
+        [tableView reloadData];
+    }
+}
+
+- (CGFloat) tableView: (UITableView*) tableView heightForRowAtIndexPath: (NSIndexPath*) indexPath
+{
+    static ChatMessageCell* sizingCell;
+    static CGFloat minimumHeight;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^
+    {
+        sizingCell = (ChatMessageCell*)[tableView dequeueReusableCellWithIdentifier: @"ChatMessageCell"];
+        minimumHeight = [sizingCell.contentView systemLayoutSizeFittingSize: UILayoutFittingCompressedSize].height;
+    });
+
+    long row = [indexPath row];
+    
+    ChatMessage* message = [messages objectAtIndex:row];
+    
+    NSNumber* cachedHeight = rowHeightCache[message.id];
+    
+    //NSLog(@"height for row %ld is %@", row, cachedHeight);
+    
+    CGFloat height = minimumHeight;
+    
+    if (cachedHeight != nil)
+    {
+        if ([cachedHeight floatValue] > height)
+            height = [cachedHeight floatValue];
+    }
+    
+    return height;
+}
+
+- (CGFloat) tableView: (UITableView*) tableView heightForHeaderInSection: (NSInteger) section
+{
+    return 5;
+}
+
+- (CGFloat) tableView: (UITableView*) tableView heightForFooterInSection: (NSInteger) section
+{
+    return 5;
+}
+
+- (UIView*) tableView: (UITableView*) tableView viewForHeaderInSection: (NSInteger) section
+{
+    UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [headerView setBackgroundColor:[UIColor whiteColor]];
+    return headerView;
+}
+
+- (UIView*) tableView: (UITableView*) tableView viewForFooterInSection: (NSInteger) section
+{
+    UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [headerView setBackgroundColor:[UIColor whiteColor]];
+    return headerView;
+}
+
 - (NSInteger) tableView: (UITableView*) tableView
-      numberOfRowsInSection: (NSInteger) section
+  numberOfRowsInSection: (NSInteger) section
 {
     return [messages count];
 }
 
 - (UITableViewCell*) tableView: (UITableView*) tableView
-                  cellForRowAtIndexPath: (NSIndexPath*) indexPath
+         cellForRowAtIndexPath: (NSIndexPath*) indexPath
 {
     ChatMessageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"ChatMessageCell"
                                        forIndexPath:indexPath];
@@ -116,51 +217,44 @@
 
     ChatMessage* message = [messages objectAtIndex:row];
     
-    [cell.avatar.layer setBorderColor:[avatarBorderColor CGColor]];
-    [cell.avatar.layer setBorderWidth:1.0];
+    if (rowHeightCache[message.id] == nil)
+    {
+        rowHeightCache[message.id] = [NSNumber numberWithInt:0];
+        [rowHeightCacheLeft addObject:message.id];
+    }
+    
+    cell.chatViewController = self;
+    
+    [cell message:message];
     
     NSURL* url = [appDelegate.url smallerAvatar:message.author];
     
     if (url)
     {
-        ImageRequest* request = [[ImageRequest alloc] initWithURL:url];
+        ImageRequest* request = [[ImageRequest alloc] initWithURL:url tableView:tableView indexPath:indexPath];
         
-        UIImage* image = [request cachedResult];
-        
-        if (image)
-        {
-            cell.avatar.image = image;
-        }
+        if ([request available])
+            cell.avatar.image = [request cachedResult];
         else
-        {
-            [request startWithCompletion:^(UIImage* image, NSError* error)
-             {
-                 if (image && [[tableView indexPathsForVisibleRows] containsObject:indexPath])
-                 {
-                     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-                 }
-             }];
-        }
+            [request load];
     }
-    else
-    {
-        cell.avatar.image = [UIImage imageNamed:@"no avatar"];
-    }
-    
-    cell.content.scrollView.scrollEnabled = NO;
-    cell.content.scrollView.bounces = NO;
-    
-    [cell.content loadHTMLString:message.content baseURL:nil];
-    cell.content.delegate = cell;
-    
-    // переделать на нормальную давность типа: минутой ранее, часом ранее и т.п.
-    
-    NSDateFormatter* dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"dd.MM\nHH:mm"];
-    
-    cell.when.text = [dateFormatter stringFromDate:message.date];
     
     return cell;
+}
+
+- (void) willRotateToInterfaceOrientation: (UIInterfaceOrientation) toOrientation
+                                 duration: (NSTimeInterval) duration
+{
+    [super willRotateToInterfaceOrientation:toOrientation duration:duration];
+    
+    tableView.hidden = YES;
+    progressIndicator.hidden = NO;
+    [progressIndicator startAnimating];
+    
+    [rowHeightCache removeAllObjects];
+    rowHeightCacheLeft = [NSMutableArray new];
+    
+    [tableView reloadData];
 }
 
 - (void) didReceiveMemoryWarning

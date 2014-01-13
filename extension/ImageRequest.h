@@ -19,7 +19,12 @@ typedef void (^CompletionBlock) (UIImage *, NSError *);
 
 @interface ImageRequest : NSMutableURLRequest
 
+- (instancetype) initWithURL: (NSURL*) URL
+                   tableView: (UITableView*) tableView
+                   indexPath: (NSIndexPath*) indexPath;
 - (UIImage *)cachedResult;
 - (void)startWithCompletion:(CompletionBlock)completion;
+- (BOOL) available;
+- (void) load;
 
 @end

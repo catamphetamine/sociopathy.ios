@@ -17,12 +17,11 @@ typedef void (^ActionBlock)(void);
 
 @property (nonatomic) UIWindow* window;
 @property (nonatomic) NSDictionary* settings;
-@property (nonatomic) NSDictionary* urls;
 @property (nonatomic) NSURLSession* session;
 @property (nonatomic) Url* url;
 @property (nonatomic) BOOL iPad;
 @property (nonatomic) BOOL iPhone;
-@property (nonatomic) NSString* userSessionId;
+@property (nonatomic) NSString* device;
 
 - (NSString*) remoteApiErrorMessage: (NSError*) error;
 

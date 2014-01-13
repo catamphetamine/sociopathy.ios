@@ -41,22 +41,7 @@
     
     NSString* path = [[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"];
     _settings = [[NSDictionary alloc] initWithContentsOfFile:path];
-    
-    NSDictionary* urls = @
-    {
-        @"login": @"вход",
-        @"logout": @"выход"
-    };
-    
-    _urls = [NSMutableDictionary new];
-    
-    NSString* httpPrefix = [@"http://" stringByAppendingString:_settings[@"domain"]];
-    for (NSString* key in urls)
-    {
-        NSString* newValue = [httpPrefix stringByAppendingString:[[@"/приложение/" stringByAppendingString:[urls objectForKey:key]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-	    [_urls setValue:newValue forKey:key];
-    }
-    
+
     _url = [[Url alloc] initWithAppDelegate:self];
     
     NSURLSessionConfiguration* configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
@@ -70,10 +55,15 @@
     _iPad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
     _iPhone = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone;
     
+    if (_iPhone)
+        _device = @"iPhone";
+    else if (_iPad)
+        _device = @"iPad";
+    
     if (_iPad)
     {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
-                                                        message:@"The version for iPad is under development and is out of date. Run the application on iPhone"
+                                                        message:@"The version for iPad is under development and is usually out of date. Run the application on iPhone"
                                                        delegate:nil
                                               cancelButtonTitle:NSLocalizedString(@"Error. Dismiss", nil)
                                               otherButtonTitles:nil];

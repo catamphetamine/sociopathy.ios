@@ -51,6 +51,11 @@
     return self;
 }
 
+- (UIScrollView*) scrollView
+{
+    return (UIScrollView*) self.view;
+}
+
 - (void) viewDidLoad
 {
     [super viewDidLoad];
@@ -73,6 +78,10 @@
     errorMessage.hidden = YES;
     errorMessage.alpha = 0;
     
+    login.text = @"test";
+    password.text = @"123";
+    //[self performLogin:nil];
+    
     // on iPad:
     //
     // login field center y constant += 15 pt (should dismiss this)
@@ -80,8 +89,8 @@
     // place error message 30 pt lower
 }
 
-- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation) toOrientation
-                                 duration:(NSTimeInterval) duration
+- (void) willRotateToInterfaceOrientation: (UIInterfaceOrientation) toOrientation
+                                 duration: (NSTimeInterval) duration
 {
     [super willRotateToInterfaceOrientation:toOrientation duration:duration];
     
@@ -104,6 +113,13 @@
             }
         }
     }
+}
+
+- (void) textFieldDidBeginEditing: (UITextField*) textField
+{
+    [super textFieldDidBeginEditing:textField];
+    
+    [self hideError];
 }
 
 - (void) showError: (NSString*) message
@@ -148,7 +164,7 @@
         [loginProgressIndicator fadeIn:0.1];
     }];
     
-    NSURL* url = [NSURL URLWithString:appDelegate.urls[@"login"]];
+    NSURL* url = [appDelegate.url login];
     
     NSDictionary* loginCredentials = @
     {

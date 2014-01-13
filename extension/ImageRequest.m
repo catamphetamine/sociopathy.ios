@@ -12,6 +12,22 @@ static NSMutableDictionary *_inflight;
 static NSCache *_imageCache;
 
 @implementation ImageRequest
+{
+    UITableView* tableView;
+    NSIndexPath* indexPath;
+}
+
+- (instancetype) initWithURL: (NSURL*) URL
+                   tableView: (UITableView*) tableView
+                   indexPath: (NSIndexPath*) indexPath
+{
+    if (self = [super initWithURL:URL])
+    {
+        self->tableView = tableView;
+        self->indexPath = indexPath;
+    }
+    return self;
+}
 
 - (NSMutableDictionary*) inflight
 {
@@ -35,6 +51,22 @@ static NSCache *_imageCache;
 - (UIImage*) cachedResult
 {
     return [self.imageCache objectForKey:self];
+}
+
+- (BOOL) available
+{
+    return [self cachedResult] != nil;
+}
+
+- (void) load
+{
+    [self startWithCompletion:^(UIImage* image, NSError* error)
+    {
+        if (image && [[tableView indexPathsForVisibleRows] containsObject:indexPath])
+        {
+            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }
+    }];
 }
 
 - (void) startWithCompletion: (CompletionBlock) completion

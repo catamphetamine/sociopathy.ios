@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ServerCommunication.h"
+#import "KeyboardAwareController.h"
 
-@interface LoginViewController : UIViewController <UITextFieldDelegate, ServerCommunicationDelegate>
+@interface LoginViewController : KeyboardAwareController <UITextFieldDelegate, ServerCommunicationDelegate>
 
 @end

@@ -50,7 +50,7 @@
     
     NSDictionary* parameters = @
     {
-        @"device": appDelegate.iPhone ? @"iPhone" : @"iPad"
+        @"device": appDelegate.device
     };
     
     [[[ServerCommunication alloc] initWithSession:appDelegate.session delegate:self] communicate:url method:nil parameters:parameters];

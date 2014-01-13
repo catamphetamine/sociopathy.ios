@@ -133,4 +133,14 @@ static int kChatMessagesPerPage = 18;
         @"version": [user.avatar_version stringValue]
     }];
 }
+
+- (NSURL*) login
+{
+    return [self withPath:@"/вход" prefixes:@[backendPrefix] parameters:nil];
+}
+
+- (NSURL*) logout
+{
+    return [self withPath:@"/выход" prefixes:@[backendPrefix] parameters:nil];
+}
 @end
